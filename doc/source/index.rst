@@ -11,6 +11,7 @@ Welcome to Yinkui's documentation!
    :caption: Contents:
 
 This is just a test
+中文测试
 
 Indices and tables
 ==================

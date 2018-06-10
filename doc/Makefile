@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = Blog
 SOURCEDIR     = source
-BUILDDIR      = build 
+BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,3 +18,5 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	cp ./build/html/* ../ -rf
+	echo "copy done"
