@@ -1,2 +1,7 @@
 Python - Do right thing with right way
 =======================================
+
+.. toctree::
+   :maxdepth: 2
+
+   Django

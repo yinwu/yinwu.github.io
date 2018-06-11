@@ -49,7 +49,7 @@
 </div>
 <div class="section" id="id1">
 <h2>参考的文档<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://www.cnblogs.com/youxin/p/3594161.html">文档整体解决方案(readthedocs、github 、sphinx)使用</a></p>
+<p><a class="reference external" href="https://www.cnblogs.com/youxin/p/3594161.html">文档整体解决方案(readthedocs,github,sphinx)使用</a></p>
 </div>
 <div class="section" id="readthedoc">
 <h2>为什么不用ReadTheDoc<a class="headerlink" href="#readthedoc" title="Permalink to this headline">¶</a></h2>
@@ -58,66 +58,68 @@
 <div class="section" id="githubsphinx">
 <h2>怎么在Github上部署Sphinx生成的网页<a class="headerlink" href="#githubsphinx" title="Permalink to this headline">¶</a></h2>
 <p>在Github大家更习惯用markdown，观察了下用markdown写的博客，最终还是生成html页面。在工程目录下面有个index.html网页，这个网页里面内容就是打开博客后看到的内容。Sphinx也是类似，本地编译后生成一个index.html，只不过目录是在工程目录/build/html目录下面。Github展示的都是静态的网页，根本不关心你的网页是用sphinx生成的，还是Hexo生成的。所以问题就好办了，想办法用Sphinx生成的网页替换掉工程目录下面的index.html及其他文件就能解决问题。</p>
-<p>这个过程中参考了`Publishing sphinx-generated docs on github`_ ， 不过该作者的解决办法是，建立两个project。一个工程存放sphinx生成的静态网页文件，一个工程存放源文件(.rst)。我觉这种太麻烦，写文档时需要clone两个工程，对两个工程的目录也有要求，提交时也需要提交两次。对懒人是种折磨。</p>
+<p>这个过程中参考了 <a class="reference external" href="http://daler.github.io/sphinxdoc-test/includeme.html">Publishing sphinx-generated docs on github</a> ， 不过该作者的解决办法是，建立两个project。一个工程存放sphinx生成的静态网页文件，一个工程存放源文件(.rst)。我觉这种太麻烦，写文档时需要clone两个工程，对两个工程的目录也有要求，提交时也需要提交两次。对懒人是种折磨。</p>
 <p>怎么能只clone一次，push一次呢？ 解决办法就是巧妙组织文档目录，然后修改工程的Makrfile。不能在Github工程根目录下直接创建Sphinx工程。而是在新建一个子目录，在子目录下面创建Sphinx工程，然后把sphinx生成的/build/html下面的所有文件拷贝到github工程的根目录下面。这样github根目录下面就有了静态网页文件。这个拷贝的过程也不需要手动去做，直接修改makefile或make.bat文件即可。</p>
-<div class="highlight-console"><div class="highlight"><pre>
+<ul class="simple">
+<li>Makefile 修改</li>
+</ul>
+<div class="highlight-makefile"><div class="highlight"><pre><span class="c"># Minimal makefile for Sphinx documentation</span>
+<span class="c">#</span>
+
+<span class="c"># You can set these variables from the command line.</span>
+<span class="nv">SPHINXOPTS</span>    <span class="o">=</span>
+<span class="nv">SPHINXBUILD</span>   <span class="o">=</span> sphinx-build
+<span class="nv">SPHINXPROJ</span>    <span class="o">=</span> Blog
+<span class="nv">SOURCEDIR</span>     <span class="o">=</span> <span class="nb">source</span>
+<span class="nv">BUILDDIR</span>      <span class="o">=</span> build
+
+<span class="c"># Put it first so that &quot;make&quot; without argument is like &quot;make help&quot;.</span>
+<span class="nf">help</span><span class="o">:</span>
+        @<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -M <span class="nb">help</span> <span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="k">$(</span>SPHINXOPTS<span class="k">)</span> <span class="k">$(</span>O<span class="k">)</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">help</span> <span class="n">Makefile</span>
+
+<span class="hll"><span class="c"># Catch-all target: route all unknown targets to Sphinx using the new</span>
+</span><span class="c"># &quot;make mode&quot; option.  $(O) is meant as a shortcut for $(SPHINXOPTS).</span>
+<span class="nf">%</span><span class="o">:</span> <span class="n">Makefile</span>
+        @<span class="k">$(</span>SPHINXBUILD<span class="k">)</span> -M <span class="nv">$@</span> <span class="s2">&quot;</span><span class="k">$(</span>SOURCEDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>BUILDDIR<span class="k">)</span><span class="s2">&quot;</span> <span class="k">$(</span>SPHINXOPTS<span class="k">)</span> <span class="k">$(</span>O<span class="k">)</span>
+        cp ./build/html/* ../ -rf
+        <span class="nb">echo</span> <span class="s2">&quot;copy done&quot;</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="mailto:bjsoam&#37;&#52;&#48;bjsoam">bjsoam<span>&#64;</span>bjsoam</a>:~/doc$ cat doc/Makefile
-# Minimal makefile for Sphinx documentation
-#</p>
-<p># You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = Blog
-SOURCEDIR     = source
-BUILDDIR      = build</p>
-<p># Put it first so that &#8220;make&#8221; without argument is like &#8220;make help&#8221;.
-help:</p>
-<blockquote>
-<div>&#64;$(SPHINXBUILD) -M help &#8220;$(SOURCEDIR)&#8221; &#8220;$(BUILDDIR)&#8221; $(SPHINXOPTS) $(O)</div></blockquote>
-<p>.PHONY: help Makefile</p>
-<p># Catch-all target: route all unknown targets to Sphinx using the new
-# &#8220;make mode&#8221; option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile</p>
-<blockquote>
-<div>&#64;$(SPHINXBUILD) -M $&#64; &#8220;$(SOURCEDIR)&#8221; &#8220;$(BUILDDIR)&#8221; $(SPHINXOPTS) $(O)
-cp ./build/html/* ../ -rf
-echo &#8220;copy done&#8221;</div></blockquote>
-<p><a class="reference external" href="mailto:bjsoam&#37;&#52;&#48;bjsoam">bjsoam<span>&#64;</span>bjsoam</a>:~/doc$</p>
 <ul class="simple">
 <li>Github工程根目录(gitProject)，子目录doc是Sphinx工程所在目录。</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">～@～:~/gitProject$ ls</span>
+<span class="go">algorithm  cPlusPlus  doctrees       index.html  objects.inv  search.html     _sources</span>
+<span class="go">blog       doc        genindex.html  link        python       searchindex.js  _static</span>
 </pre></div>
 </div>
-<p>～&#64;～:~/gitProject$ ls
-algorithm  cPlusPlus  doctrees       index.html  objects.inv  search.html     _sources
-blog       doc        genindex.html  link        python       searchindex.js  _static</p>
 <ul class="simple">
 <li>在doc子目录下面, 创建Sphinx工程，其中source目录是rst文件所在目录。build/html是生成静态网页文件所在目录。</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">~@~:~/doc$ ls doc</span>
+<span class="go">build  make.bat  Makefile  source</span>
 </pre></div>
 </div>
-<p>~&#64;~:~/doc$ ls doc
-build  make.bat  Makefile  source</p>
 <ul class="simple">
 <li>把build/html下面的所有东西拷贝到gitProject下面</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">~@~:~/doc$ ls doc/build/html/</span>
+<span class="go">algorithm  cPlusPlus      index.html  objects.inv  search.html     _sources</span>
+<span class="go">blog       genindex.html  link        python       searchindex.js  _static</span>
 </pre></div>
 </div>
-<p>~&#64;~:~/doc$ ls doc/build/html/
-algorithm  cPlusPlus      index.html  objects.inv  search.html     _sources
-blog       genindex.html  link        python       searchindex.js  _static</p>
 </div>
 <div class="section" id="id2">
 <h2>碰到的问题<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>中文的支持</li>
+<ul>
+<li><p class="first">中文的支持</p>
+<blockquote>
+<div><p>我一开始是在Windows下面搭建的Sphinx环境，但是编译(make html)时，文档中的中文无法识别，编译后中文字符全变成了“？”。 在网上搜索了一个下午，也没有找到解决办法。而且相关文档特别少，怀疑不是sphinx的问题。后来放弃了，无奈在linux环境下试了一下，中文字符的处理没有任何问题。现在怀疑还是sphinx Windows版本的问题，不过不想继续调查研究了。</p>
+</div></blockquote>
+</li>
 </ul>
-<p>我一开始是在Windows下面搭建的Sphinx环境，但是编译(make html)时，文档中的中文无法识别，编译后中文字符全变成了“？”。 在网上搜索了一个下午，也没有找到解决办法。而且相关文档特别少，怀疑不是sphinx的问题。后来放弃了，无奈在linux环境下试了一下，中文字符的处理没有任何问题。现在怀疑还是sphinx Windows版本的问题，不过不想继续调查研究了。</p>
 </div>
 </div>
 

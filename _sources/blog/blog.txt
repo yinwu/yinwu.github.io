@@ -8,5 +8,6 @@ The sneezing of life
    :maxdepth: 2
 
    sphinx_github_blog_setup
+   git
 
 
