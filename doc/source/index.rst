@@ -14,9 +14,9 @@ Welcome to Yinkui's documentation!
    cPlusPlus/cPlusPlus
    blog/blog
    link/link
+   book/book
 
-This is just a test
-中文测试
+
 
 Indices and tables
 ==================
