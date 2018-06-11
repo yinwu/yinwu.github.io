@@ -8,7 +8,6 @@ Welcome to Yinkui's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    algorithm/algorithm
    python/python
