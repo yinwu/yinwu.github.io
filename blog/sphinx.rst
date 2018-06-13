@@ -1,0 +1,228 @@
+Sphinx 常用语法
+======================
+
+创建Sphinx工程
+---------------------
+
+.. code-block:: console
+
+    yinwu@vmware:~/doc$ sphinx-quickstart
+
+编译Sphinx工程
+---------------------
+
+.. code-block:: console
+
+    yinwu@vmware:~/doc$ make html
+
+
+Sphinx中目录结构组织
+------------------------
+
+.. code-block:: console
+
+    Contents:                                                          
+                                                                    
+    .. toctree::                                                       
+    :maxdepth: 2                                                    
+                                                                    
+    intro                                                           
+    sample_folder/sample 
+
+Sphinx三级标题格式
+------------------------
+
+一级标题
+^^^^^^^^^^
+
+.. code-block:: console
+
+    ===========================
+
+二级标题
+^^^^^^^^^^^
+
+.. code-block:: console
+
+    --------------------------
+
+三级标题
+^^^^^^^^^^^
+    
+.. code-block:: console
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+段落
+-------
+
+段落是构成reST文档的基本单位。通过一个或一个以上的空行隔开的文本区块就是一个段落。同一段落的多个文本行必须有一样的缩进。
+
+注意在段落内换行并不会在html中生成换行符，要想保持在文本编辑器中的换行符，需要在这些行前面加上|和空格
+
+.. code-block:: console
+
+    | aaaaaaaa                                                      
+    | bbbbbbbbb                                                     
+    | cccccccccccc
+
+
+行内标记
+----------
+
+    * 字体加粗 两个星号
+    * 字体倾斜 一个星号
+    * 代码或内容引用 两个反引号
+
+    .. code-block:: console
+
+        aaaa **加粗** aaaaa                                                
+                                                                        
+        aaaa *倾斜* aaaaa                                                  
+                                                                        
+        aaaaa ``引用`` aaaaaa
+
+
+列表
+-------
+
+    * 符号列表 *号后空格
+    * 编号号列表 数字加点加空格，或者#号加点加空格
+    * 定义列表 术语（只能一行）的下一行缩进，下一行为定义内容
+
+    .. code-block:: console
+
+        * item                                                          
+        * item                                                          
+        * item                                                          
+                                                                        
+        1. item1                                                        
+        2. item2                                                        
+        3. item3                                                        
+                                                                        
+        #. item4                                                        
+        #. item5                                                        
+        #. item6                                                        
+                                                                        
+        FOO                                                             
+            this is very interesting.                                   
+                                                                        
+        BAR                                                             
+            this is interesting, too.
+
+
+代码
+-------
+    * 行内代码 用``code``
+    * 简单代码块 在代码块的上一个段落后面加2个冒号，空一行后开始代码块，代码块要缩进
+
+    .. code-block:: console
+
+        source code below ::                                             
+                                                                
+        void foo()                                                  
+        {                                                           
+            int i;                                                  
+                                                                    
+            for(i=0; i<10; i++)                                     
+                printf("i: %d\n", a);                               
+        }
+
+    * 复杂代码块 使用code-block指导语句，还可以选择列出行号和高亮重点行等
+
+    .. code-block:: console
+
+        .. code-block:: c                                               
+        :linenos:                                                   
+        :emphasize-lines: 3,6                                       
+                                                                    
+        void foo()                                                  
+        {                                                                                            
+            int i;                                                  
+                                                                    
+            for(i=0; i<10; i++)                                     
+                printf("i: %d\n", a);                               
+        } 
+
+
+超链接
+---------
+
+    * 行内超链接 语法`链接文字 <URL>`_
+    * 分开的超链接 用到链接的地方`链接文字`_, 定义链接的地方 .. _链接文字: URL
+
+    .. code-block:: console
+
+        visit `baidu <http://www.baidu.com>`_                           
+                                                                    
+        visit `baidu URL`_                                              
+                                                                    
+        .. _baidu URL: http://www.baidu.com
+
+
+图片
+---------
+
+使用image指导语句
+
+.. code-block:: console
+
+    baidu logo:                                                     
+                                                                
+    .. image:: ./images/bdlog.png                                   
+        :width: 200px 
+
+
+表格
+------
+
+.. code-block:: console
+
+    simple table:                                                   
+                                                                    
+    =====  =====  ======                                            
+    Inputs     Output                                            
+    ------------  ------                                            
+    A      B      A or B                                            
+    =====  =====  ======                                            
+    False  False  False                                             
+    True   False  True                                                                               
+    False  True   True                                              
+    True   True   True                                              
+    =====  =====  ======                                            
+                                                                    
+    grid table: 
+                                                                
+    +------------------------+------------+----------+----------+   
+    | Header row, column 1   | Header 2   | Header 3 | Header 4 |   
+    | (header rows optional) |            |          |          |   
+    +========================+============+==========+==========+   
+    | body row 1, column 1   | column 2   | column 3 | column 4 |   
+    +------------------------+------------+----------+----------+   
+    | body row 2             | Cells may span columns.          |   
+    +------------------------+------------+---------------------+   
+    | body row 3             | Cells may  | - Table cells       |   
+    +------------------------+ span rows. | - contain           |   
+    | body row 4             |            | - body elements.    |   
+    +------------------------+------------+---------------------+
+
+
+引用
+-------
+
+.. code-block:: console
+
+    The evidence is provided by [Reference]_ that is not discussed.                     
+                                                                    
+    .. [Reference] 《the book name》
+
+脚注
+-------
+
+.. code-block:: console
+
+    this is already discussed in [#f1] and [#f2].
+
+    .. [#f1] the name of book1
+    .. [#f2] the name of book2
+
