@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sphinx 常用语法 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="The sneezing of life" href="blog.html" />
+    <link rel="next" title="生活.网络 杂记" href="../link/link.html" />
+    <link rel="prev" title="Interview" href="interview.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sphinx">
+<h1>Sphinx 常用语法<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>创建Sphinx工程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@vmware:~/doc$</span> sphinx-quickstart
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>编译Sphinx工程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@vmware:~/doc$</span> make html
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Sphinx中目录结构组织<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Contents:</span>
+
+<span class="go">.. toctree::</span>
+<span class="go">:maxdepth: 2</span>
+
+<span class="go">intro</span>
+<span class="go">sample_folder/sample</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Sphinx三级标题格式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>一级标题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">===========================</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>二级标题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">--------------------------</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>三级标题<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>段落<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>段落是构成reST文档的基本单位。通过一个或一个以上的空行隔开的文本区块就是一个段落。同一段落的多个文本行必须有一样的缩进。</p>
+<p>注意在段落内换行并不会在html中生成换行符，要想保持在文本编辑器中的换行符，需要在这些行前面加上|和空格</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">| aaaaaaaa</span>
+<span class="go">| bbbbbbbbb</span>
+<span class="go">| cccccccccccc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>行内标记<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>字体加粗 两个星号</li>
+<li>字体倾斜 一个星号</li>
+<li>代码或内容引用 两个反引号</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">aaaa **加粗** aaaaa</span>
+
+<span class="go">aaaa *倾斜* aaaaa</span>
+
+<span class="go">aaaaa ``引用`` aaaaaa</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>列表<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>符号列表 *号后空格</li>
+<li>编号号列表 数字加点加空格，或者#号加点加空格</li>
+<li>定义列表 术语（只能一行）的下一行缩进，下一行为定义内容</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">* item</span>
+<span class="go">* item</span>
+<span class="go">* item</span>
+
+<span class="go">1. item1</span>
+<span class="go">2. item2</span>
+<span class="go">3. item3</span>
+
+<span class="gp">#</span>. item4
+<span class="gp">#</span>. item5
+<span class="gp">#</span>. item6
+
+<span class="go">FOO</span>
+<span class="go">    this is very interesting.</span>
+
+<span class="go">BAR</span>
+<span class="go">    this is interesting, too.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>代码<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>行内代码 用``code``</li>
+<li>简单代码块 在代码块的上一个段落后面加2个冒号，空一行后开始代码块，代码块要缩进</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">source code below ::</span>
+
+<span class="go">void foo()</span>
+<span class="go">{</span>
+<span class="go">    int i;</span>
+
+<span class="go">    for(i=0; i&lt;10; i++)</span>
+<span class="go">        printf(&quot;i: %d\n&quot;, a);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>复杂代码块 使用code-block指导语句，还可以选择列出行号和高亮重点行等</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">.. code-block:: c</span>
+<span class="go">:linenos:</span>
+<span class="go">:emphasize-lines: 3,6</span>
+
+<span class="go">void foo()</span>
+<span class="go">{</span>
+<span class="go">    int i;</span>
+
+<span class="go">    for(i=0; i&lt;10; i++)</span>
+<span class="go">        printf(&quot;i: %d\n&quot;, a);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h2>超链接<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>行内超链接 语法`链接文字 &lt;URL&gt;`_</li>
+<li>分开的超链接 用到链接的地方`链接文字`_, 定义链接的地方 .. _链接文字: URL</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">visit `baidu &lt;http://www.baidu.com&gt;`_</span>
+
+<span class="go">visit `baidu URL`_</span>
+
+<span class="go">.. _baidu URL: http://www.baidu.com</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h2>图片<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>使用image指导语句</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">baidu logo:</span>
+
+<span class="go">.. image:: ./images/bdlog.png</span>
+<span class="go">    :width: 200px</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>表格<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">simple table:</span>
+
+<span class="go">=====  =====  ======</span>
+<span class="go">Inputs     Output</span>
+<span class="go">------------  ------</span>
+<span class="go">A      B      A or B</span>
+<span class="go">=====  =====  ======</span>
+<span class="go">False  False  False</span>
+<span class="go">True   False  True</span>
+<span class="go">False  True   True</span>
+<span class="go">True   True   True</span>
+<span class="go">=====  =====  ======</span>
+
+<span class="go">grid table:</span>
+
+<span class="go">+------------------------+------------+----------+----------+</span>
+<span class="go">| Header row, column 1   | Header 2   | Header 3 | Header 4 |</span>
+<span class="go">| (header rows optional) |            |          |          |</span>
+<span class="go">+========================+============+==========+==========+</span>
+<span class="go">| body row 1, column 1   | column 2   | column 3 | column 4 |</span>
+<span class="go">+------------------------+------------+----------+----------+</span>
+<span class="go">| body row 2             | Cells may span columns.          |</span>
+<span class="go">+------------------------+------------+---------------------+</span>
+<span class="go">| body row 3             | Cells may  | - Table cells       |</span>
+<span class="go">+------------------------+ span rows. | - contain           |</span>
+<span class="go">| body row 4             |            | - body elements.    |</span>
+<span class="go">+------------------------+------------+---------------------+</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>引用<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">The evidence is provided by [Reference]_ that is not discussed.</span>
+
+<span class="go">.. [Reference] 《the book name》</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>脚注<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">this is already discussed in [#f1] and [#f2].</span>
+
+<span class="go">.. [#f1] the name of book1</span>
+<span class="go">.. [#f2] the name of book2</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sphinx 常用语法</a><ul>
+<li><a class="reference internal" href="#id1">创建Sphinx工程</a></li>
+<li><a class="reference internal" href="#id2">编译Sphinx工程</a></li>
+<li><a class="reference internal" href="#id3">Sphinx中目录结构组织</a></li>
+<li><a class="reference internal" href="#id4">Sphinx三级标题格式</a><ul>
+<li><a class="reference internal" href="#id5">一级标题</a></li>
+<li><a class="reference internal" href="#id6">二级标题</a></li>
+<li><a class="reference internal" href="#id7">三级标题</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">段落</a></li>
+<li><a class="reference internal" href="#id9">行内标记</a></li>
+<li><a class="reference internal" href="#id10">列表</a></li>
+<li><a class="reference internal" href="#id11">代码</a></li>
+<li><a class="reference internal" href="#id12">超链接</a></li>
+<li><a class="reference internal" href="#id13">图片</a></li>
+<li><a class="reference internal" href="#id14">表格</a></li>
+<li><a class="reference internal" href="#id15">引用</a></li>
+<li><a class="reference internal" href="#id16">脚注</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">The sneezing of life</a><ul>
+      <li>Previous: <a href="interview.html" title="previous chapter">Interview</a></li>
+      <li>Next: <a href="../link/link.html" title="next chapter">生活.网络 杂记</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/blog/sphinx.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/blog/sphinx.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -10,5 +10,6 @@ The sneezing of life
    sphinx_github_blog_setup
    git
    interview
+   sphinx
 
 

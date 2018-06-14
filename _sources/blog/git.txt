@@ -30,3 +30,21 @@ How to switch branch
 
 	[yinwu@qgp_dev qgp]$ git checkout -b remotes/origin/JIRA-Support
 	Switched to a new branch 'remotes/origin/JIRA-Support'
+
+
+How to rename a branch
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	$ git branch -m remotes/origin/JIRA-Support Jira-support
+
+
+set up-stream to a local branch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)
+	$ git branch --set-upstream-to=remotes/origin/JIRA-Support Jira-support
+	Branch Jira-support set up to track remote branch JIRA-Support from origin.

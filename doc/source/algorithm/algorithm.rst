@@ -10,7 +10,7 @@ Art of computer - algorithm
 .. toctree::
    :maxdepth: 2
 
-    sort
-    tree
-    leetCode
-    struct
+   sort
+   tree
+   leetCode
+   struct
