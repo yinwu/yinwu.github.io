@@ -4,14 +4,20 @@
    contain the root `toctree` directive.
 
 Welcome to Yinkui's documentation!
-================================
+==================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-This is just a test
-中文测试
+   algorithm/algorithm
+   python/python
+   cPlusPlus/cPlusPlus
+   blog/blog
+   link/link
+   book/book
+   bigDataAndAI/bigDataAndAi
+
+
 
 Indices and tables
 ==================
