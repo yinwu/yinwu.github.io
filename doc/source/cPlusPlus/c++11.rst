@@ -129,8 +129,7 @@ decltype在处理顶层const和引用的方式与auto有些许不同。如果它
     decltype(r+0) b ;   //正确，加法的结果是int。因此b是一个未初始化的init。
     decltype(*p) c;     // 错误，c是int&，必须初始化。
 
-说明：如果表达式的内容是解引用操作，则decptype得到的是引用类型。因为解引用指针可以得到指针所指的对象，而且还
-能给这个对象赋值，因此decltype(*p)的结果类型是int&， 而不是int；
+说明：如果表达式的内容是解引用操作，则decptype得到的是引用类型。因为解引用指针可以得到指针所指的对象，而且还能给这个对象赋值，因此decltype(*p)的结果类型是int&， 而不是int；
 
 decltype((variable))的结果永远是引用。而decltype(variable)结果只有当variable本身就是一个引用时才是引用。
 
