@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linux/Unix编程知识 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="The sneezing of life" href="blog.html" />
+    <link rel="next" title="生活.网络 杂记" href="../link/link.html" />
+    <link rel="prev" title="Sphinx 常用语法" href="sphinx.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linux-unix">
+<h1>Linux/Unix编程知识<a class="headerlink" href="#linux-unix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Linux/Unix进程内存空间的分配和管理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>进程空间地址分配<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/memory_for_process.png" src="../_images/memory_for_process.png" />
+</div>
+<div class="section" id="id3">
+<h3>举例说明<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//全局初始化区</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span> <span class="c1">//全局未初始化区</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="c1">//栈</span>
+    <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span> <span class="c1">//栈</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">p2</span><span class="p">;</span> <span class="c1">//栈</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">p3</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span> <span class="c1">//123456{post.content}在常量区，p3在栈上</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//全局（静态）初始化区</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">//分配得来得10字节的区域在堆区</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span> <span class="c1">//分配得来得20字节的区域在堆区</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="s">&quot;123456&quot;</span><span class="p">);</span>
+    <span class="c1">//123456{post.content}放在常量区，编译器可能会将它与p3所指向的&quot;123456&quot;优化成一块</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>堆和栈的区别<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">管理方式不同</p>
+<blockquote>
+<div><p>堆的由程序员来动态的申请和释放，栈由编译器来自动管理，无需程序员干预</p>
+</div></blockquote>
+</li>
+<li><p class="first">空间大小不同</p>
+<blockquote>
+<div><p>一般来讲在32位系统下，堆内存可以达到4G的空间。栈往往比较小。</p>
+</div></blockquote>
+</li>
+<li><p class="first">堆的申请和释放会产生碎片，栈不会产生碎片。</p>
+</li>
+<li><p class="first">生长方式不同，堆的向着内存地址增加的方向，栈向着内存地址减少的方式。</p>
+</li>
+<li><p class="first">分配方式不同，堆是动态分配的。栈有静态和动态两种分配方式，静态分配由编译器完成，动态分配有alloca函数进行分配，释放由编译器进行释放，无需手工干预，但是这种方式不推荐。</p>
+</li>
+<li><p class="first">分配效率不同</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mmap">
+<h2>MMAP及共享内存<a class="headerlink" href="#mmap" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>什么是MMAP？<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>MMAP使得进程之间通过映射同一个普通文件实现共享内存。普通文件被映射进进程地址空间后，进程可以像访问普通内存一样对文件进行访问，不必调用read/write等操作。</p>
+</div>
+<div class="section" id="id6">
+<h3>共享内存有点<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>最有用的进程间通讯方式，也是最快的IPC方式，因为进程可以直接读写内存，而不需要任何数据拷贝。管道和消息队列需要在内核和用户空间拷贝四次数据，共享内存只需要两次。</p>
+</div>
+<div class="section" id="id7">
+<h3>传统文件访问<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>UNIX访问文件的传统方法是用open打开它们, 如果有多个进程访问同一个文件,则每一个进程在自己的地址空间都包含有该文件的副本,这不必要地浪费了存储空间.</p>
+<img alt="../_images/traditional_file_operation.png" src="../_images/traditional_file_operation.png" />
+</div>
+<div class="section" id="id8">
+<h3>共享存储映射<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>进程A和进程B都将该页映射到自己的地址空间, 当进程A第一次访问该页中的数据时, 它生成一个缺页中断. 内核此时读入这一页到内存并更新页表使之指向它.以后, 当进程B访问同一页面而出现缺页中断时, 该页已经在内存, 内核只需要将进程B的页表登记项指向次页即可.</p>
+<img alt="../_images/share_memory_by_mmap.png" src="../_images/share_memory_by_mmap.png" />
+</div>
+<div class="section" id="id9">
+<h3>引入MMAP后的进程空间分布<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/mmap.png" src="../_images/mmap.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Linux/Unix编程知识</a><ul>
+<li><a class="reference internal" href="#id1">Linux/Unix进程内存空间的分配和管理</a><ul>
+<li><a class="reference internal" href="#id2">进程空间地址分配</a></li>
+<li><a class="reference internal" href="#id3">举例说明</a></li>
+<li><a class="reference internal" href="#id4">堆和栈的区别</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mmap">MMAP及共享内存</a><ul>
+<li><a class="reference internal" href="#id5">什么是MMAP？</a></li>
+<li><a class="reference internal" href="#id6">共享内存有点</a></li>
+<li><a class="reference internal" href="#id7">传统文件访问</a></li>
+<li><a class="reference internal" href="#id8">共享存储映射</a></li>
+<li><a class="reference internal" href="#id9">引入MMAP后的进程空间分布</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">The sneezing of life</a><ul>
+      <li>Previous: <a href="sphinx.html" title="previous chapter">Sphinx 常用语法</a></li>
+      <li>Next: <a href="../link/link.html" title="next chapter">生活.网络 杂记</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/blog/linux_unix_program.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/blog/linux_unix_program.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
