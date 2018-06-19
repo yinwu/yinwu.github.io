@@ -1,2 +1,161 @@
 LeetCode刷题笔记
 =========================
+
+
+两数之和
+----------
+
+问题
+^^^^^^^^^
+    给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+    你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
+
+第一次解答
+^^^^^^^^^^^^^^^^
+
+.. code-block:: c++
+
+    class Solution {
+    public:
+        vector<int> twoSum(vector<int>& nums, int target) {
+            std::unordered_map<int, int> indexMap;
+            for(auto iter = nums.begin(); iter != nums.end(); iter++){
+                indexMap[*iter] = iter - nums.begin();
+            }
+            for(auto iter = nums.begin(); iter != nums.end(); iter++){
+                auto leftValue = target - *iter;
+                auto leftIter = indexMap.find(leftValue);
+                if(leftIter != indexMap.end()){
+                    return {iter-nums.begin(), leftIter->second};
+                }
+            }
+        }
+    };
+
+这个算法的时间复杂度应该是O(n),复杂度满足要求。但是这个算法没有通过测试，存在的问题是，
+当输入是[3,2,4],target = 6时，算法返回的结果是[0,0]。因为6-3=3，所以find在map中查找时，找到还是
+原来的元素。
+
+改进
+^^^^^^^^^^
+
+.. code-block:: c++
+::emphasize-lines: 11
+
+    class Solution {
+    public:
+        vector<int> twoSum(vector<int>& nums, int target) {
+            std::unordered_map<int, int> indexMap;
+            for(auto iter = nums.begin(); iter != nums.end(); iter++){
+                indexMap[*iter] = iter - nums.begin();
+            }
+            for(auto iter = nums.begin(); iter != nums.end(); iter++){
+                auto leftValue = target - *iter;
+                auto leftIter = indexMap.find(leftValue);
+                if(leftIter != indexMap.end() && (iter-nums.begin()) != leftIter->second){
+                    return {iter-nums.begin(), leftIter->second};
+                }
+            }
+        }
+    };
+
+推荐的解法一：两次哈希表
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+该解法类似上面自己些的算法。
+
+为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。
+如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。
+
+通过以空间换取速度的方式，我们可以将查找时间从 O(n)O(n) 降低到 O(1)O(1)。
+哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。
+我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)O(n)。
+但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)O(1)。
+一个简单的实现使用了两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。
+然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]target−nums[i]）是否存在于表中。注意，该目标元素不能是 nums[i]nums[i] 本身
+
+.. code-block:: java
+
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement) && map.get(complement) != i) {
+                return new int[] { i, map.get(complement) };
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+复杂度分析：
+
+时间复杂度：O(n)O(n)， 我们把包含有 nn 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1)O(1) ，所以时间复杂度为 O(n)O(n)。
+
+空间复杂度：O(n)O(n)， 所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 nn 个元素。
+
+1
+推荐解法二：一次哈希表(完美)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+事实证明，我们可以一次完成。
+在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。
+如果它存在，那我们已经找到了对应解，并立即将其返回。
+
+.. code-block:: java 
+
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+总结
+^^^^^^^^
+
+哈希表的搜索的时间复杂度时O(1)，以空间换时间。
+一边构建哈希表，一边搜索前面的元素。能完美的避免6-3=3的问题。
+
+
+两数相加
+-----------------------
+
+问题描述
+^^^^^^^^^^^^^^
+
+给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。
+将两数相加返回一个新的链表。你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+
+实现前的思考
+^^^^^^^^^^^^
+
+1）进位问题。
+2）两个链表长度一样时，进位问题。
+3）两个链表长度不一样时，进位问题。
+
+第一次解答
+^^^^^^^^^^^^^^^
+
+
+无重复的最长字符串问题
+------------------------------
+
+问题描述
+^^^^^^^^^^^^
+
+给定一个字符串，找出不含有重复字符的最长子串的长度。
+
+示例
+^^^^^^
+
+* 给定 "abcabcbb" ，没有重复字符的最长子串是 "abc" ，那么长度就是3。
+* 给定 "bbbbb" ，最长的子串就是 "b" ，长度是1。
+* 给定 "pwwkew" ，最长子串是 "wke" ，长度是3。请注意答案必须是一个子串，"pwke" 是 子序列  而不是子串
