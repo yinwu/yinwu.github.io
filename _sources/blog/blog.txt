@@ -1,7 +1,7 @@
 .. _blog:
 
-The sneezing of life
-======================
+Experienced coder skill
+========================
 
 
 .. toctree::

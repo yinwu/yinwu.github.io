@@ -6,6 +6,7 @@
 
    lifeAndSocial
    techniqueAndEducation
+   daily_news
 
 
 
