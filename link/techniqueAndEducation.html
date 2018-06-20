@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Blog  documentation" href="../index.html" />
     <link rel="up" title="生活.网络 杂记" href="link.html" />
-    <link rel="next" title="读书笔记" href="../book/book.html" />
+    <link rel="next" title="见闻.日记" href="daily_news.html" />
     <link rel="prev" title="社会.生活" href="lifeAndSocial.html" />
    
   
@@ -43,33 +43,34 @@
 <h1>教育.技术<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>技术<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first"><a class="reference external" href="https://blog.csdn.net/21cnbao/article/details/77505330">Linux的任督二脉：进程调度和内存管理</a></p>
-</li>
-<li><p class="first"><a class="reference external" href="https://blog.csdn.net/u013511989/article/details/79972435">长时间不操作SSH无响应问题解决</a></p>
+<ul class="simple">
+<li><a class="reference external" href="https://blog.csdn.net/21cnbao/article/details/77505330">Linux的任督二脉：进程调度和内存管理</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/u013511989/article/details/79972435">长时间不操作SSH无响应问题解决</a></li>
+</ul>
+<ol class="arabic">
+<li><p class="first">如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置:</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置:</li>
-</ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
 </pre></div>
 </div>
-<ol class="arabic simple">
-<li>如果您有多台个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置:</li>
-</ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
-</pre></div>
-</div>
-<ol class="arabic simple">
-<li>如果您只想让当前的 ssh 保持连接，可以使用以下的命令：</li>
-</ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh -o ServerAliveInterval=60 user@sshserver</span>
-</pre></div>
-</div>
-<p>转载自http://www.talkwithtrend.com/Question/225451-1370171</p>
 </div></blockquote>
 </li>
-</ul>
+<li><p class="first">如果您有多台个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">如果您只想让当前的 ssh 保持连接，可以使用以下的命令：</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ssh -o ServerAliveInterval=60 user@sshserver</span>
+</pre></div>
+</div>
+<p>转载自 <a class="reference external" href="http://www.talkwithtrend.com/Question/225451-1370171">http://www.talkwithtrend.com/Question/225451-1370171</a></p>
+</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="id3">
 <h2>教育<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -96,7 +97,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="link.html">生活.网络 杂记</a><ul>
       <li>Previous: <a href="lifeAndSocial.html" title="previous chapter">社会.生活</a></li>
-      <li>Next: <a href="../book/book.html" title="next chapter">读书笔记</a></li>
+      <li>Next: <a href="daily_news.html" title="next chapter">见闻.日记</a></li>
   </ul></li>
   </ul></li>
 </ul>

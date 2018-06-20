@@ -40,7 +40,7 @@ LeetCode刷题笔记
 ^^^^^^^^^^
 
 .. code-block:: c++
-::emphasize-lines: 11
+    :emphasize-lines: 11
 
     class Solution {
     public:
