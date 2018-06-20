@@ -12,5 +12,6 @@ Experienced coder skill
    interview
    sphinx
    linux_unix_program
+   docker
 
 
