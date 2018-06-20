@@ -123,9 +123,9 @@
 <p>复杂度分析：</p>
 <p>时间复杂度：O(n)O(n)， 我们把包含有 nn 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1)O(1) ，所以时间复杂度为 O(n)O(n)。</p>
 <p>空间复杂度：O(n)O(n)， 所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 nn 个元素。</p>
-<p>1
-推荐解法二：一次哈希表(完美)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+</div>
+<div class="section" id="id6">
+<h3>推荐解法二：一次哈希表(完美)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>事实证明，我们可以一次完成。
 在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。
 如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
@@ -143,37 +143,37 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>总结<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>总结<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>哈希表的搜索的时间复杂度时O(1)，以空间换时间。
 一边构建哈希表，一边搜索前面的元素。能完美的避免6-3=3的问题。</p>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>两数相加<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3>问题描述<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h2>两数相加<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>问题描述<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。
 将两数相加返回一个新的链表。你可以假设除了数字 0 之外，这两个数字都不会以零开头。</p>
 </div>
-<div class="section" id="id9">
-<h3>实现前的思考<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>1）进位问题。
-2）两个链表长度一样时，进位问题。
-3）两个链表长度不一样时，进位问题。</p>
-</div>
 <div class="section" id="id10">
-<h3>第一次解答<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-</div>
+<h3>实现前的思考<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>1）进位问题。</p>
+<p>2）两个链表长度一样时，进位问题。</p>
+<p>3）两个链表长度不一样时，进位问题。</p>
 </div>
 <div class="section" id="id11">
-<h2>无重复的最长字符串问题<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h3>第一次解答<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 <div class="section" id="id12">
-<h3>问题描述<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h2>无重复的最长字符串问题<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>问题描述<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>给定一个字符串，找出不含有重复字符的最长子串的长度。</p>
 </div>
-<div class="section" id="id13">
-<h3>示例<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>示例<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>给定 &#8220;abcabcbb&#8221; ，没有重复字符的最长子串是 &#8220;abc&#8221; ，那么长度就是3。</li>
 <li>给定 &#8220;bbbbb&#8221; ，最长的子串就是 &#8220;b&#8221; ，长度是1。</li>
@@ -197,18 +197,19 @@
 <li><a class="reference internal" href="#id3">第一次解答</a></li>
 <li><a class="reference internal" href="#id4">改进</a></li>
 <li><a class="reference internal" href="#id5">推荐的解法一：两次哈希表</a></li>
-<li><a class="reference internal" href="#id6">总结</a></li>
+<li><a class="reference internal" href="#id6">推荐解法二：一次哈希表(完美)</a></li>
+<li><a class="reference internal" href="#id7">总结</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">两数相加</a><ul>
-<li><a class="reference internal" href="#id8">问题描述</a></li>
-<li><a class="reference internal" href="#id9">实现前的思考</a></li>
-<li><a class="reference internal" href="#id10">第一次解答</a></li>
+<li><a class="reference internal" href="#id8">两数相加</a><ul>
+<li><a class="reference internal" href="#id9">问题描述</a></li>
+<li><a class="reference internal" href="#id10">实现前的思考</a></li>
+<li><a class="reference internal" href="#id11">第一次解答</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">无重复的最长字符串问题</a><ul>
-<li><a class="reference internal" href="#id12">问题描述</a></li>
-<li><a class="reference internal" href="#id13">示例</a></li>
+<li><a class="reference internal" href="#id12">无重复的最长字符串问题</a><ul>
+<li><a class="reference internal" href="#id13">问题描述</a></li>
+<li><a class="reference internal" href="#id14">示例</a></li>
 </ul>
 </li>
 </ul>
