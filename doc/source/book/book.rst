@@ -7,3 +7,5 @@
    cPlusPlusPrime
    FluentPython
    programmingPearls
+   TheIntelligentInvestor
+   TheMostImportantThingIlluminatd
