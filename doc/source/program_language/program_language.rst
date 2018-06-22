@@ -1,11 +1,17 @@
 编程语言
 ===========================================
 
+软件设计架构体系
+----------------------
+
+.. image:: ../_static/programStack.png 
+
+
 C++ learning path: from coolie to expert
 ------------------------------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    c++_basic
    class_and_object
@@ -17,11 +23,9 @@ Python - Do right thing with right way
 ------------------------------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Django
    python_interview
 
-软件设计架构体系:
 
-.. image:: ../_static/programStack.png 
