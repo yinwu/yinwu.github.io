@@ -1,11 +1,12 @@
-生活.网络.杂记
-==============
+杂文要记
+==================
 
 .. toctree::
    :maxdepth: 2
 
-   lifeAndSocial
-   techniqueAndEducation
+   life_and_social
+   technique
+   mind_and_behavior
    daily_news
 
 

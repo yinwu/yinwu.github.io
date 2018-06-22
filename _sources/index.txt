@@ -10,12 +10,11 @@ Welcome to Yinkui's documentation!
    :maxdepth: 2
 
    algorithm/algorithm
-   python/python
-   cPlusPlus/cPlusPlus
+   program_language/program_language
    blog/blog
-   link/link
+   notes/notes
    book/book
-   bigDataAndAI/bigDataAndAi
+   bigdata_and_ai/bigdata_and_ai
 
 
 

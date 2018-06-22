@@ -5,3 +5,4 @@ Python - Do right thing with right way
    :maxdepth: 2
 
    Django
+   python_interview
