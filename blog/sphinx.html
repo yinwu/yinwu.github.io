@@ -41,20 +41,21 @@
             
   <div class="section" id="sphinx">
 <h1>Sphinx 常用语法<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>创建Sphinx工程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://zh-sphinx-doc.readthedocs.io/en/latest/index.html">Sphinx官方使用手册</a></p>
+<div class="section" id="id2">
+<h2>创建Sphinx工程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@vmware:~/doc$</span> sphinx-quickstart
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>编译Sphinx工程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>编译Sphinx工程<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@vmware:~/doc$</span> make html
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>Sphinx中目录结构组织<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Sphinx中目录结构组织<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Contents:</span>
 
 <span class="go">.. toctree::</span>
@@ -65,29 +66,29 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>Sphinx三级标题格式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>一级标题<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h2>Sphinx三级标题格式<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>一级标题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">===========================</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>二级标题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>二级标题<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">--------------------------</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>三级标题<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>三级标题<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>段落<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>段落<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>段落是构成reST文档的基本单位。通过一个或一个以上的空行隔开的文本区块就是一个段落。同一段落的多个文本行必须有一样的缩进。</p>
 <p>注意在段落内换行并不会在html中生成换行符，要想保持在文本编辑器中的换行符，需要在这些行前面加上|和空格</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">| aaaaaaaa</span>
@@ -96,8 +97,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>行内标记<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>行内标记<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>字体加粗 两个星号</li>
@@ -113,8 +114,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id10">
-<h2>列表<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>列表<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>符号列表 *号后空格</li>
@@ -142,8 +143,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id11">
-<h2>代码<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>代码<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>行内代码 用``code``</li>
@@ -178,8 +179,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id12">
-<h2>超链接<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>超链接<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>行内超链接 语法`链接文字 &lt;URL&gt;`_</li>
@@ -194,8 +195,23 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id13">
-<h2>图片<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2>内联标记<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>生成标签</p>
+<div class="highlight-python"><div class="highlight"><pre>.. _my-reference-label:
+</pre></div>
+</div>
+<p>引用标签</p>
+<div class="highlight-python"><div class="highlight"><pre>:ref:`链接文字 &lt;my-reference-label&gt;`
+</pre></div>
+</div>
+<p>或者下面这种格式，显示的文字是标签插入地方的标题</p>
+<div class="highlight-python"><div class="highlight"><pre>:ref:`my-reference-label`
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>图片<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>使用image指导语句</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">baidu logo:</span>
 
@@ -204,8 +220,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h2>表格<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2>表格<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">simple table:</span>
 
 <span class="go">=====  =====  ======</span>
@@ -236,16 +252,16 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h2>引用<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id17">
+<h2>引用<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">The evidence is provided by [Reference]_ that is not discussed.</span>
 
 <span class="go">.. [Reference] 《the book name》</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id16">
-<h2>脚注<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h2>脚注<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">this is already discussed in [#f1] and [#f2].</span>
 
 <span class="go">.. [#f1] the name of book1</span>
@@ -264,24 +280,25 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Sphinx 常用语法</a><ul>
-<li><a class="reference internal" href="#id1">创建Sphinx工程</a></li>
-<li><a class="reference internal" href="#id2">编译Sphinx工程</a></li>
-<li><a class="reference internal" href="#id3">Sphinx中目录结构组织</a></li>
-<li><a class="reference internal" href="#id4">Sphinx三级标题格式</a><ul>
-<li><a class="reference internal" href="#id5">一级标题</a></li>
-<li><a class="reference internal" href="#id6">二级标题</a></li>
-<li><a class="reference internal" href="#id7">三级标题</a></li>
+<li><a class="reference internal" href="#id2">创建Sphinx工程</a></li>
+<li><a class="reference internal" href="#id3">编译Sphinx工程</a></li>
+<li><a class="reference internal" href="#id4">Sphinx中目录结构组织</a></li>
+<li><a class="reference internal" href="#id5">Sphinx三级标题格式</a><ul>
+<li><a class="reference internal" href="#id6">一级标题</a></li>
+<li><a class="reference internal" href="#id7">二级标题</a></li>
+<li><a class="reference internal" href="#id8">三级标题</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8">段落</a></li>
-<li><a class="reference internal" href="#id9">行内标记</a></li>
-<li><a class="reference internal" href="#id10">列表</a></li>
-<li><a class="reference internal" href="#id11">代码</a></li>
-<li><a class="reference internal" href="#id12">超链接</a></li>
-<li><a class="reference internal" href="#id13">图片</a></li>
-<li><a class="reference internal" href="#id14">表格</a></li>
-<li><a class="reference internal" href="#id15">引用</a></li>
-<li><a class="reference internal" href="#id16">脚注</a></li>
+<li><a class="reference internal" href="#id9">段落</a></li>
+<li><a class="reference internal" href="#id10">行内标记</a></li>
+<li><a class="reference internal" href="#id11">列表</a></li>
+<li><a class="reference internal" href="#id12">代码</a></li>
+<li><a class="reference internal" href="#id13">超链接</a></li>
+<li><a class="reference internal" href="#id14">内联标记</a></li>
+<li><a class="reference internal" href="#id15">图片</a></li>
+<li><a class="reference internal" href="#id16">表格</a></li>
+<li><a class="reference internal" href="#id17">引用</a></li>
+<li><a class="reference internal" href="#id18">脚注</a></li>
 </ul>
 </li>
 </ul>

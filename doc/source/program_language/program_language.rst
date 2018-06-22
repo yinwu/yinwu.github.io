@@ -6,6 +6,7 @@
 
 .. image:: ../_static/programStack.png 
 
+.. _c++ prime:
 
 C++ learning path: from coolie to expert
 ------------------------------------------

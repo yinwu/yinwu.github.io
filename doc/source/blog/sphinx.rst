@@ -1,6 +1,9 @@
 Sphinx 常用语法
 ======================
 
+`Sphinx官方使用手册 <http://zh-sphinx-doc.readthedocs.io/en/latest/index.html>`_
+
+
 创建Sphinx工程
 ---------------------
 
@@ -160,6 +163,21 @@ Sphinx三级标题格式
                                                                     
         .. _baidu URL: http://www.baidu.com
 
+
+内联标记
+-------------
+
+生成标签 ::
+
+    .. _my-reference-label:
+
+引用标签 ::
+
+    :ref:`链接文字 <my-reference-label>`
+
+或者下面这种格式，显示的文字是标签插入地方的标题 ::
+
+    :ref:`my-reference-label`
 
 图片
 ---------
