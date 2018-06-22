@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Blog  documentation" href="../index.html" />
-    <link rel="up" title="Experienced coder skill" href="blog.html" />
-    <link rel="next" title="生活.网络 杂记" href="../link/link.html" />
+    <link rel="up" title="原创技术专题博客" href="blog.html" />
+    <link rel="next" title="生活.网络.杂记" href="../link/link.html" />
     <link rel="prev" title="Linux/Unix编程知识" href="linux_unix_program.html" />
    
   
@@ -41,6 +41,71 @@
             
   <div class="section" id="docker">
 <h1>Docker技术<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>docker常用命令<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">-t:在新容器内指定一个伪终端或终端。</p>
+</li>
+<li><p class="first">-i:允许你对容器内的标准输入 (STDIN) 进行交互</p>
+</li>
+<li><p class="first">在容器内使用docker logs命令，查看容器内的标准输出</p>
+</li>
+<li><p class="first">我们使用 docker stop 命令来停止容器</p>
+</li>
+<li><p class="first">-d:让容器在后台运行。</p>
+</li>
+<li><p class="first">-P:将容器内部使用的网络端口映射到我们使用的主机上</p>
+</li>
+<li><p class="first">我们也可以指定 -p 标识来绑定指定端口</p>
+</li>
+<li><p class="first">docker port 可以查看指定 （ID或者名字）容器的某个确定端口映射到宿主机的端口号</p>
+</li>
+<li><p class="first">docker top 来查看容器内部运行的进程</p>
+</li>
+<li><p class="first">docker inspect 来查看Docker的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息</p>
+</li>
+<li><p class="first">docker rm 命令来删除不需要的容器</p>
+</li>
+<li><p class="first">docker images 来列出本地主机上的镜像</p>
+</li>
+<li><p class="first">docker pull 命令来下载repository上面的镜像</p>
+</li>
+<li><p class="first">docker search 命令来搜索镜像</p>
+</li>
+<li><p class="first">当我们从docker镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。</p>
+<blockquote>
+<div><p>1.从已经创建的容器中更新镜像，并且提交这个镜像</p>
+<p>2.使用 Dockerfile 指令来创建一个新的镜像</p>
+</div></blockquote>
+</li>
+<li><p class="first">docker commit来提交容器副本</p>
+</li>
+<li><p class="first">我们可以使用 docker tag 命令，为镜像添加一个新的标签</p>
+</li>
+<li><p class="first">我们也可以使用 -p 标识来指定容器端口绑定到主机端口</p>
+<blockquote>
+<div><p>-P :是容器内部端口随机映射到主机的高端口。</p>
+<p>-p : 是容器内部端口绑定到指定的主机端口。</p>
+</div></blockquote>
+</li>
+<li><p class="first">docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息</p>
+</li>
+<li><p class="first">我们也可以使用–name标识来命名容器</p>
+</li>
+</ul>
+</div>
+<div class="section" id="docker-compose">
+<h2>Docker compose<a class="headerlink" href="#docker-compose" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3><a class="reference external" href="https://docs.docker.com/compose/overview/#release-notes">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="docker-compose-file">
+<h3><a class="reference external" href="https://docs.docker.com/compose/compose-file/">Docker-compose file</a><a class="headerlink" href="#docker-compose-file" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="command-line-reference">
+<h3><a class="reference external" href="https://docs.docker.com/compose/reference/">command line reference</a><a class="headerlink" href="#command-line-reference" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -48,13 +113,27 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Docker技术</a><ul>
+<li><a class="reference internal" href="#id1">docker常用命令</a></li>
+<li><a class="reference internal" href="#docker-compose">Docker compose</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#docker-compose-file">Docker-compose file</a></li>
+<li><a class="reference internal" href="#command-line-reference">command line reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="blog.html">Experienced coder skill</a><ul>
+  <li><a href="blog.html">原创技术专题博客</a><ul>
       <li>Previous: <a href="linux_unix_program.html" title="previous chapter">Linux/Unix编程知识</a></li>
-      <li>Next: <a href="../link/link.html" title="next chapter">生活.网络 杂记</a></li>
+      <li>Next: <a href="../link/link.html" title="next chapter">生活.网络.杂记</a></li>
   </ul></li>
   </ul></li>
 </ul>

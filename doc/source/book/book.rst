@@ -7,3 +7,6 @@
    cPlusPlusPrime
    FluentPython
    programmingPearls
+   TheIntelligentInvestor
+   TheMostImportantThingIlluminatd
+   HowToReadABook

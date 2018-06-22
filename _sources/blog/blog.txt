@@ -1,6 +1,6 @@
 .. _blog:
 
-Experienced coder skill
+原创技术专题博客
 ========================
 
 
