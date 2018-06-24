@@ -72,6 +72,90 @@ Fluent Python(流畅的python)
 
 	tuple, str, bytes
 
+* 列表推导
+
+	列表推导是创建新列表的快捷方式。
+
+	.. code-block:: python
+
+		codecs = [ord(symbol) for symbol in symbols]
+
+* 笛卡尔积
+	
+	.. code-block:: python
+
+		colors = ["red", "blue"]
+		sizes = ["s", "m", "l"]
+		t_shirt = [(color, size) for color in colors for size in sizes]
+
+* 生成器表达式
+
+	相比列表推导，生成器表达式是生成列表更好的选择，因为生成器表达式遵守了迭代器协议，可以逐个产出元素
+
+	生成器表达式语法跟列表推导差不多，只不过把方括号换成圆括号
+
+
+	.. code-block:: python 
+
+		colors = ["red", "blue"]
+		sizes = ["s", "m", "l"]
+
+		for t_shirt in ("%s %s" % (c, s) for c in colors for s in sizes)
+
+	上例中的程序，不会在内存中一次性产出有6个元素的列表，而是逐个产出元素。
+
+* 元组的拆包
+
+	.. code-block:: python
+
+		x , y = (1, 2)
+
+		passport_code = ("USA", "123456")
+		print("%s %s" % passport_code)
+
+		a, b = b, a
+
+		# def divmod(x, y)
+
+		# * 解引用， 把可迭代对象拆开作为函数的参数
+		t = (20, 8)
+		divmod(t) 			# error
+		divmod(*t)			# ok
+
+		# _ 占位符
+		_, filePath = os.path.split("/etc/vncserver/rsa.pub")
+
+		# *来处理剩下的元素
+		a, b，*rest = range(5) # (0, 1, [2, 3, 4])
+
+		# 嵌套元组的拆包
+		name, addr, code, (lattitude, longtitude) = ("test", "beijing", 101, (35.6124, 42.5678))
+
+* 具名元组
+
+	.. code-block:: python
+
+		from collections import namedtruple
+		City = nametruple('City', 'name country population coordinate')
+		tokyo = City("Tokyp", "japan", 320000, (35.6124, 42.5678))
+
+		# 具名元组具有一些特殊的方法
+		>>>City._fields
+		'name' 'country' 'population' 'coordinate'
+
+		>>>Latlong = namedtuple("LatLong", 'lat long')
+		>>>delphi_data = ("Delphi", "India", 21.935, LatLong(35.6124, 42.5678))
+		>>>delphi = City._make(delphi_data)
+		>>>delphi._asdict()
+		OrderdDict([('name':'Delphi'), (...), (...), (...), ('coordinate':LatLong(35.6124, 42.5678))])
+
+* 元组的方法和属性
+	
+	...
+
+* 切片
+
+	切片和区间操作里面不包含区间范围的最后一个元素，是python风格。
 
 
 第三章 字典和集合
