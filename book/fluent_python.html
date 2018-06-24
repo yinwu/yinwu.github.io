@@ -1,0 +1,216 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Fluent Python(流畅的python) &#8212; Blog  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="编程珠玑" href="program_pearl.html" />
+    <link rel="prev" title="C++ prime" href="c++_prime.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fluent-python-python">
+<h1>Fluent Python(流畅的python)<a class="headerlink" href="#fluent-python-python" title="Permalink to this headline">¶</a></h1>
+<p>大概浏览了前几章，感觉这本书的还是有一些难度的。不适合python初学者，但是很适合提高。</p>
+<div class="section" id="id1">
+<h2>第一部分 序幕<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h3>第一章 python 数据模型<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>这章主要讲Python的特殊方法，即Magic method。特殊方法的存在是为了被python解释器调用的，你自己并不需要显示的调用他们。</p>
+<ul>
+<li><p class="first">__getitem__</p>
+<blockquote>
+<div><p>实现对象的下标操作，让对象编程可迭代的对象。</p>
+</div></blockquote>
+</li>
+<li><p class="first">__len__</p>
+<blockquote>
+<div><p>实现标准集合类型的len方法。</p>
+</div></blockquote>
+</li>
+<li><p class="first">__iter__</p>
+<blockquote>
+<div><p>实现 for i in x: 格式的语句</p>
+</div></blockquote>
+</li>
+<li><p class="first">__repr__</p>
+<blockquote>
+<div><p>实现对象的字符串表达形式，实现对象的repr方法</p>
+</div></blockquote>
+</li>
+<li><p class="first">__str__</p>
+<blockquote>
+<div><p>实现对象的str方法，没有__str__方法时，会调用__repr__作为替代。</p>
+<p><cite>str 和 repr的区别</cite>?</p>
+</div></blockquote>
+</li>
+<li><p class="first">__bool__</p>
+<blockquote>
+<div><p>默认情况下，自定义类的实例默认情况下都是true，除非我们实现了__bool__方法。</p>
+</div></blockquote>
+</li>
+<li><p class="first">其他特殊方法</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>__format__ __abs__ __bytes__ __complex__ __float__</li>
+<li>__hash__ __index__ __setitem__ __delitem__</li>
+<li>__contains__ __reverser__ __next__</li>
+<li>__call__</li>
+<li>__enter__ __exit__</li>
+<li>__new__  __init__ __del__</li>
+<li>__getattr__ __getattribute__ __setattr__ __delattr__ __dir__</li>
+<li>__get__ __set__ __delete__</li>
+<li>__prepare__ __instancecheck__ __subclasscheck__</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>第二部分 数据结构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>第二章 序列构成的数组<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">容器序列</p>
+<blockquote>
+<div><p>list, tuple, collections.deque存放不同类型的数据</p>
+</div></blockquote>
+</li>
+<li><p class="first">扁平序列</p>
+<blockquote>
+<div><p>str, bytes, bytearray, memoryview, array.array只能容纳一种类型</p>
+</div></blockquote>
+</li>
+<li><p class="first">可变序列</p>
+<blockquote>
+<div><p>list, bytearray, array.array, collections.deque, memoryview</p>
+</div></blockquote>
+</li>
+<li><p class="first">不可变序列</p>
+<blockquote>
+<div><p>tuple, str, bytes</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>第三章 字典和集合<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>第四章 文本和字节序列<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>第三部分 把函数视作对象<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id7">
+<h2>第四部分 面向对象惯用法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>第五部分 控制流程<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>第六部分 元编程<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fluent Python(流畅的python)</a><ul>
+<li><a class="reference internal" href="#id1">第一部分 序幕</a><ul>
+<li><a class="reference internal" href="#python">第一章 python 数据模型</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">第二部分 数据结构</a><ul>
+<li><a class="reference internal" href="#id3">第二章 序列构成的数组</a></li>
+<li><a class="reference internal" href="#id4">第三章 字典和集合</a></li>
+<li><a class="reference internal" href="#id5">第四章 文本和字节序列</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">第三部分 把函数视作对象</a></li>
+<li><a class="reference internal" href="#id7">第四部分 面向对象惯用法</a></li>
+<li><a class="reference internal" href="#id8">第五部分 控制流程</a></li>
+<li><a class="reference internal" href="#id9">第六部分 元编程</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="book.html">读书笔记</a><ul>
+      <li>Previous: <a href="c++_prime.html" title="previous chapter">C++ prime</a></li>
+      <li>Next: <a href="program_pearl.html" title="next chapter">编程珠玑</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/book/fluent_python.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/book/fluent_python.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
