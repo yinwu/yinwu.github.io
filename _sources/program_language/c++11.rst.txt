@@ -1,0 +1,188 @@
+C++11/14新特性
+=========================
+
+1，long long 类型
+--------------------
+
+c++ 语言规定，一个int至少和一个short一样大。一个long至少和int一样大。一个long long至少和一个long一样大。
+long long是长整型，C++ 11中新定义的。最小尺寸64位。
+
+2，列表初始化
+---------------
+
+在C++ 11中用花括号在初始化变量，称为列表初始化。
+
+.. code-block:: c++
+    
+    int i = 0;
+    int i = {0};
+    int i{0}
+    int i(0);
+
+如果使用列表初始化、且初始化值存在丢失危险时，编译器将报错
+
+.. code-block:: c++
+
+    long double ld = 3.1415926536;
+    int a{ld}, b = {ld}; // compile error
+    int a(ld), b = ld;   // compile ok
+
+3，nullptr常量
+---------------------
+
+空指针不指向任何地址，在c++ 11中得到空指针最直接的办法就是使用字面值常量nullptr来初始化指针。
+nullptr是一种特殊的字面值常量，他可以被转换成任意其它的指针类型
+
+constexpr变量
+--------------------
+
+c++ 11 允许将变量声明为constexpr类型以便编译器来验证变量的值是否是一个常量表达式。
+
+.. code-block:: c++
+
+    constexpr int mf = 20;
+    constexpr int limit = mf + 1;
+    constexpr int sz = size() // 只有在size是一个constexpr函数式才是一条正确的声明。
+
+
+4，类型别名声明
+-------------------
+
+有两种方法可以定义别名，传统的方式是使用typedef关键字，C++ 11中定义一种新的方式
+来定义类型的别名。
+
+.. code-block:: c++
+
+    typedef double wages;
+    typedef wages base, *p; // base is double and p is double*
+
+    using SI = Sales_Item;
+
+
+5，auto 类型指示符
+------------------
+
+auto类型说明符用来让编译器通过初始值来推断表达式所属的类型。
+
+.. code-block:: c++
+
+    auto item = val1 + val2;
+
+
+当变量的初始值是引用时，编译器以引用的对象的类型作为初始值
+
+auto一般会忽略顶层const， 保留底层const
+
+.. code-block:: c++
+
+    int i = 0, &r = i;
+    const int ci = i, &cr = ci;
+
+    auto b = ci； // b 是一个整数, ci 顶层const属性被忽略
+    auto c = cr;  // c 是一个整数，cr是ci的别名，ci本身是一个顶层const
+    auto d = &i;  // d 是整型指针，
+    auto e = &ci; // e 是一个指向整数常量的指针（对常量对象取地址本身是一种底层const）
+
+
+如果希望推断出的类型具有顶层const，需要明确指出
+
+.. code-block:: c++
+
+    const auto f = ci; // ci的推断类型是int， f是const int。
+
+
+还能将引用的类型设置为auto，此时原来的初始化规则仍然适用
+
+.. code-block:: c++
+
+    auto &g = ci; // g是整形常量引用，绑定在ci
+    auto &h = 42; // 错误，不能为未常量引用绑定字面值
+    const auto &j = 42; // 可以为常量引用绑定字面值
+
+6，decltype类型指示符
+-----------------------
+
+decltype 从表达式的类型推断出要定义的变量的类型，但是又不想用改表达式的值来初始化变量。
+
+.. code-block:: c++
+
+    decltype(f()) sum = x; // sum的类型就是函数f的返回类型。
+
+
+decltype在处理顶层const和引用的方式与auto有些许不同。如果它使用的是一个变量，则decltype返回的值就是变量的类型
+
+.. code-block:: c++
+
+    const int ci = 0; &cj = ci;
+    decltype(ci) x = 0; // x is const int;
+    decltype(cj) y = x; // y is const int&;
+    decltype(cj) z;     // error , const int必须初始化
+
+如果decltype使用的表达式不是一个变量，则decltype返回表达式结果对应的类型。如果表达式向decltype返回一个引用类型，意味着这个
+表达式的结果对象能够作为一条赋值语句的左值(不太明白)
+
+.. code-block:: c++
+
+    int i = 42, *p = &i, &r = i;
+
+    decltype(r) a = i;  // a is int&
+    decltype(r+0) b ;   //正确，加法的结果是int。因此b是一个未初始化的init。
+    decltype(*p) c;     // 错误，c是int&，必须初始化。
+
+说明：如果表达式的内容是解引用操作，则decptype得到的是引用类型。因为解引用指针可以得到指针所指的对象，而且还能给这个对象赋值，因此decltype(\*p)的结果类型是int&， 而不是int；
+
+decltype((variable))的结果永远是引用。而decltype(variable)结果只有当variable本身就是一个引用时才是引用。
+
+7，类内初始化
+--------------
+
+c++ 11位数据成员提供一个类内初始值。创建对象时，类内初始值用于初始化数据成员。
+
+.. code-block:: c++
+
+    struct Sale_Item {
+        std::string bookNo;
+        unsigned units_sold = 0;
+        double revenue{0.0}
+        int sum(0) // error
+    }; 
+
+
+8，基于范围的for语句
+---------------------
+
+.. code-block:: c++ 
+    
+    for(auto c: s)
+    {
+        std::cout << c << std::endl;
+    }
+
+9，定义vector对象的vector
+---------------------------
+
+vector能容纳绝大多数类型的对象作为元素，但是引用不是对象，因此不存在包含引用的vector。
+
+c++ 98:
+
+.. code-block:: c++
+
+    vector<vector<int> > x;
+
+
+c++ 11:
+
+.. code-block:: c++
+
+    vector<vector<int>> x;
+
+10, vector对象的列表初始化
+-----------------------------
+
+c++ 11提供的列表初始化用花括号括起来的0个或者多个元素初始化vector对象
+
+.. code-block:: c++
+
+    vector<string> v1{"aa", "bb", "cc"};
+    vector<string> v1("aa", "bb", "cc"); // error
+
