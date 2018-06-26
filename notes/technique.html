@@ -1,30 +1,38 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>技术摘抄 &#8212; Blog  documentation</title>
+    
+    <title>技术摘抄 &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="杂文要记" href="notes.html" />
     <link rel="next" title="逻辑.行为" href="mind_and_behavior.html" />
     <link rel="prev" title="社会.生活" href="life_and_social.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -43,21 +51,21 @@
 <ol class="arabic">
 <li><p class="first">如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置:</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ServerAliveInterval 60</span>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">如果您有多台个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置:</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ServerAliveInterval 60</span>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">如果您只想让当前的 ssh 保持连接，可以使用以下的命令：</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -o ServerAliveInterval=60 user@sshserver</span>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ssh -o ServerAliveInterval=60 user@sshserver</span>
 </pre></div>
 </div>
 <p>转载自`这里`_</p>
@@ -70,7 +78,7 @@
 <ol class="arabic simple">
 <li>CPU信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
 </span><span class="go">Architecture:          x86_64</span>
 <span class="go">CPU op-mode(s):        32-bit, 64-bit</span>
 <span class="go">Byte Order:            Little Endian</span>
@@ -80,7 +88,7 @@
 <ol class="arabic simple">
 <li>内存信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
 </span><span class="go">MemTotal:        3970012 kB</span>
 <span class="go">MemFree:          140060 kB</span>
 <span class="go">MemAvailable:     777144 kB</span>
@@ -92,7 +100,7 @@
 <ol class="arabic simple">
 <li>硬盘信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
 </span><span class="go">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span>
 <span class="go">sr0     11:0    1  1024M  0 rom</span>
 <span class="go">sda      8:0    0 298.1G  0 disk</span>
@@ -137,20 +145,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/notes/technique.rst.txt"
+      <li><a href="../_sources/notes/technique.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -161,11 +170,11 @@
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/notes/technique.rst.txt"
+      <a href="../_sources/notes/technique.txt"
           rel="nofollow">Page source</a>
     </div>
 

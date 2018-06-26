@@ -1,30 +1,38 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>C++11/14新特性 &#8212; Blog  documentation</title>
+    
+    <title>C++11/14新特性 &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="编程语言" href="program_language.html" />
     <link rel="next" title="Django: Quick and Easy to setup web service" href="Django.html" />
     <link rel="prev" title="C++高级主题" href="high_level_c++.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -41,14 +49,14 @@ long long是长整型，C++ 11中新定义的。最小尺寸64位。</p>
 <div class="section" id="id1">
 <h2>2，列表初始化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>在C++ 11中用花括号在初始化变量，称为列表初始化。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
 <span class="kt">int</span> <span class="n">i</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span>
 <span class="kt">int</span> <span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>如果使用列表初始化、且初始化值存在丢失危险时，编译器将报错</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">double</span> <span class="n">ld</span> <span class="o">=</span> <span class="mf">3.1415926536</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">long</span> <span class="kt">double</span> <span class="n">ld</span> <span class="o">=</span> <span class="mf">3.1415926536</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">a</span><span class="p">{</span><span class="n">ld</span><span class="p">},</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="n">ld</span><span class="p">};</span> <span class="c1">// compile error</span>
 <span class="kt">int</span> <span class="nf">a</span><span class="p">(</span><span class="n">ld</span><span class="p">),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">ld</span><span class="p">;</span>   <span class="c1">// compile ok</span>
 </pre></div>
@@ -62,7 +70,7 @@ nullptr是一种特殊的字面值常量，他可以被转换成任意其它的�
 <div class="section" id="constexpr">
 <h2>constexpr变量<a class="headerlink" href="#constexpr" title="Permalink to this headline">¶</a></h2>
 <p>c++ 11 允许将变量声明为constexpr类型以便编译器来验证变量的值是否是一个常量表达式。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span> <span class="kt">int</span> <span class="n">mf</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">constexpr</span> <span class="kt">int</span> <span class="n">mf</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
 <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">mf</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">sz</span> <span class="o">=</span> <span class="n">size</span><span class="p">()</span> <span class="c1">// 只有在size是一个constexpr函数式才是一条正确的声明。</span>
 </pre></div>
@@ -72,7 +80,7 @@ nullptr是一种特殊的字面值常量，他可以被转换成任意其它的�
 <h2>4，类型别名声明<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>有两种方法可以定义别名，传统的方式是使用typedef关键字，C++ 11中定义一种新的方式
 来定义类型的别名。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">double</span> <span class="n">wages</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">double</span> <span class="n">wages</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">wages</span> <span class="n">base</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span> <span class="c1">// base is double and p is double*</span>
 
 <span class="k">using</span> <span class="n">SI</span> <span class="o">=</span> <span class="n">Sales_Item</span><span class="p">;</span>
@@ -82,12 +90,12 @@ nullptr是一种特殊的字面值常量，他可以被转换成任意其它的�
 <div class="section" id="auto">
 <h2>5，auto 类型指示符<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h2>
 <p>auto类型说明符用来让编译器通过初始值来推断表达式所属的类型。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">val1</span> <span class="o">+</span> <span class="n">val2</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">val1</span> <span class="o">+</span> <span class="n">val2</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>当变量的初始值是引用时，编译器以引用的对象的类型作为初始值</p>
 <p>auto一般会忽略顶层const， 保留底层const</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>int i = 0, &amp;r = i;
+<div class="highlight-c++"><div class="highlight"><pre>int i = 0, &amp;r = i;
 const int ci = i, &amp;cr = ci;
 
 auto b = ci； // b 是一个整数, ci 顶层const属性被忽略
@@ -97,11 +105,11 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 </pre></div>
 </div>
 <p>如果希望推断出的类型具有顶层const，需要明确指出</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">auto</span> <span class="n">f</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span> <span class="c1">// ci的推断类型是int， f是const int。</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="k">auto</span> <span class="n">f</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span> <span class="c1">// ci的推断类型是int， f是const int。</span>
 </pre></div>
 </div>
 <p>还能将引用的类型设置为auto，此时原来的初始化规则仍然适用</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">g</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span> <span class="c1">// g是整形常量引用，绑定在ci</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">auto</span> <span class="o">&amp;</span><span class="n">g</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span> <span class="c1">// g是整形常量引用，绑定在ci</span>
 <span class="k">auto</span> <span class="o">&amp;</span><span class="n">h</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="c1">// 错误，不能为未常量引用绑定字面值</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="n">j</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="c1">// 可以为常量引用绑定字面值</span>
 </pre></div>
@@ -110,11 +118,11 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 <div class="section" id="decltype">
 <h2>6，decltype类型指示符<a class="headerlink" href="#decltype" title="Permalink to this headline">¶</a></h2>
 <p>decltype 从表达式的类型推断出要定义的变量的类型，但是又不想用改表达式的值来初始化变量。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">decltype</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// sum的类型就是函数f的返回类型。</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">decltype</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// sum的类型就是函数f的返回类型。</span>
 </pre></div>
 </div>
 <p>decltype在处理顶层const和引用的方式与auto有些许不同。如果它使用的是一个变量，则decltype返回的值就是变量的类型</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">cj</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">cj</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span>
 <span class="k">decltype</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// x is const int;</span>
 <span class="k">decltype</span><span class="p">(</span><span class="n">cj</span><span class="p">)</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// y is const int&amp;;</span>
 <span class="k">decltype</span><span class="p">(</span><span class="n">cj</span><span class="p">)</span> <span class="n">z</span><span class="p">;</span>     <span class="c1">// error , const int必须初始化</span>
@@ -122,7 +130,7 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 </div>
 <p>如果decltype使用的表达式不是一个变量，则decltype返回表达式结果对应的类型。如果表达式向decltype返回一个引用类型，意味着这个
 表达式的结果对象能够作为一条赋值语句的左值(不太明白)</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
 
 <span class="k">decltype</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="n">a</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>  <span class="c1">// a is int&amp;</span>
 <span class="k">decltype</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">0</span><span class="p">)</span> <span class="n">b</span> <span class="p">;</span>   <span class="c1">//正确，加法的结果是int。因此b是一个未初始化的init。</span>
@@ -135,7 +143,7 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 <div class="section" id="id3">
 <h2>7，类内初始化<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>c++ 11位数据成员提供一个类内初始值。创建对象时，类内初始值用于初始化数据成员。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Sale_Item</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">Sale_Item</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">bookNo</span><span class="p">;</span>
     <span class="kt">unsigned</span> <span class="n">units_sold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">revenue</span><span class="p">{</span><span class="mf">0.0</span><span class="p">}</span>
@@ -146,7 +154,7 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 </div>
 <div class="section" id="for">
 <h2>8，基于范围的for语句<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">c</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">c</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
@@ -157,18 +165,18 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
 <h2>9，定义vector对象的vector<a class="headerlink" href="#vectorvector" title="Permalink to this headline">¶</a></h2>
 <p>vector能容纳绝大多数类型的对象作为元素，但是引用不是对象，因此不存在包含引用的vector。</p>
 <p>c++ 98:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>c++ 11:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vector">
 <h2>10, vector对象的列表初始化<a class="headerlink" href="#vector" title="Permalink to this headline">¶</a></h2>
 <p>c++ 11提供的列表初始化用花括号括起来的0个或者多个元素初始化vector对象</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span><span class="s">&quot;aa&quot;</span><span class="p">,</span> <span class="s">&quot;bb&quot;</span><span class="p">,</span> <span class="s">&quot;cc&quot;</span><span class="p">};</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span><span class="s">&quot;aa&quot;</span><span class="p">,</span> <span class="s">&quot;bb&quot;</span><span class="p">,</span> <span class="s">&quot;cc&quot;</span><span class="p">};</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">(</span><span class="s">&quot;aa&quot;</span><span class="p">,</span> <span class="s">&quot;bb&quot;</span><span class="p">,</span> <span class="s">&quot;cc&quot;</span><span class="p">);</span> <span class="c1">// error</span>
 </pre></div>
 </div>
@@ -212,20 +220,21 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/program_language/c++11.rst.txt"
+      <li><a href="../_sources/program_language/c++11.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -236,11 +245,11 @@ auto e = &amp;ci; // e 是一个指向整数常量的指针（对常量对象取
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/program_language/c++11.rst.txt"
+      <a href="../_sources/program_language/c++11.txt"
           rel="nofollow">Page source</a>
     </div>
 
