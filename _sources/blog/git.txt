@@ -4,6 +4,9 @@ Git - Just do IT
 关于Git，一直记得一件事情。某年参加公司一个活动，讨论的主题好像是集中一堆编程水平高的工程师，做一个项目。会上一哥们，提起公司一直使用svn，特别不齿。并宣称不会用GIT的人不能叫程序员。直接喷倒一大片同事。虽然我不排斥新技术，新工具，但是不认同这句话。工具要选择适合的，公司的很多项目其实不太适合用GIT，但是真正的程序员还是要掌握GIT的，这个毋庸置疑。这些年断断续续使用github，只会一些简单的操作。随着公司使用GIT的项目越来越多，急需掌握一些复杂的GIT操作。这个日志用来记录自己GIT学习路径。
 
 
+`Git Book <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5>`_
+-------------------------------------------------------------------
+
 How to pull and switch remote branch?
 ---------------------------------------
 
@@ -48,3 +51,19 @@ set up-stream to a local branch
 	yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)
 	$ git branch --set-upstream-to=remotes/origin/JIRA-Support Jira-support
 	Branch Jira-support set up to track remote branch JIRA-Support from origin.
+
+
+git configuration when you first use it
+____________________________________________________
+
+How to set git editor first time
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	$ git config --global core.editor vim
+
+参考 `起步 - 初次运行 Git 前的配置 <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE>`_
+
+
+

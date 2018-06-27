@@ -28,6 +28,6 @@ Python - Do right thing with right way
 
    Django
    python_interview
-   python_tips
+   python_q_and_a
 
 

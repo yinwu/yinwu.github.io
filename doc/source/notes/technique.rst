@@ -90,6 +90,6 @@ Windows10 & ubuntu双系统搭建
 
 .. _长时间不操作SSH无响应问题解决: https://blog.csdn.net/u013511989/article/details/79972435
 
-.. _这里： http://www.talkwithtrend.com/Question/225451-1370171
+.. _这里: http://www.talkwithtrend.com/Question/225451-1370171
 
 .. _长时间不操作SSH无响应问题解决: https://blog.csdn.net/u013511989/article/details/79972435   
