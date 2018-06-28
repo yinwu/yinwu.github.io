@@ -10,3 +10,5 @@
    the_intelligent_investor
    the_most_important_thing_in_illuminated
    how_to_read_a_book
+   the_crowd
+   pyramid_princible

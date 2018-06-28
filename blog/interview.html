@@ -54,32 +54,44 @@
 </li>
 <li><p class="first">技术问题</p>
 <blockquote>
-<div><p>** 32/64操作系统的寻址空间有多大</p>
+<div><ol class="arabic">
+<li><p class="first">32/64操作系统的寻址空间有多大</p>
 <blockquote>
 <div><p>其实这个问题的答案自己知道的，但当时蒙住了，没有答上来。</p>
 </div></blockquote>
-<p>** 为什么vxwork操作系统是实时的，linux是非实时操作系统</p>
+</li>
+<li><p class="first">为什么vxwork操作系统是实时的，linux是非实时操作系统</p>
 <blockquote>
 <div><p>也没有答上来。</p>
 <p>实时的真正意义并不是操作系统的速度快或者响应快，而是任务完成的最迟时间是确定可预知的。非实时系统的响应时间是不可预知，或者压根没有响应。 windows和桌面版的linux都是非实时操作系统。</p>
 <p>实时操作系统分为硬实时（vxworks）和软实时（各种软实时linux系统）。硬实时就是在最坏的条件下，对于响应的截至时间都必须满足。软实时是从统计角度来说，即使某种条件下任务执行超过响应时间，也不会带来致命的错误。</p>
 <p>vxworks是基于任务调度的，如果低优先级任务A在执行过程中，高优先级任务B就绪，则A的执行会中断，交出CPU的执行权，先执行任务B。非实时操作系统则是基于时间片来调度，他们的CPU是不可抢断的。即便高优先级任务就绪，也必须等到时间片结束或者低优先级主动挂起或者阻塞才能执行高优先级任务。</p>
 </div></blockquote>
-<p>** Linux内存资源的分布</p>
-<p>** C++ boost库用到了什么</p>
-<p>** smart指针的原理以及问题</p>
-<p>** C++的使用过程中有什么好处及不足</p>
-<p>** linux多进程</p>
-<p>** socket编程</p>
+</li>
+<li><p class="first">Linux内存资源的分布</p>
+</li>
+<li><p class="first">C++ boost库用到了什么</p>
+</li>
+<li><p class="first">smart指针的原理以及问题</p>
+</li>
+<li><p class="first">C++的使用过程中有什么好处及不足</p>
+</li>
+<li><p class="first">linux多进程</p>
+</li>
+<li><p class="first">socket编程</p>
+</li>
+</ol>
 </div></blockquote>
 </li>
 <li><p class="first">面试总结及后面的准备</p>
 <blockquote>
-<div><p>** 多线程/进程编程需要了解</p>
-<p>** socket编程知识需要补足</p>
-<p>** 简历中的X项目的知识点需要进一步细化</p>
-<p>** 今天面试没有闻到算法知识，但是后面需要进一步加强。</p>
-<p>** 体检的准备</p>
+<div><ol class="arabic simple">
+<li>多线程/进程编程需要了解</li>
+<li>socket编程知识需要补足</li>
+<li>简历中的X项目的知识点需要进一步细化</li>
+<li>今天面试没有闻到算法知识，但是后面需要进一步加强。</li>
+<li>体检的准备</li>
+</ol>
 </div></blockquote>
 </li>
 </ul>
