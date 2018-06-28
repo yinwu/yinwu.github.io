@@ -171,8 +171,218 @@ Fluent Python(流畅的python)
 第四部分 面向对象惯用法
 ----------------------------
 
-第五部分 控制流程
-----------------------------
+
+第十四章. 迭代器，生成器
+--------------------------
+
+序列可以迭代的原因：iter函数
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+	1，内置的iter函数，首先检查对象是否实现了__iter__函数，如果是就调用它，获取一个迭代器
+
+	2，如果没有实现__iter__方法，但是实现了__getitem__方法，python会创建一个迭代器，尝试按顺序获取元素。
+
+	3，如果尝试失败，抛出TypeError异常。
+
+* 任何序列可迭代的原因是因为实现了__getitem__方法。
+
+* 检查对象能否迭代的最准确的方式是调用iter(x), 如果不可迭代，再处理TypeError异常。这比isinstence(x, abc.Iterable)
+更准确。iter(x)会考虑遗留的__getitem__方法。
+
+
+可迭代的对象
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+使用iter内置函数可以获取迭代器的对象。如果对象实现了能返回迭代器的__iter__方法，那么对象就是可迭代的。
+序列都是可迭代的原因，因为实现了__getitem__方法。
+
+可迭代的对象和迭代器之间的关系： python从可迭代的对象获取迭代器
+
+.. code-block:: python
+
+	s = "ABC"
+	for char in s:
+		print(char)
+
+字符串"abc"是可迭代的对象，背后是有迭代器，只不过我们看不到
+
+.. code-block:: python
+
+	s = "ABC"
+	it = iter(s) #使用可迭代的对象构造迭代器
+	while True:
+		try:
+			print(next(it)) 	# 在迭代器上调用next函数，获取下一个元素
+		except StopIteration: 	# 如果没有字符了，迭代器会抛出异常
+			del it
+			break
+
+迭代器
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+标准的迭代器有两个接口方法
+
+	**__next__** 返回下一个可用的元素，如果没有元素则抛出StopIteration异常
+
+	**__iter__** 返回self，以便在应该使用可迭代对象的地方使用迭代器
+
+迭代器是这样的对象，实现了无参数的__next__方法，返回序列的下一个元素，没有元素则抛出StopIteration异常
+python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代。
+
+`可迭代的对象一定不能是自身的迭代器，也就是说，可迭代的对象必须实现__iter__方法，但是不能实现__next__方法， 另一方面，迭代器应该一直可以迭代，迭代器的__iter__方法应该返回自身`
+
+.. code-block:: python
+
+	class Sentence:
+
+		...
+
+		def __iter__(self):
+			return SentenceIterator(self.word)
+
+		...
+
+	class SentenceIterator:
+
+		def __next__(self):
+			try:
+				word = self.word[self.index]
+			except IndexError:
+				raise StopIteration
+			
+			self.index += 1
+			return word
+
+		def __iter__(self):
+			return self
+
+生成器函数
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+	class Sentence:
+
+		...
+
+		def __iter__(self):
+			for word in self.word:
+				yield word
+			
+			return 
+
+用生成器函数，不在需要单独定义一个迭代器类(SentenceIterator). 迭代器就是生成器对象，每次调用__iter__
+都会自动创建，因为这里的__iter__方法时生成器函数。
+
+生成器函数工作原理
+^^^^^^^^^^^^^^^^^^^^
+
+* 只要python函数中包含关键字，这个函数就是生成器函数
+
+* 生成器是迭代器，会生成传给yeild关键字的表达式的值
+
+* 对迭代器调用next函数会获取yield生成的下一个元素
+
+* 生成器函数的定义执行完毕后，生成器对象会抛出StopIteration异常。
+
+.. code-block:: python
+
+	def gen():
+		yield 1
+		yield 2
+		yield 3
+
+	g = gen()
+
+	next(g) # 1
+	next(g) # 2
+	next(g) # 3
+	next(g) # StopIteration.
+
+	__iter__方法是生成器函数，调用时会构建一个一个实现了迭代器接口的生成器对象，因此不用再定义SentenceIterator类。
+
+
+生成器的惰性实现
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+	class Sentence:
+
+		def __init__(self, text):
+			self.text = text
+
+		def __iter__(self):
+			for match in RE_WORD.finditer(self.text):
+				yield match.group
+
+re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一个生成器。这种实现方式让Sentence变得懒惰，
+即只有在需要时才生成下一个单词。
+
+
+生成器表达式
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+	def gen_ab():
+		print("start")
+		yield "A"
+		print("continue")
+		yield "B"
+		print "end"
+
+* 列表推导
+
+.. code-block:: python
+
+	res1 = [x*3 for x in gen_ab()]
+
+.. code-block:: console
+
+	>>> start
+	>>> continue
+	>>> end
+
+	for i in res1:
+		print i
+	
+	>>> AAA
+	>>> BBB
+
+
+* 生成器表达式
+
+.. code-block:: python
+
+	res2 = [x*3 for x in gen_ab()]
+
+.. code-block:: console
+
+	for i in res1:
+		print i
+	
+	>>> start
+	>>> AAA
+	>>> continue
+	>>> BBB
+	>>> end
+
+使用生成器表达式实现Sentence类
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	class Sentence:
+
+		def __iter__(self):
+			return (match.group for match in RE_WORD.finditer(self.text))
+
+如果生成器表达式要分多行写，应该使用生成器函数，提高可读性和代码重用的可能性。
+
+标准库中生成器函数
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+python3.3中新语法: yield from
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 第六部分 元编程
 ----------------------------
