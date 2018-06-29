@@ -165,8 +165,8 @@ a, b = b, a
 
 # * 解引用， 把可迭代对象拆开作为函数的参数
 t = (20, 8)
-divmod(t)                       # error
-divmod(*t)                      # ok
+divmod(t)             # error
+divmod(*t)            # ok
 
 # _ 占位符
 _, filePath = os.path.split(&quot;/etc/vncserver/rsa.pub&quot;)
@@ -245,18 +245,18 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 <p>可迭代的对象和迭代器之间的关系： python从可迭代的对象获取迭代器</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
 <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>字符串&#8221;abc&#8221;是可迭代的对象，背后是有迭代器，只不过我们看不到</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
 <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1">#使用可迭代的对象构造迭代器</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>         <span class="c1"># 在迭代器上调用next函数，获取下一个元素</span>
-        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>   <span class="c1"># 如果没有字符了，迭代器会抛出异常</span>
-                <span class="k">del</span> <span class="n">it</span>
-                <span class="k">break</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>     <span class="c1"># 在迭代器上调用next函数，获取下一个元素</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>     <span class="c1"># 如果没有字符了，迭代器会抛出异常</span>
+        <span class="k">del</span> <span class="n">it</span>
+        <span class="k">break</span>
 </pre></div>
 </div>
 </div>
@@ -272,26 +272,26 @@ python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代
 <p><cite>可迭代的对象一定不能是自身的迭代器，也就是说，可迭代的对象必须实现__iter__方法，但是不能实现__next__方法， 另一方面，迭代器应该一直可以迭代，迭代器的__iter__方法应该返回自身</cite></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
-        <span class="o">...</span>
+    <span class="o">...</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">SentenceIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SentenceIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">)</span>
 
-        <span class="o">...</span>
+    <span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">SentenceIterator</span><span class="p">:</span>
 
-        <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">try</span><span class="p">:</span>
-                        <span class="n">word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-                        <span class="k">raise</span> <span class="ne">StopIteration</span>
+    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">StopIteration</span>
 
-                <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">return</span> <span class="n">word</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">word</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
 </div>
@@ -299,13 +299,13 @@ python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代
 <h3>生成器函数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
-        <span class="o">...</span>
+    <span class="o">...</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">:</span>
-                        <span class="k">yield</span> <span class="n">word</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">word</span>
 
-                <span class="k">return</span>
+        <span class="k">return</span>
 </pre></div>
 </div>
 <p>用生成器函数，不在需要单独定义一个迭代器类(SentenceIterator). 迭代器就是生成器对象，每次调用__iter__
@@ -320,9 +320,9 @@ python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代
 <li>生成器函数的定义执行完毕后，生成器对象会抛出StopIteration异常。</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>def gen():
-        yield 1
-        yield 2
-        yield 3
+    yield 1
+    yield 2
+    yield 3
 
 g = gen()
 
@@ -339,12 +339,12 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <h3>生成器的惰性实现<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
-                        <span class="k">yield</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span>
 </pre></div>
 </div>
 <p>re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一个生成器。这种实现方式让Sentence变得懒惰，
@@ -353,11 +353,11 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <div class="section" id="id14">
 <h3>生成器表达式<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_ab</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="s2">&quot;A&quot;</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="s2">&quot;B&quot;</span>
-        <span class="k">print</span> <span class="s2">&quot;end&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="s2">&quot;A&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="s2">&quot;B&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;end&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -371,7 +371,7 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <span class="gp">&gt;</span>&gt;&gt; end
 
 <span class="go">for i in res1:</span>
-<span class="go">        print i</span>
+<span class="go">    print i</span>
 
 <span class="gp">&gt;</span>&gt;&gt; AAA
 <span class="gp">&gt;</span>&gt;&gt; BBB
@@ -384,7 +384,7 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 </pre></div>
 </div>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">for i in res1:</span>
-<span class="go">        print i</span>
+<span class="go">    print i</span>
 
 <span class="gp">&gt;</span>&gt;&gt; start
 <span class="gp">&gt;</span>&gt;&gt; AAA
