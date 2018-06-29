@@ -370,6 +370,8 @@ re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一
 使用生成器表达式实现Sentence类
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: python
+
     class Sentence:
 
         def __iter__(self):

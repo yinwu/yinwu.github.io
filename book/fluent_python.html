@@ -396,15 +396,12 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 </div>
 <div class="section" id="sentence">
 <h3>使用生成器表达式实现Sentence类<a class="headerlink" href="#sentence" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>class Sentence:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>def __iter__(self):</dt>
-<dd>return (match.group for match in RE_WORD.finditer(self.text))</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>如果生成器表达式要分多行写，应该使用生成器函数，提高可读性和代码重用的可能性。</p>
 </div>
 <div class="section" id="id15">
