@@ -225,10 +225,197 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 <h2>第四部分 面向对象惯用法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id8">
-<h2>第五部分 控制流程<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>第十四章. 迭代器，生成器<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="iter">
+<h3>序列可以迭代的原因：iter函数<a class="headerlink" href="#iter" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>1，内置的iter函数，首先检查对象是否实现了__iter__函数，如果是就调用它，获取一个迭代器</p>
+<p>2，如果没有实现__iter__方法，但是实现了__getitem__方法，python会创建一个迭代器，尝试按顺序获取元素。</p>
+<p>3，如果尝试失败，抛出TypeError异常。</p>
+</div></blockquote>
+<ul class="simple">
+<li>任何序列可迭代的原因是因为实现了__getitem__方法。</li>
+<li>检查对象能否迭代的最准确的方式是调用iter(x), 如果不可迭代，再处理TypeError异常。这比isinstence(x, abc.Iterable) 更准确。iter(x)会考虑遗留的__getitem__方法。</li>
+</ul>
 </div>
 <div class="section" id="id9">
-<h2>第六部分 元编程<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h3>可迭代的对象<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>使用iter内置函数可以获取迭代器的对象。如果对象实现了能返回迭代器的__iter__方法，那么对象就是可迭代的。
+序列都是可迭代的原因，因为实现了__getitem__方法。</p>
+<p>可迭代的对象和迭代器之间的关系： python从可迭代的对象获取迭代器</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>字符串&#8221;abc&#8221;是可迭代的对象，背后是有迭代器，只不过我们看不到</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1">#使用可迭代的对象构造迭代器</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>         <span class="c1"># 在迭代器上调用next函数，获取下一个元素</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>   <span class="c1"># 如果没有字符了，迭代器会抛出异常</span>
+                <span class="k">del</span> <span class="n">it</span>
+                <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>迭代器<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>标准的迭代器有两个接口方法</p>
+<blockquote>
+<div><p><strong>__next__</strong> 返回下一个可用的元素，如果没有元素则抛出StopIteration异常</p>
+<p><strong>__iter__</strong> 返回self，以便在应该使用可迭代对象的地方使用迭代器</p>
+</div></blockquote>
+<p>迭代器是这样的对象，实现了无参数的__next__方法，返回序列的下一个元素，没有元素则抛出StopIteration异常
+python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代。</p>
+<p><cite>可迭代的对象一定不能是自身的迭代器，也就是说，可迭代的对象必须实现__iter__方法，但是不能实现__next__方法， 另一方面，迭代器应该一直可以迭代，迭代器的__iter__方法应该返回自身</cite></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+        <span class="o">...</span>
+
+        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">SentenceIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">)</span>
+
+        <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">SentenceIterator</span><span class="p">:</span>
+
+        <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                        <span class="n">word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">StopIteration</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span> <span class="n">word</span>
+
+        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>生成器函数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+        <span class="o">...</span>
+
+        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">:</span>
+                        <span class="k">yield</span> <span class="n">word</span>
+
+                <span class="k">return</span>
+</pre></div>
+</div>
+<p>用生成器函数，不在需要单独定义一个迭代器类(SentenceIterator). 迭代器就是生成器对象，每次调用__iter__
+都会自动创建，因为这里的__iter__方法时生成器函数。</p>
+</div>
+<div class="section" id="id12">
+<h3>生成器函数工作原理<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>只要python函数中包含关键字，这个函数就是生成器函数</li>
+<li>生成器是迭代器，会生成传给yeild关键字的表达式的值</li>
+<li>对迭代器调用next函数会获取yield生成的下一个元素</li>
+<li>生成器函数的定义执行完毕后，生成器对象会抛出StopIteration异常。</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>def gen():
+        yield 1
+        yield 2
+        yield 3
+
+g = gen()
+
+next(g) # 1
+next(g) # 2
+next(g) # 3
+next(g) # StopIteration.
+
+__iter__方法是生成器函数，调用时会构建一个一个实现了迭代器接口的生成器对象，因此不用再定义SentenceIterator类。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>生成器的惰性实现<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span>
+</pre></div>
+</div>
+<p>re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一个生成器。这种实现方式让Sentence变得懒惰，
+即只有在需要时才生成下一个单词。</p>
+</div>
+<div class="section" id="id14">
+<h3>生成器表达式<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_ab</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&quot;A&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&quot;B&quot;</span>
+        <span class="k">print</span> <span class="s2">&quot;end&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>列表推导</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span>&gt;&gt; start
+<span class="gp">&gt;</span>&gt;&gt; <span class="k">continue</span>
+<span class="gp">&gt;</span>&gt;&gt; end
+
+<span class="go">for i in res1:</span>
+<span class="go">        print i</span>
+
+<span class="gp">&gt;</span>&gt;&gt; AAA
+<span class="gp">&gt;</span>&gt;&gt; BBB
+</pre></div>
+</div>
+<ul class="simple">
+<li>生成器表达式</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">for i in res1:</span>
+<span class="go">        print i</span>
+
+<span class="gp">&gt;</span>&gt;&gt; start
+<span class="gp">&gt;</span>&gt;&gt; AAA
+<span class="gp">&gt;</span>&gt;&gt; <span class="k">continue</span>
+<span class="gp">&gt;</span>&gt;&gt; BBB
+<span class="gp">&gt;</span>&gt;&gt; end
+</pre></div>
+</div>
+</div>
+<div class="section" id="sentence">
+<h3>使用生成器表达式实现Sentence类<a class="headerlink" href="#sentence" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>class Sentence:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def __iter__(self):</dt>
+<dd>return (match.group for match in RE_WORD.finditer(self.text))</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>如果生成器表达式要分多行写，应该使用生成器函数，提高可读性和代码重用的可能性。</p>
+</div>
+<div class="section" id="id15">
+<h3>标准库中生成器函数<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="python3-3-yield-from">
+<h3>python3.3中新语法: yield from<a class="headerlink" href="#python3-3-yield-from" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>第六部分 元编程<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -253,8 +440,20 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 </li>
 <li><a class="reference internal" href="#id6">第三部分 把函数视作对象</a></li>
 <li><a class="reference internal" href="#id7">第四部分 面向对象惯用法</a></li>
-<li><a class="reference internal" href="#id8">第五部分 控制流程</a></li>
-<li><a class="reference internal" href="#id9">第六部分 元编程</a></li>
+<li><a class="reference internal" href="#id8">第十四章. 迭代器，生成器</a><ul>
+<li><a class="reference internal" href="#iter">序列可以迭代的原因：iter函数</a></li>
+<li><a class="reference internal" href="#id9">可迭代的对象</a></li>
+<li><a class="reference internal" href="#id10">迭代器</a></li>
+<li><a class="reference internal" href="#id11">生成器函数</a></li>
+<li><a class="reference internal" href="#id12">生成器函数工作原理</a></li>
+<li><a class="reference internal" href="#id13">生成器的惰性实现</a></li>
+<li><a class="reference internal" href="#id14">生成器表达式</a></li>
+<li><a class="reference internal" href="#sentence">使用生成器表达式实现Sentence类</a></li>
+<li><a class="reference internal" href="#id15">标准库中生成器函数</a></li>
+<li><a class="reference internal" href="#python3-3-yield-from">python3.3中新语法: yield from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">第六部分 元编程</a></li>
 </ul>
 </li>
 </ul>

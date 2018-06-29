@@ -186,8 +186,7 @@ Fluent Python(流畅的python)
 
 * 任何序列可迭代的原因是因为实现了__getitem__方法。
 
-* 检查对象能否迭代的最准确的方式是调用iter(x), 如果不可迭代，再处理TypeError异常。这比isinstence(x, abc.Iterable)
-更准确。iter(x)会考虑遗留的__getitem__方法。
+* 检查对象能否迭代的最准确的方式是调用iter(x), 如果不可迭代，再处理TypeError异常。这比isinstence(x, abc.Iterable) 更准确。iter(x)会考虑遗留的__getitem__方法。
 
 
 可迭代的对象
