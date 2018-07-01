@@ -12,5 +12,6 @@
    sphinx
    linux_unix_program
    docker
+   mstp
 
 
