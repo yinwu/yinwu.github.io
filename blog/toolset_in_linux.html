@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linux常用工具 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="next" title="Docker技术" href="docker.html" />
+    <link rel="prev" title="Linux/Unix系统知识" href="linux_unix_program.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linux">
+<h1>Linux常用工具<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>linux查看硬件配置信息<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>CPU信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
+</span><span class="go">Architecture:          x86_64</span>
+<span class="go">CPU op-mode(s):        32-bit, 64-bit</span>
+<span class="go">Byte Order:            Little Endian</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>内存信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
+</span><span class="go">MemTotal:        3970012 kB</span>
+<span class="go">MemFree:          140060 kB</span>
+<span class="go">MemAvailable:     777144 kB</span>
+<span class="go">Buffers:          692976 kB</span>
+<span class="go">Cached:           293716 kB</span>
+<span class="go">SwapCached:         8264 kB</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>硬盘信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
+</span><span class="go">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span>
+<span class="go">sr0     11:0    1  1024M  0 rom</span>
+<span class="go">sda      8:0    0 298.1G  0 disk</span>
+<span class="go">|--sda2   8:2    0     1K  0 part</span>
+<span class="go">|--sda5   8:5    0     4G  0 part [SWAP]</span>
+<span class="go">|--sda1   8:1    0 294.2G  0 part /</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssh">
+<h2><a class="reference external" href="https://blog.csdn.net/u013511989/article/details/79972435">长时间不操作SSH无响应问题解决</a><a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">如果您有多台个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ServerAliveInterval 60</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">如果您只想让当前的 ssh 保持连接，可以使用以下的命令：</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">ssh -o ServerAliveInterval=60 user@sshserver</span>
+</pre></div>
+</div>
+<p>转载自`这里`_</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="windows10-ubuntu">
+<h2>Windows10 &amp; ubuntu双系统搭建<a class="headerlink" href="#windows10-ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>需要注意的问题</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>最新的安装不需要制作USB启动盘，把ISO文件拷贝过去，然后解压就可以了。</li>
+<li>选择跟window10系统共存，不需要自己分割磁盘。</li>
+<li>话说我现在不知道自己把系统装什么地方去了。在windows下面看不见linux的安装文件。</li>
+<li>在BIOS中设置优先启动Ubuntu。这样有选项提示你启动windows。如果选择优先启动windows，则会直接进入windows系统，不会提示你选择进入unbuntu。</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="linux-sed">
+<h2>linux 文本处理利器之sed<a class="headerlink" href="#linux-sed" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="linux-cut">
+<h2>linux 文本处理利器之cut<a class="headerlink" href="#linux-cut" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="linuxawk">
+<h2>linux文本处理终极大招之awk<a class="headerlink" href="#linuxawk" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Linux常用工具</a><ul>
+<li><a class="reference internal" href="#id1">linux查看硬件配置信息</a></li>
+<li><a class="reference internal" href="#ssh">长时间不操作SSH无响应问题解决</a></li>
+<li><a class="reference internal" href="#windows10-ubuntu">Windows10 &amp; ubuntu双系统搭建</a></li>
+<li><a class="reference internal" href="#linux-sed">linux 文本处理利器之sed</a></li>
+<li><a class="reference internal" href="#linux-cut">linux 文本处理利器之cut</a></li>
+<li><a class="reference internal" href="#linuxawk">linux文本处理终极大招之awk</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">技术专题</a><ul>
+      <li>Previous: <a href="linux_unix_program.html" title="previous chapter">Linux/Unix系统知识</a></li>
+      <li>Next: <a href="docker.html" title="next chapter">Docker技术</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/blog/toolset_in_linux.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/blog/toolset_in_linux.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
