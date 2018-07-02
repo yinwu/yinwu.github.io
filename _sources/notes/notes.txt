@@ -7,6 +7,7 @@
    life_and_social
    mind_and_behavior
    daily_news
+   stock
 
 
 
