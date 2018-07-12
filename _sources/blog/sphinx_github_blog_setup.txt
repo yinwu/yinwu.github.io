@@ -2,6 +2,30 @@ Sphinx + Gitlub搭建自己的博客
 ==============================
 
 
+Sphinx 安装
+---------------
+
+.. code-block:: console
+
+	sudo apt-get install python-sphinx
+
+在家里安装时折腾了很久，主要是把它和那个分词工具搞混淆了。还折腾装了一次mysql数据库，浪费了很多时间。
+
+
+
+.. code-block:: console
+
+	 sudo pip install -U Sphinx
+
+在官网上推荐安装方式时上面这种，我在公司机器和个人机器上安装可以成功，但是make时还是报错
+
+.. code-block:: console
+
+	/bin/sh: 1: sphinx-build: not found
+	Makefile:20: recipe for target 'html' failed
+	make: *** [html] Error 127
+
+
 为什么Sphinx
 ---------------
 
