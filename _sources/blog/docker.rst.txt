@@ -56,7 +56,7 @@ docker常用命令
 Docker install
 --------------------
 
-#. 安装命令
+1. 安装命令
 
 .. code-block:: console
 
@@ -64,7 +64,7 @@ Docker install
     docker 17.06.2-ce from 'docker-inc' installed
 
 
-#. 查看版本
+2. 查看版本
 
 .. code-block:: console
 
@@ -72,7 +72,7 @@ Docker install
     Docker version 17.06.2-ce, build a04f55b
 
 
-#. Hello world
+3. Hello world
 
 .. code-block:: console
 
@@ -86,8 +86,9 @@ Docker install
     Digest: sha256:02521a2d079595241c6793b2044f02eecf294034f31d6e235ac4b2b54ffc41f3
     Status: Downloaded newer image for ubuntu:15.10
     Hello world
+        
 
-#. reference document
+4. reference document
 
 安装命令的提示来自shell中输入docker.
 
@@ -104,6 +105,15 @@ Docker install
     See 'snap info docker' for additional versions.
 
     yinwu@yinwu-ThinkPad-E475:~$ 
+
+
+Build docker image locally
+--------------------------------
+
+
+
+Push docker image to dockerhub
+----------------------------------
 
 
 Docker compose
