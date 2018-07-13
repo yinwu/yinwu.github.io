@@ -47,3 +47,24 @@ How to install sublime in unbuntu
 
 	The installed package for linux can't be opened from toplap. Please reference to 
 	`linux下sublime text 3安装到配置 <https://www.cnblogs.com/shenckicc/p/6032998.html>`_
+
+
+How to remove software in ububtu
+-----------------------------------
+
+.. code-block:: console
+	
+	sudo apt-get remove software_name
+	
+
+
+
+
+
+
+
+
+
+
+
+

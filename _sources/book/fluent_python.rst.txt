@@ -385,5 +385,55 @@ re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一
 python3.3中新语法: yield from
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+第十五章 上下文管理器和else块
+--------------------------------------
+
+for/else
+^^^^^^^^^^^^^
+
+	仅当for循环运行完毕后，才执行else语句。
+
+while/else
+^^^^^^^^^^^^^^
+
+	仅当while语句因为条件为假值时退出时，才执行else语句。
+
+try/except/else
+^^^^^^^^^^^^^^^^^^^
+
+    没有异常抛出时运行else语句。并且else块抛出的异常不会由except语句捕获。
+    
+    为了清晰和准确，try块中应该只包含抛出预期异常的语句，因此应该像下面这样
+
+    .. code-block::python
+
+    try:
+        dangerous_call()
+    except OSError:
+        log("...")
+    else:
+        after_all()
+
+
+EAFP/LBYL
+^^^^^^^^^^^^^^^^
+
+    **EAFP** (easier to ask for forgiveness than permission)
+
+        先假定存在有效的键或者属性。如果假定不成立，那么捕获异常。这种风格简单明快，特点时代码中有大量的try/except语句。
+
+    **LBYL** (look befor you leap)
+    
+        在调用函数或者查找属性或键值之前，显示测试前提条件。这种风格的特点是代码中有很多if/else语句。在多线程编程环境下有可能引入条件竞争。
+
+with语句与上下文管理器
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    with语句存在的目的时为了简化他依然/finally语句。用于保证一段代码执行完成后执行某个操作。即便那段代码由于异常，return语句或者sys.exit()调用而中止。
+
+    上下文管理其存在__enter__, __exit__两个方法。with语句开始时调用__enter__，with语句结束时会调用__exit__方法。
+
+
+
 第六部分 元编程
 ----------------------------
