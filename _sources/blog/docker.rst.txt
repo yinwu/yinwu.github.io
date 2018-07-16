@@ -53,17 +53,77 @@ docker常用命令
 * 我们也可以使用–name标识来命名容器
 
 
+Docker install
+--------------------
+
+1. 安装命令
+
+.. code-block:: console
+
+    yinwu@yinwu-ThinkPad-E475:~$ sudo snap install docker
+    docker 17.06.2-ce from 'docker-inc' installed
+
+
+2. 查看版本
+
+.. code-block:: console
+
+    yinwu@yinwu-ThinkPad-E475:~$ docker -v
+    Docker version 17.06.2-ce, build a04f55b
+
+
+3. Hello world
+
+.. code-block:: console
+
+    yinwu@yinwu-ThinkPad-E475:~$ sudo docker run ubuntu:15.10 /bin/echo "Hello world"
+    Unable to find image 'ubuntu:15.10' locally
+    15.10: Pulling from library/ubuntu
+    7dcf5a444392: Pull complete 
+    759aa75f3cee: Pull complete 
+    3fa871dc8a2b: Pull complete 
+    224c42ae46e7: Pull complete 
+    Digest: sha256:02521a2d079595241c6793b2044f02eecf294034f31d6e235ac4b2b54ffc41f3
+    Status: Downloaded newer image for ubuntu:15.10
+    Hello world
+        
+
+4. reference document
+
+安装命令的提示来自shell中输入docker.
+
+.. code-block:: console
+    :emphasize-lines: 5,6
+
+    yinwu@yinwu-ThinkPad-E475:~$ docker
+
+    Command 'docker' not found, but can be installed with:
+
+    sudo snap install docker     # version 17.06.2-ce, or
+    sudo apt  install docker.io
+
+    See 'snap info docker' for additional versions.
+
+    yinwu@yinwu-ThinkPad-E475:~$ 
+
+
+Build docker image locally
+--------------------------------
+
+
+
+Push docker image to dockerhub
+----------------------------------
+
+
 Docker compose
 ----------------------
 
-`Overview`_
-^^^^^^^^^^^
+#. `Overview`_
 
-`Docker-compose file`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. `Docker-compose file`_
 
-`command line reference`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. `command line reference`_
 
 .. _Overview: https://docs.docker.com/compose/overview/#release-notes
 
