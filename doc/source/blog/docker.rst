@@ -116,6 +116,28 @@ Push docker image to dockerhub
 ----------------------------------
 
 
+进入docker容器的方式 - **exec**
+----------------------------------
+
+.. code-block:: console
+
+	sudo docker exec -it f73ab3bbde31 /bin/bash
+
+其他几种进入docker容器的方式
+
+    1, `sudo docker attach`
+        
+        缺点是当多个窗口同时使用该命令进入该容器时，所有的窗口都会同步显示。
+
+    2, ssh
+
+        可行但是不建议，原因见`为什么不需要在 Docker 容器中运行 sshd <https://www.oschina.net/translate/why-you-dont-need-to-run-sshd-in-docker?cmp>`_
+
+    3, nsenter
+
+        参考`什么是nsenter <https://github.com/jpetazzo/nsenter>`_
+
+
 Docker compose
 ----------------------
 
