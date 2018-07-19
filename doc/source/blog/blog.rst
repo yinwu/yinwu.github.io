@@ -16,6 +16,7 @@
    problem_solve
    mstp
    regular_expression
+   redis
     
 
 
