@@ -1,36 +1,42 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Docker技术 &#8212; Blog  documentation</title>
+    
+    <title>Docker技术 &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
     <link rel="next" title="环境配置及常见问题" href="problem_solve.html" />
     <link rel="prev" title="Linux常用工具.命令" href="toolset_in_linux.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="docker">
@@ -93,21 +99,21 @@
 <ol class="arabic simple">
 <li>安装命令</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo snap install docker
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo snap install docker
 <span class="go">docker 17.06.2-ce from &#39;docker-inc&#39; installed</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>查看版本</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker -v
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker -v
 <span class="go">Docker version 17.06.2-ce, build a04f55b</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>Hello world</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo docker run ubuntu:15.10 /bin/echo <span class="s2">&quot;Hello world&quot;</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo docker run ubuntu:15.10 /bin/echo <span class="s2">&quot;Hello world&quot;</span>
 <span class="go">Unable to find image &#39;ubuntu:15.10&#39; locally</span>
 <span class="go">15.10: Pulling from library/ubuntu</span>
 <span class="go">7dcf5a444392: Pull complete</span>
@@ -123,7 +129,7 @@
 <li>reference document</li>
 </ol>
 <p>安装命令的提示来自shell中输入docker.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker
 
 <span class="go">Command &#39;docker&#39; not found, but can be installed with:</span>
 
@@ -144,21 +150,29 @@
 </div>
 <div class="section" id="docker-exec">
 <h2>进入docker容器的方式 - <strong>exec</strong><a class="headerlink" href="#docker-exec" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo docker exec -it f73ab3bbde31 /bin/bash</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo docker exec -it f73ab3bbde31 /bin/bash</span>
 </pre></div>
 </div>
-<p>其他几种进入docker容器的方式</p>
+</div>
+<div class="section" id="id2">
+<h2>其他几种进入docker容器的方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><cite>sudo docker attach</cite></p>
 <blockquote>
-<div><p>1, <cite>sudo docker attach</cite></p>
-<blockquote>
-<div>缺点是当多个窗口同时使用该命令进入该容器时，所有的窗口都会同步显示。</div></blockquote>
-<p>2, ssh</p>
-<blockquote>
-<div>可行但是不建议，原因见`为什么不需要在 Docker 容器中运行 sshd &lt;<a class="reference external" href="https://www.oschina.net/translate/why-you-dont-need-to-run-sshd-in-docker?cmp">https://www.oschina.net/translate/why-you-dont-need-to-run-sshd-in-docker?cmp</a>&gt;`_</div></blockquote>
-<p>3, nsenter</p>
-<blockquote>
-<div>参考`什么是nsenter &lt;<a class="reference external" href="https://github.com/jpetazzo/nsenter">https://github.com/jpetazzo/nsenter</a>&gt;`_</div></blockquote>
+<div><p>缺点是当多个窗口同时使用该命令进入该容器时，所有的窗口都会同步显示。</p>
 </div></blockquote>
+</li>
+<li><p class="first">ssh</p>
+<blockquote>
+<div><p>可行但是不建议，原因见 <a class="reference external" href="https://www.oschina.net/translate/why-you-dont-need-to-run-sshd-in-docker?cmp">为什么不需要在Docker容器中运行sshd</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">nsenter</p>
+<blockquote>
+<div><p>参考 <a class="reference external" href="https://github.com/jpetazzo/nsenter">什么是nsenter</a></p>
+</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="docker-compose">
 <h2>Docker compose<a class="headerlink" href="#docker-compose" title="Permalink to this headline">¶</a></h2>
@@ -172,7 +186,6 @@
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -185,6 +198,7 @@
 <li><a class="reference internal" href="#build-docker-image-locally">Build docker image locally</a></li>
 <li><a class="reference internal" href="#push-docker-image-to-dockerhub">Push docker image to dockerhub</a></li>
 <li><a class="reference internal" href="#docker-exec">进入docker容器的方式 - <strong>exec</strong></a></li>
+<li><a class="reference internal" href="#id2">其他几种进入docker容器的方式</a></li>
 <li><a class="reference internal" href="#docker-compose">Docker compose</a></li>
 </ul>
 </li>
@@ -203,20 +217,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/blog/docker.rst.txt"
+      <li><a href="../_sources/blog/docker.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -227,11 +242,11 @@
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/blog/docker.rst.txt"
+      <a href="../_sources/blog/docker.txt"
           rel="nofollow">Page source</a>
     </div>
 
