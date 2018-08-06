@@ -3,6 +3,40 @@
 
 这个页面用来记录生活中发生的时事，评论，按照日记的格式来记录。
 
+2018/08/04 **还是中美贸易战**
+-----------------------------------
+
+两年前的文章，特郎普当选后，国家发展与战略研究院研究员杨其静 曾经写过一篇文章，指出特朗普当选后中国面临的挑战。当时这篇文章没有引起重视。两年后当中美贸易战高潮迭起时，很多人回头翻出了这边文章。贸易战以来，各路牛鬼蛇神跳了出来发表高见，顺带夹带点私货。这篇文章是贸易战以来，各种分析文章里写的最中肯的一篇文章。更难能可贵的是，这篇文章不是马后炮。不能不说其当时的文章具有一定的前瞻性。
+
+`特朗普当选，中国面临巨大挑战 <https://mp.weixin.qq.com/s/OIMjbEqqERai4nm5APqeTw>`_
+
+2018/08/03 **兼听则明**
+-----------------------------------
+
+`高善文在山西证券30周年活动上的演讲 <https://xueqiu.com/2549454474/111366318>`_
+
+
+2018/08/02 **中美贸易站再起波澜**
+----------------------------------
+
+中美贸易站再起波澜，今天股市大跌。
+
+Statement By U.S. Trade Representative Robert Lighthizer on Section 301 Action
+
+Washington, DC – U.S. Trade Representative Robert Lighthizer today released the following statement regarding further action under Section 301 of the Trade Act of 1974:
+
+“On June 18, the President directed me to identify $200 billion worth of Chinese goods for additional tariffs at a rate of 10 percent, in response to China’s decision to cause further harm to U.S. workers, farmers, and businesses by imposing retaliatory duties on U.S. goods. I initiated this process on July 10.
+
+“This week, the President has directed that I consider increasing the proposed level of the additional duty from 10 percent to 25 percent. The 25 percent duty would be applied to the proposed list of products previously announced on July 10.
+
+“The Trump Administration continues to urge China to stop its unfair practices, open its market, and engage in true market competition. We have been very clear about the specific changes China should undertake. Regrettably, instead of changing its harmful behavior, China has illegally retaliated against U.S. workers, farmers, ranchers and businesses.
+
+“The increase in the possible rate of the additional duty is intended to provide the Administration with additional options to encourage China to change its harmful policies and behavior and adopt policies that will lead to fairer markets and prosperity for all of our citizens.
+
+“The United States has joined forces with like-minded partners around the world to address unfair trade practices such as forced technology transfer and intellectual property theft, and we remain ready to engage with China in negotiations that could resolve these and other problems detailed in our Section 301 report.”
+
+Interested parties may address this possible increase in the level of the additional duty in their comments on the proposed action. The proposed list and process for the public notice and comment period is set out in the Federal Register notice issued on July 10 and published in the Federal Register on July 17. To view the July 17 notice, including the list of proposed products to be subject to additional duties, click here. In light of the possible increase of the additional duty rate to 25 percent, the close of the written comment period is extended from August 30 to September 5, and the due date for requests to appear at the public hearing is extended to August 13. These modifications to the comment period will be set out in a notice to be published shortly in the Federal Register.
+
 2018/07/27 **性侵**
 -------------------
 
