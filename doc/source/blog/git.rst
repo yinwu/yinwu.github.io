@@ -68,4 +68,25 @@ How to set git editor first time
 	参考 `起步 - 初次运行 Git 前的配置 <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE>`_
 
 
+4 Git diff
+--------------
+
+
+How to diff the commit change and working copy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	git diff HEAD -- readme.txt
+	
+
+5 Git revert
+--------------------
+
+回撤工作区的修改 git checkout -- your_file
+
+回撤暂存区的修改 get reset HEAD your_file/ get checkout your_file
+
+回撤提交区的修改 get reset --hard HEAD^/HEAD^^/HEAD^^^
+
 
