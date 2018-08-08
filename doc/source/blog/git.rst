@@ -59,16 +59,6 @@ How to rename a branch
 	$ git branch -m remotes/origin/JIRA-Support Jira-support
 
 
-set up-stream to a local branch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-	yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)
-	$ git branch --set-upstream-to=remotes/origin/JIRA-Support Jira-support
-	Branch Jira-support set up to track remote branch JIRA-Support from origin.
-
-
 3 Git configuration when you first use it
 ------------------------------------------------
 
@@ -82,4 +72,128 @@ How to set git editor first time
 	参考 `起步 - 初次运行 Git 前的配置 <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE>`_
 
 
+4 Git diff
+--------------
 
+
+How to diff the commit change and working copy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	git diff HEAD -- readme.txt
+	
+
+5 Git revert
+--------------------
+
+回撤工作区的修改 git checkout -- your_file
+
+回撤暂存区的修改 get reset HEAD your_file/ get checkout your_file
+
+回撤提交区的修改 get reset --hard HEAD^/HEAD^^/HEAD^^^
+
+6 Git branch operation
+-------------------------
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+强行删除没有合并的分支 git branch -D feature-vulcan
+
+7 Git fix confict
+---------------------------
+
+查看分支合并图 git log --graph --pretty=oneline --abbrev-commit
+
+
+8 Git work flow
+--------------------
+
+.. images:: ../_static/git_work_flow.png
+
+9 Git 保存工作区
+--------------------
+
+git stash可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。
+
+git stash list 查看工作现场
+
+git stash apply stash@{0}/git stash drop
+
+git stash pop 恢复现场的同时删除stash
+
+10 在本地创建远程的DEV分支
+------------------------------
+
+导出 git checkout -b dev origin/dev
+
+
+提交 git push origin dev
+
+
+set up-stream to a local branch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)
+	$ git branch --set-upstream-to=remotes/origin/JIRA-Support Jira-support
+	Branch Jira-support set up to track remote branch JIRA-Support from origin.
+
+多人协作模式总结
+-----------------------------
+
+    首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+    如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+    如果合并有冲突，则解决冲突，并在本地提交；
+
+    没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+	如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
+	用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+
+Git tag
+-----------------------------
+
+    命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+    命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+
+    命令git tag可以查看所有标签。
+
+    命令git push origin <tagname>可以推送一个本地标签；
+
+    命令git push origin --tags可以推送全部未推送过的本地标签；
+
+    命令git tag -d <tagname>可以删除一个本地标签；
+
+    命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+
+Git alias
+-------------
+
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+
+.. code-block:: console
+
+	git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	
+Git 配置文件路径
+-------------------
+
+.git/config or .gitconfig(global configuration)
