@@ -12,6 +12,20 @@ Git - Just do IT
 2 How to pull and switch remote branch?
 ---------------------------------------
 
+Add remote branch
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	git remote add origin git@server-name:path/repo-name.git
+
+push local branch to remote
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	git push -u origin master
+
 show all remote branch
 ^^^^^^^^^^^^^^^^^^^^^^^
 
