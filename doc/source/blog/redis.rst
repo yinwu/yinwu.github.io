@@ -4,8 +4,7 @@ REDIS KEY-VALUE数据库
 Redis五种数据类型
 --------------------------
 
-#. string
-^^^^^^^^^^^
+#. **string**
 
     string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。
 
@@ -20,8 +19,7 @@ Redis五种数据类型
 	    redis 127.0.0.1:6379> GET name
 	    "runoob"
 
-#. hash
-^^^^^^^^^^^
+#. **hash**
 
     Redis hash 是一个**键值对集合**。
 
@@ -36,8 +34,7 @@ Redis五种数据类型
         redis> HGET myhash field2
         "World"
 
-#. list
-^^^^^^^^^^^
+#. **list**
 
     Redis列表是简单的字符串列表，按照插入顺序排序。
     你可以添加一个元素到列表的头部（左边）或者尾部（右边)。类似**双向链表**。
@@ -56,8 +53,7 @@ Redis五种数据类型
         3) "redis"
         redis 127.0.0.1:6379>
 
-#. set
-^^^^^^^^^^^
+#. **set**
     
     Redis的set是string类型的无序集合。集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。
 
@@ -78,8 +74,7 @@ Redis五种数据类型
         3) "mongodb"
 
 
-#. zset
-^^^^^^^^^^^^
+#. **zset**
     
     Redis zset和set一样也是string类型元素的集合,且不允许重复的成员。
 
