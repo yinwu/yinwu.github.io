@@ -8,6 +8,8 @@
    mind_and_behavior
    daily_news
    stock
+   intresting_picture
+   finance
 
 
 

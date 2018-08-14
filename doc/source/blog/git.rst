@@ -7,18 +7,18 @@ Git - Just do IT
 随着公司使用GIT的项目越来越多，急需掌握一些复杂的GIT操作。这个日志用来记录自己GIT学习路径。
 
 
-写在学习完廖雪峰的Git教程后的知识
+写在学习完廖雪峰的Git教程后心得
 --------------------------------
 
 * Git的强项不在于分布式，所谓的分布式是个伪命题。产品开发中，所有的提交最终还是要集中起来，保存到远端。 所谓分布式保存，没有意义。
 * GIt的本地分支管理确实强大，这个比SVN要强非常多。一个working copy管理所有分支。
 
-1 Git tourist
+#. Git tourist
 --------------
 
 	`Git Book <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5>`_
 
-2 How to pull and switch remote branch?
+#. branch management in GIT
 ---------------------------------------
 
 Add remote branch
@@ -67,12 +67,38 @@ How to rename a branch
 
 	$ git branch -m remotes/origin/JIRA-Support Jira-support
 
+在本地创建远程的DEV分支
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3 Git configuration when you first use it
-------------------------------------------------
+导出 git checkout -b dev origin/dev
 
-How to set git editor first time
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+提交 git push origin dev
+
+
+Git branch operation 总结
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	查看分支：git branch
+
+	创建分支：git branch <name>
+
+	切换分支：git checkout <name>
+
+	创建+切换分支：git checkout -b <name>
+
+	合并某分支到当前分支：git merge <name>
+
+	删除分支：git branch -d <name>
+
+	强行删除没有合并的分支 git branch -D feature-vulcan
+
+
+#. Git configuration
+-----------------------
+
+set git editor 
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -81,9 +107,26 @@ How to set git editor first time
 	参考 `起步 - 初次运行 Git 前的配置 <https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE>`_
 
 
-4 Git diff
---------------
+Git 配置文件路径
+^^^^^^^^^^^^^^^^^^^^^
 
+* 工程目录下 `.git/config`
+
+* 用户目录下(global configuration) `.gitconfig
+  
+
+配置GIT alias
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+	$ git config --global alias.co checkout
+	$ git config --global alias.ci commit
+	$ git config --global alias.br branch
+	$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+#. Git diff
+--------------
 
 How to diff the commit change and working copy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,44 +136,35 @@ How to diff the commit change and working copy
 	git diff HEAD -- readme.txt
 	
 
-5 Git revert
+#. Git revert
 --------------------
 
-回撤工作区的修改 git checkout -- your_file
+* 回撤工作区的修改 
 
-回撤暂存区的修改 get reset HEAD your_file/ get checkout your_file
+	git checkout -- your_file
 
-回撤提交区的修改 get reset --hard HEAD^/HEAD^^/HEAD^^^
+* 回撤暂存区的修改
 
-6 Git branch operation
--------------------------
+	get reset HEAD your_file/ get checkout your_file
 
-查看分支：git branch
+* 回撤提交区的修改
 
-创建分支：git branch <name>
+	get reset --hard HEAD^/HEAD^^/HEAD^^^
 
-切换分支：git checkout <name>
 
-创建+切换分支：git checkout -b <name>
 
-合并某分支到当前分支：git merge <name>
-
-删除分支：git branch -d <name>
-
-强行删除没有合并的分支 git branch -D feature-vulcan
-
-7 Git fix confict
+#. Git fix confict
 ---------------------------
 
 查看分支合并图 git log --graph --pretty=oneline --abbrev-commit
 
 
-8 Git work flow
+#. Git work flow
 --------------------
 
 .. images:: ../_static/git_work_flow.png
 
-9 Git 保存工作区
+#. Git 保存工作区
 --------------------
 
 git stash可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。
@@ -141,13 +175,6 @@ git stash apply stash@{0}/git stash drop
 
 git stash pop 恢复现场的同时删除stash
 
-10 在本地创建远程的DEV分支
-------------------------------
-
-导出 git checkout -b dev origin/dev
-
-
-提交 git push origin dev
 
 
 set up-stream to a local branch
@@ -159,7 +186,26 @@ set up-stream to a local branch
 	$ git branch --set-upstream-to=remotes/origin/JIRA-Support Jira-support
 	Branch Jira-support set up to track remote branch JIRA-Support from origin.
 
-多人协作模式总结
+#. Git TAG
+-----------
+
+    * git tag <tagname> 用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+    * git tag -a <tagname> -m "blablabla..." 可以指定标签信息；
+
+    * git tag 可以查看所有标签。
+
+    * git push origin <tagname> 可以推送一个本地标签；
+
+    * git push origin --tags 可以推送全部未推送过的本地标签；
+
+    * git tag -d <tagname> 可以删除一个本地标签；
+
+   	* git push origin :refs/tags/<tagname>可以删除一个远程标签。
+
+
+	
+#. 多人协作模式总结
 -----------------------------
 
     首先，可以试图用git push origin <branch-name>推送自己的修改；
@@ -174,35 +220,3 @@ set up-stream to a local branch
 	用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
 
 
-Git tag
------------------------------
-
-    命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
-
-    命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
-
-    命令git tag可以查看所有标签。
-
-    命令git push origin <tagname>可以推送一个本地标签；
-
-    命令git push origin --tags可以推送全部未推送过的本地标签；
-
-    命令git tag -d <tagname>可以删除一个本地标签；
-
-    命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
-
-Git alias
--------------
-
-$ git config --global alias.co checkout
-$ git config --global alias.ci commit
-$ git config --global alias.br branch
-
-.. code-block:: console
-
-	git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-	
-Git 配置文件路径
--------------------
-
-.git/config or .gitconfig(global configuration)
