@@ -9,10 +9,9 @@ Welcome to Yinkui's documentation!
 .. toctree::
    :maxdepth: 2
 
-   algorithm/algorithm
-   program_language/program_language
-   blog/blog
-   notes/notes
+   computer_science/program_language
+   technic_blog/blog
+   social_media/notes
    bigdata_and_ai/bigdata_and_ai
 
 

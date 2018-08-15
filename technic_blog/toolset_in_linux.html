@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linux常用工具.命令 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="next" title="Docker技术" href="docker.html" />
+    <link rel="prev" title="Linux/Unix系统知识" href="linux_unix_program.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linux">
+<h1>Linux常用工具.命令<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>linux查看硬件配置信息<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>CPU信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
+</span><span class="go">Architecture:          x86_64</span>
+<span class="go">CPU op-mode(s):        32-bit, 64-bit</span>
+<span class="go">Byte Order:            Little Endian</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>内存信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
+</span><span class="go">MemTotal:        3970012 kB</span>
+<span class="go">MemFree:          140060 kB</span>
+<span class="go">MemAvailable:     777144 kB</span>
+<span class="go">Buffers:          692976 kB</span>
+<span class="go">Cached:           293716 kB</span>
+<span class="go">SwapCached:         8264 kB</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>硬盘信息</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
+</span><span class="go">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span>
+<span class="go">sr0     11:0    1  1024M  0 rom</span>
+<span class="go">sda      8:0    0 298.1G  0 disk</span>
+<span class="go">|--sda2   8:2    0     1K  0 part</span>
+<span class="go">|--sda5   8:5    0     4G  0 part [SWAP]</span>
+<span class="go">|--sda1   8:1    0 294.2G  0 part /</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux-sed">
+<h2>linux 文本处理利器之sed<a class="headerlink" href="#linux-sed" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="linux-cut">
+<h2>linux 文本处理利器之cut<a class="headerlink" href="#linux-cut" title="Permalink to this headline">¶</a></h2>
+<p>cut命令是一个选取命令，其功能是将文件中的每一行“字节” “字符” “字符” 进行剪切，选取我们需要的，并将这些选取好的数据输出至标准输出</p>
+<div class="section" id="id2">
+<h3>格式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><cite>cut -[n]b file</cite></p>
+<p><cite>cut -c file</cite></p>
+<p><cite>cut -d[分隔符] -f[域] file</cite></p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3>参数解释<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><strong>-b(bytes)</strong></p>
+<blockquote>
+<div>以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div></blockquote>
+<p><strong>-c(characters)</strong></p>
+<blockquote>
+<div>以字符为单位进行分割。</div></blockquote>
+<p><strong>-d</strong></p>
+<blockquote>
+<div>自定义分隔符，默认为制表符。</div></blockquote>
+<p><strong>-f(filed)</strong></p>
+<blockquote>
+<div>-d一起使用，指定显示哪个区域。</div></blockquote>
+<p><strong>-n</strong></p>
+<blockquote>
+<div>取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>举例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>原始文本</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
+<span class="go">557adfhg</span>
+<span class="go">bcd5464b</span>
+<span class="go">135465453456</span>
+<span class="go">233546576</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text2.txt
+<span class="go">星期一</span>
+<span class="go">星期二</span>
+<span class="go">星期三</span>
+<span class="go">星期四</span>
+<span class="go">星期五</span>
+<span class="go">星期六</span>
+<span class="go">星期日</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+</pre></div>
+</div>
+<p>剪切单个字节</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">1</span> text1.txt
+<span class="go">5</span>
+<span class="go">b</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+</pre></div>
+</div>
+<p>剪切多个字节</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 1,3,5 text1.txt
+<span class="go">57d</span>
+<span class="go">bd4</span>
+<span class="go">156</span>
+<span class="go">234</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+
+
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 1-5 text1.txt
+<span class="go">557ad</span>
+<span class="go">bcd54</span>
+<span class="go">13546</span>
+<span class="go">23354</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+
+
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b -5 text1.txt
+<span class="go">557ad</span>
+<span class="go">bcd54</span>
+<span class="go">13546</span>
+<span class="go">23354</span>
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
+
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 3- text1.txt
+<span class="go">7adfhg</span>
+<span class="go">d5464b</span>
+<span class="go">5465453456</span>
+<span class="go">3546576</span>
+</pre></div>
+</div>
+<p>剪切字符</p>
+<p>首先按照上面的例子对test2.txt进行操作，看有什么现象</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">2</span> text2.txt
+<span class="go">�</span>
+<span class="go">�</span>
+<span class="go">�</span>
+<span class="go">�</span>
+<span class="go">�</span>
+<span class="go">�</span>
+<span class="go">�</span>
+</pre></div>
+</div>
+<p>出现了乱码的现象，因为-b 只是针对字节进行裁剪，对一个汉字进行字节裁剪，得到的结果必然是乱码，若想使用 -b 命令对字节进行裁剪，那么则需要使用 -n 选项，此选项的作用是取消分割多字节字符</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span> test2.txt
+
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6  test2.txt
+<span class="go">星</span>
+<span class="go">星期</span>
+<span class="go">星期</span>
+<span class="go">星期</span>
+<span class="go">星期</span>
+<span class="go">星期</span>
+<span class="go">星期</span>
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6,9  test2.txt
+<span class="go">星期</span>
+<span class="go">星期二</span>
+<span class="go">星期三</span>
+<span class="go">星期四</span>
+<span class="go">星期五</span>
+<span class="go">星期六</span>
+<span class="go">星期日</span>
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6,9,12  test2.txt
+<span class="go">星期一</span>
+<span class="go">星期二</span>
+<span class="go">星期三</span>
+<span class="go">星期四</span>
+<span class="go">星期五</span>
+<span class="go">星期六</span>
+<span class="go">星期日</span>
+<span class="gp">[root@localhost shell]#</span>
+</pre></div>
+</div>
+<p>使用-c的来剪切字符，和上面的 -nb 有些类似</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[root@localhost shell]#</span> cut -c <span class="m">1</span> test2.txt
+
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="go">星</span>
+<span class="gp">[root@localhost shell]#</span> cut -c <span class="m">2</span> test2.txt
+<span class="go">星</span>
+<span class="go">期</span>
+<span class="go">期</span>
+<span class="go">期</span>
+<span class="go">期</span>
+<span class="go">期</span>
+<span class="go">期</span>
+<span class="gp">[root@localhost shell]#</span> cut -c 1-3 test2.txt
+<span class="go">星期</span>
+<span class="go">星期二</span>
+<span class="go">星期三</span>
+<span class="go">星期四</span>
+<span class="go">星期五</span>
+<span class="go">星期六</span>
+<span class="go">星期日</span>
+<span class="gp">[root@localhost shell]#</span>
+</pre></div>
+</div>
+<p>上面的-b -c 只是针对于格式固定的数据中剪切，但是对于一些格式不固定的，就没有办法获取到我们想要的数据，因此便有了 -f 域的概念</p>
+<p>例如将上面的第一个 ： 前面的字符给剪切出来，那么我们就可以使用 -d 命令，指定其分割符为 ： 然后再选取第一个域内的内容即可，如下</p>
+<p>剪切ip地址，如下</p>
+</div>
+</div>
+<div class="section" id="linuxawk">
+<h2>linux文本处理终极大招之awk<a class="headerlink" href="#linuxawk" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Linux常用工具.命令</a><ul>
+<li><a class="reference internal" href="#id1">linux查看硬件配置信息</a></li>
+<li><a class="reference internal" href="#linux-sed">linux 文本处理利器之sed</a></li>
+<li><a class="reference internal" href="#linux-cut">linux 文本处理利器之cut</a><ul>
+<li><a class="reference internal" href="#id2">格式</a></li>
+<li><a class="reference internal" href="#id3">参数解释</a></li>
+<li><a class="reference internal" href="#id4">举例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linuxawk">linux文本处理终极大招之awk</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">技术专题</a><ul>
+      <li>Previous: <a href="linux_unix_program.html" title="previous chapter">Linux/Unix系统知识</a></li>
+      <li>Next: <a href="docker.html" title="next chapter">Docker技术</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/technic_blog/toolset_in_linux.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/technic_blog/toolset_in_linux.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

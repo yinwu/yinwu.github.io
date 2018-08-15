@@ -1,13 +1,6 @@
 编程语言
 ===========================================
 
-软件设计架构体系
-----------------------
-
-.. image:: ../_static/programStack.png 
-
-.. _c++ prime:
-
 .. toctree::
    :maxdepth: 1
 
@@ -18,6 +11,12 @@
    c++11
    Django
    python_interview
-   python_tips.rst
+   python_tips
+   sort
+   tree
+   leetCode
+   struct
+
+
 
 

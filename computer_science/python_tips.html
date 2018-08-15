@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>python: 那些不知道的事儿 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="编程语言" href="program_language.html" />
+    <link rel="next" title="排序算法" href="sort.html" />
+    <link rel="prev" title="Python 面试题集锦" href="python_interview.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python">
+<h1>python: 那些不知道的事儿<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="str-expr">
+<h2>str()函数和expr()函数的区别<a class="headerlink" href="#str-expr" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="python-map">
+<h2>python map()方法<a class="headerlink" href="#python-map" title="Permalink to this headline">¶</a></h2>
+<p>map() 会根据提供的函数对指定序列做映射。
+以参数序列中的每一个元素调用 function 函数，返回包含每次 function 函数返回值的新列表。</p>
+<p>map函数的语法:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">map</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>返回值</p>
+<blockquote>
+<div><p>Python 2.x 返回列表。</p>
+<p>Python 3.x 返回迭代器。</p>
+</div></blockquote>
+</div>
+<div class="section" id="python-virtualenv">
+<h2>python virtualenv环境介绍<a class="headerlink" href="#python-virtualenv" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>目的<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>virtualenv为用户提供一个独立的python环境，解决多人在同一个机器上面开发不同项目，安装的包冲突的问题。
+virtualenv可以为用户提供一套隔离的环境，用户在这个环境下随心所欲的安装自己的软件包，不影响其他人。</p>
+</div>
+<div class="section" id="virtualenv">
+<h3>virtualenv安装步骤<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>见 廖雪峰网站`virtualenv &lt;<a class="reference external" href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000</a>&gt;`_</p>
+</div>
+<div class="section" id="pyenvpyenv-virtualenv">
+<h3>pyenv和pyenv-virtualenv<a class="headerlink" href="#pyenvpyenv-virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>见 简书文章`使用pyenv与pyenv-virtualenv管理python环境 &lt;<a class="reference external" href="https://www.jianshu.com/p/9f6a9456ad5f">https://www.jianshu.com/p/9f6a9456ad5f</a>&gt;`_</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">python: 那些不知道的事儿</a><ul>
+<li><a class="reference internal" href="#str-expr">str()函数和expr()函数的区别</a></li>
+<li><a class="reference internal" href="#python-map">python map()方法</a></li>
+<li><a class="reference internal" href="#python-virtualenv">python virtualenv环境介绍</a><ul>
+<li><a class="reference internal" href="#id1">目的</a></li>
+<li><a class="reference internal" href="#virtualenv">virtualenv安装步骤</a></li>
+<li><a class="reference internal" href="#pyenvpyenv-virtualenv">pyenv和pyenv-virtualenv</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="program_language.html">编程语言</a><ul>
+      <li>Previous: <a href="python_interview.html" title="previous chapter">Python 面试题集锦</a></li>
+      <li>Next: <a href="sort.html" title="next chapter">排序算法</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/computer_science/python_tips.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/computer_science/python_tips.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

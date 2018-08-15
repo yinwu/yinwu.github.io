@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fluent Python(流畅的python) &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="next" title="编程珠玑" href="program_pearl.html" />
+    <link rel="prev" title="C++ prime" href="c++_prime.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fluent-python-python">
+<h1>Fluent Python(流畅的python)<a class="headerlink" href="#fluent-python-python" title="Permalink to this headline">¶</a></h1>
+<p>大概浏览了前几章，感觉这本书的还是有一些难度的。不适合python初学者，但是很适合提高。</p>
+<div class="section" id="id1">
+<h2>第一部分 序幕<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h3>第一章 python 数据模型<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>这章主要讲Python的特殊方法，即Magic method。特殊方法的存在是为了被python解释器调用的，你自己并不需要显示的调用他们。</p>
+<ul>
+<li><p class="first">__getitem__</p>
+<blockquote>
+<div><p>实现对象的下标操作，让对象编程可迭代的对象。</p>
+</div></blockquote>
+</li>
+<li><p class="first">__len__</p>
+<blockquote>
+<div><p>实现标准集合类型的len方法。</p>
+</div></blockquote>
+</li>
+<li><p class="first">__iter__</p>
+<blockquote>
+<div><p>实现 for i in x: 格式的语句</p>
+</div></blockquote>
+</li>
+<li><p class="first">__repr__</p>
+<blockquote>
+<div><p>实现对象的字符串表达形式，实现对象的repr方法</p>
+</div></blockquote>
+</li>
+<li><p class="first">__str__</p>
+<blockquote>
+<div><p>实现对象的str方法，没有__str__方法时，会调用__repr__作为替代。</p>
+<p><cite>str 和 repr的区别</cite>?</p>
+</div></blockquote>
+</li>
+<li><p class="first">__bool__</p>
+<blockquote>
+<div><p>默认情况下，自定义类的实例默认情况下都是true，除非我们实现了__bool__方法。</p>
+</div></blockquote>
+</li>
+<li><p class="first">其他特殊方法</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>__format__ __abs__ __bytes__ __complex__ __float__</li>
+<li>__hash__ __index__ __setitem__ __delitem__</li>
+<li>__contains__ __reverser__ __next__</li>
+<li>__call__</li>
+<li>__enter__ __exit__</li>
+<li>__new__  __init__ __del__</li>
+<li>__getattr__ __getattribute__ __setattr__ __delattr__ __dir__</li>
+<li>__get__ __set__ __delete__</li>
+<li>__prepare__ __instancecheck__ __subclasscheck__</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>第二部分 数据结构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>第二章 序列构成的数组<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">容器序列</p>
+<blockquote>
+<div><p>list, tuple, collections.deque存放不同类型的数据</p>
+</div></blockquote>
+</li>
+<li><p class="first">扁平序列</p>
+<blockquote>
+<div><p>str, bytes, bytearray, memoryview, array.array只能容纳一种类型</p>
+</div></blockquote>
+</li>
+<li><p class="first">可变序列</p>
+<blockquote>
+<div><p>list, bytearray, array.array, collections.deque, memoryview</p>
+</div></blockquote>
+</li>
+<li><p class="first">不可变序列</p>
+<blockquote>
+<div><p>tuple, str, bytes</p>
+</div></blockquote>
+</li>
+<li><p class="first">列表推导</p>
+<blockquote>
+<div><p>列表推导是创建新列表的快捷方式。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">codecs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">笛卡尔积</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">]</span>
+<span class="n">t_shirt</span> <span class="o">=</span> <span class="p">[(</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">生成器表达式</p>
+<blockquote>
+<div><p>相比列表推导，生成器表达式是生成列表更好的选择，因为生成器表达式遵守了迭代器协议，可以逐个产出元素</p>
+<p>生成器表达式语法跟列表推导差不多，只不过把方括号换成圆括号</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">t_shirt</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上例中的程序，不会在内存中一次性产出有6个元素的列表，而是逐个产出元素。</p>
+</div></blockquote>
+</li>
+<li><p class="first">元组的拆包</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>x , y = (1, 2)
+
+passport_code = (&quot;USA&quot;, &quot;123456&quot;)
+print(&quot;%s %s&quot; % passport_code)
+
+a, b = b, a
+
+# def divmod(x, y)
+
+# * 解引用， 把可迭代对象拆开作为函数的参数
+t = (20, 8)
+divmod(t)             # error
+divmod(*t)            # ok
+
+# _ 占位符
+_, filePath = os.path.split(&quot;/etc/vncserver/rsa.pub&quot;)
+
+# *来处理剩下的元素
+a, b，*rest = range(5) # (0, 1, [2, 3, 4])
+
+# 嵌套元组的拆包
+name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quot;, 101, (35.6124, 42.5678))
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">具名元组</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtruple</span>
+<span class="n">City</span> <span class="o">=</span> <span class="n">nametruple</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="s1">&#39;name country population coordinate&#39;</span><span class="p">)</span>
+<span class="n">tokyo</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="s2">&quot;Tokyp&quot;</span><span class="p">,</span> <span class="s2">&quot;japan&quot;</span><span class="p">,</span> <span class="mi">320000</span><span class="p">,</span> <span class="p">(</span><span class="mf">35.6124</span><span class="p">,</span> <span class="mf">42.5678</span><span class="p">))</span>
+
+<span class="c1"># 具名元组具有一些特殊的方法</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">City</span><span class="o">.</span><span class="n">_fields</span>
+<span class="s1">&#39;name&#39;</span> <span class="s1">&#39;country&#39;</span> <span class="s1">&#39;population&#39;</span> <span class="s1">&#39;coordinate&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">Latlong</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;LatLong&quot;</span><span class="p">,</span> <span class="s1">&#39;lat long&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">delphi_data</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Delphi&quot;</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span><span class="p">,</span> <span class="mf">21.935</span><span class="p">,</span> <span class="n">LatLong</span><span class="p">(</span><span class="mf">35.6124</span><span class="p">,</span> <span class="mf">42.5678</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">delphi</span> <span class="o">=</span> <span class="n">City</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">delphi_data</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">delphi</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="n">OrderdDict</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Delphi&#39;</span><span class="p">),</span> <span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;coordinate&#39;</span><span class="p">:</span><span class="n">LatLong</span><span class="p">(</span><span class="mf">35.6124</span><span class="p">,</span> <span class="mf">42.5678</span><span class="p">))])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">元组的方法和属性</p>
+<blockquote>
+<div><p>...</p>
+</div></blockquote>
+</li>
+<li><p class="first">切片</p>
+<blockquote>
+<div><p>切片和区间操作里面不包含区间范围的最后一个元素，是python风格。</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>第三章 字典和集合<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>第四章 文本和字节序列<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>第三部分 把函数视作对象<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id7">
+<h2>第四部分 面向对象惯用法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>第十四章. 迭代器，生成器<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="iter">
+<h3>序列可以迭代的原因：iter函数<a class="headerlink" href="#iter" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>1，内置的iter函数，首先检查对象是否实现了__iter__函数，如果是就调用它，获取一个迭代器</p>
+<p>2，如果没有实现__iter__方法，但是实现了__getitem__方法，python会创建一个迭代器，尝试按顺序获取元素。</p>
+<p>3，如果尝试失败，抛出TypeError异常。</p>
+</div></blockquote>
+<ul class="simple">
+<li>任何序列可迭代的原因是因为实现了__getitem__方法。</li>
+<li>检查对象能否迭代的最准确的方式是调用iter(x), 如果不可迭代，再处理TypeError异常。这比isinstence(x, abc.Iterable) 更准确。iter(x)会考虑遗留的__getitem__方法。</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>可迭代的对象<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>使用iter内置函数可以获取迭代器的对象。如果对象实现了能返回迭代器的__iter__方法，那么对象就是可迭代的。
+序列都是可迭代的原因，因为实现了__getitem__方法。</p>
+<p>可迭代的对象和迭代器之间的关系： python从可迭代的对象获取迭代器</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>字符串&#8221;abc&#8221;是可迭代的对象，背后是有迭代器，只不过我们看不到</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1">#使用可迭代的对象构造迭代器</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>     <span class="c1"># 在迭代器上调用next函数，获取下一个元素</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>     <span class="c1"># 如果没有字符了，迭代器会抛出异常</span>
+        <span class="k">del</span> <span class="n">it</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>迭代器<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>标准的迭代器有两个接口方法</p>
+<blockquote>
+<div><p><strong>__next__</strong> 返回下一个可用的元素，如果没有元素则抛出StopIteration异常</p>
+<p><strong>__iter__</strong> 返回self，以便在应该使用可迭代对象的地方使用迭代器</p>
+</div></blockquote>
+<p>迭代器是这样的对象，实现了无参数的__next__方法，返回序列的下一个元素，没有元素则抛出StopIteration异常
+python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代。</p>
+<p><cite>可迭代的对象一定不能是自身的迭代器，也就是说，可迭代的对象必须实现__iter__方法，但是不能实现__next__方法， 另一方面，迭代器应该一直可以迭代，迭代器的__iter__方法应该返回自身</cite></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SentenceIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">SentenceIterator</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">StopIteration</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">word</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>生成器函数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">word</span>
+
+        <span class="k">return</span>
+</pre></div>
+</div>
+<p>用生成器函数，不在需要单独定义一个迭代器类(SentenceIterator). 迭代器就是生成器对象，每次调用__iter__
+都会自动创建，因为这里的__iter__方法时生成器函数。</p>
+</div>
+<div class="section" id="id12">
+<h3>生成器函数工作原理<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>只要python函数中包含关键字，这个函数就是生成器函数</li>
+<li>生成器是迭代器，会生成传给yeild关键字的表达式的值</li>
+<li>对迭代器调用next函数会获取yield生成的下一个元素</li>
+<li>生成器函数的定义执行完毕后，生成器对象会抛出StopIteration异常。</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>def gen():
+    yield 1
+    yield 2
+    yield 3
+
+g = gen()
+
+next(g) # 1
+next(g) # 2
+next(g) # 3
+next(g) # StopIteration.
+
+__iter__方法是生成器函数，调用时会构建一个一个实现了迭代器接口的生成器对象，因此不用再定义SentenceIterator类。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>生成器的惰性实现<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span>
+</pre></div>
+</div>
+<p>re.finditer 是 re.find的惰性版本，返回的不是一个列表，而是一个生成器。这种实现方式让Sentence变得懒惰，
+即只有在需要时才生成下一个单词。</p>
+</div>
+<div class="section" id="id14">
+<h3>生成器表达式<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_ab</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="s2">&quot;A&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="s2">&quot;B&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;end&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>列表推导</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span>&gt;&gt; start
+<span class="gp">&gt;</span>&gt;&gt; <span class="k">continue</span>
+<span class="gp">&gt;</span>&gt;&gt; end
+
+<span class="go">for i in res1:</span>
+<span class="go">    print i</span>
+
+<span class="gp">&gt;</span>&gt;&gt; AAA
+<span class="gp">&gt;</span>&gt;&gt; BBB
+</pre></div>
+</div>
+<ul class="simple">
+<li>生成器表达式</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">for i in res1:</span>
+<span class="go">    print i</span>
+
+<span class="gp">&gt;</span>&gt;&gt; start
+<span class="gp">&gt;</span>&gt;&gt; AAA
+<span class="gp">&gt;</span>&gt;&gt; <span class="k">continue</span>
+<span class="gp">&gt;</span>&gt;&gt; BBB
+<span class="gp">&gt;</span>&gt;&gt; end
+</pre></div>
+</div>
+</div>
+<div class="section" id="sentence">
+<h3>使用生成器表达式实现Sentence类<a class="headerlink" href="#sentence" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>如果生成器表达式要分多行写，应该使用生成器函数，提高可读性和代码重用的可能性。</p>
+</div>
+<div class="section" id="id15">
+<h3>标准库中生成器函数<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="python3-3-yield-from">
+<h3>python3.3中新语法: yield from<a class="headerlink" href="#python3-3-yield-from" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="else">
+<h2>第十五章 上下文管理器和else块<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-else">
+<h3>for/else<a class="headerlink" href="#for-else" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>仅当for循环运行完毕后，才执行else语句。</div></blockquote>
+</div>
+<div class="section" id="while-else">
+<h3>while/else<a class="headerlink" href="#while-else" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>仅当while语句因为条件为假值时退出时，才执行else语句。</div></blockquote>
+</div>
+<div class="section" id="try-except-else">
+<h3>try/except/else<a class="headerlink" href="#try-except-else" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>没有异常抛出时运行else语句。并且else块抛出的异常不会由except语句捕获。</p>
+<p>为了清晰和准确，try块中应该只包含抛出预期异常的语句，因此应该像下面这样</p>
+<dl class="docutils">
+<dt>try:</dt>
+<dd>dangerous_call()</dd>
+<dt>except OSError:</dt>
+<dd>log(&#8221;...&#8221;)</dd>
+<dt>else:</dt>
+<dd>after_all()</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="eafp-lbyl">
+<h3>EAFP/LBYL<a class="headerlink" href="#eafp-lbyl" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><strong>EAFP</strong> (easier to ask for forgiveness than permission)</p>
+<blockquote>
+<div>先假定存在有效的键或者属性。如果假定不成立，那么捕获异常。这种风格简单明快，特点时代码中有大量的try/except语句。</div></blockquote>
+<p><strong>LBYL</strong> (look befor you leap)</p>
+<blockquote>
+<div>在调用函数或者查找属性或键值之前，显示测试前提条件。这种风格的特点是代码中有很多if/else语句。在多线程编程环境下有可能引入条件竞争。</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="with">
+<h3>with语句与上下文管理器<a class="headerlink" href="#with" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>with语句存在的目的时为了简化他依然/finally语句。用于保证一段代码执行完成后执行某个操作。即便那段代码由于异常，return语句或者sys.exit()调用而中止。</p>
+<p>上下文管理其存在__enter__, __exit__两个方法。with语句开始时调用__enter__，with语句结束时会调用__exit__方法。</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>第六部分 元编程<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fluent Python(流畅的python)</a><ul>
+<li><a class="reference internal" href="#id1">第一部分 序幕</a><ul>
+<li><a class="reference internal" href="#python">第一章 python 数据模型</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">第二部分 数据结构</a><ul>
+<li><a class="reference internal" href="#id3">第二章 序列构成的数组</a></li>
+<li><a class="reference internal" href="#id4">第三章 字典和集合</a></li>
+<li><a class="reference internal" href="#id5">第四章 文本和字节序列</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">第三部分 把函数视作对象</a></li>
+<li><a class="reference internal" href="#id7">第四部分 面向对象惯用法</a></li>
+<li><a class="reference internal" href="#id8">第十四章. 迭代器，生成器</a><ul>
+<li><a class="reference internal" href="#iter">序列可以迭代的原因：iter函数</a></li>
+<li><a class="reference internal" href="#id9">可迭代的对象</a></li>
+<li><a class="reference internal" href="#id10">迭代器</a></li>
+<li><a class="reference internal" href="#id11">生成器函数</a></li>
+<li><a class="reference internal" href="#id12">生成器函数工作原理</a></li>
+<li><a class="reference internal" href="#id13">生成器的惰性实现</a></li>
+<li><a class="reference internal" href="#id14">生成器表达式</a></li>
+<li><a class="reference internal" href="#sentence">使用生成器表达式实现Sentence类</a></li>
+<li><a class="reference internal" href="#id15">标准库中生成器函数</a></li>
+<li><a class="reference internal" href="#python3-3-yield-from">python3.3中新语法: yield from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#else">第十五章 上下文管理器和else块</a><ul>
+<li><a class="reference internal" href="#for-else">for/else</a></li>
+<li><a class="reference internal" href="#while-else">while/else</a></li>
+<li><a class="reference internal" href="#try-except-else">try/except/else</a></li>
+<li><a class="reference internal" href="#eafp-lbyl">EAFP/LBYL</a></li>
+<li><a class="reference internal" href="#with">with语句与上下文管理器</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">第六部分 元编程</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">技术专题</a><ul>
+      <li>Previous: <a href="c++_prime.html" title="previous chapter">C++ prime</a></li>
+      <li>Next: <a href="program_pearl.html" title="next chapter">编程珠玑</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/technic_blog/fluent_python.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/technic_blog/fluent_python.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

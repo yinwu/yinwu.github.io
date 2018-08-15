@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Docker技术 &mdash; Blog  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="next" title="环境配置及常见问题" href="problem_solve.html" />
+    <link rel="prev" title="Linux常用工具.命令" href="toolset_in_linux.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="docker">
+<h1>Docker技术<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>docker常用命令<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">-t:在新容器内指定一个伪终端或终端。</p>
+</li>
+<li><p class="first">-i:允许你对容器内的标准输入 (STDIN) 进行交互</p>
+</li>
+<li><p class="first">在容器内使用docker logs命令，查看容器内的标准输出</p>
+</li>
+<li><p class="first">我们使用 docker stop 命令来停止容器</p>
+</li>
+<li><p class="first">-d:让容器在后台运行。</p>
+</li>
+<li><p class="first">-P:将容器内部使用的网络端口映射到我们使用的主机上</p>
+</li>
+<li><p class="first">我们也可以指定 -p 标识来绑定指定端口</p>
+</li>
+<li><p class="first">docker port 可以查看指定 （ID或者名字）容器的某个确定端口映射到宿主机的端口号</p>
+</li>
+<li><p class="first">docker top 来查看容器内部运行的进程</p>
+</li>
+<li><p class="first">docker inspect 来查看Docker的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息</p>
+</li>
+<li><p class="first">docker rm 命令来删除不需要的容器</p>
+</li>
+<li><p class="first">docker images 来列出本地主机上的镜像</p>
+</li>
+<li><p class="first">docker pull 命令来下载repository上面的镜像</p>
+</li>
+<li><p class="first">docker search 命令来搜索镜像</p>
+</li>
+<li><p class="first">当我们从docker镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。</p>
+<blockquote>
+<div><p>1.从已经创建的容器中更新镜像，并且提交这个镜像</p>
+<p>2.使用 Dockerfile 指令来创建一个新的镜像</p>
+</div></blockquote>
+</li>
+<li><p class="first">docker commit来提交容器副本</p>
+</li>
+<li><p class="first">我们可以使用 docker tag 命令，为镜像添加一个新的标签</p>
+</li>
+<li><p class="first">我们也可以使用 -p 标识来指定容器端口绑定到主机端口</p>
+<blockquote>
+<div><p>-P :是容器内部端口随机映射到主机的高端口。</p>
+<p>-p : 是容器内部端口绑定到指定的主机端口。</p>
+</div></blockquote>
+</li>
+<li><p class="first">docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息</p>
+</li>
+<li><p class="first">我们也可以使用–name标识来命名容器</p>
+</li>
+</ul>
+</div>
+<div class="section" id="docker-install">
+<h2>Docker install<a class="headerlink" href="#docker-install" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>安装命令</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo snap install docker
+<span class="go">docker 17.06.2-ce from &#39;docker-inc&#39; installed</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>查看版本</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker -v
+<span class="go">Docker version 17.06.2-ce, build a04f55b</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Hello world</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo docker run ubuntu:15.10 /bin/echo <span class="s2">&quot;Hello world&quot;</span>
+<span class="go">Unable to find image &#39;ubuntu:15.10&#39; locally</span>
+<span class="go">15.10: Pulling from library/ubuntu</span>
+<span class="go">7dcf5a444392: Pull complete</span>
+<span class="go">759aa75f3cee: Pull complete</span>
+<span class="go">3fa871dc8a2b: Pull complete</span>
+<span class="go">224c42ae46e7: Pull complete</span>
+<span class="go">Digest: sha256:02521a2d079595241c6793b2044f02eecf294034f31d6e235ac4b2b54ffc41f3</span>
+<span class="go">Status: Downloaded newer image for ubuntu:15.10</span>
+<span class="go">Hello world</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>reference document</li>
+</ol>
+<p>安装命令的提示来自shell中输入docker.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker
+
+<span class="go">Command &#39;docker&#39; not found, but can be installed with:</span>
+
+<span class="hll"><span class="go">sudo snap install docker     # version 17.06.2-ce, or</span>
+</span><span class="hll"><span class="go">sudo apt  install docker.io</span>
+</span>
+<span class="go">See &#39;snap info docker&#39; for additional versions.</span>
+
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-docker-image-locally">
+<h2>Build docker image locally<a class="headerlink" href="#build-docker-image-locally" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="push-docker-image-to-dockerhub">
+<h2>Push docker image to dockerhub<a class="headerlink" href="#push-docker-image-to-dockerhub" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="docker-exec">
+<h2>进入docker容器的方式 - <strong>exec</strong><a class="headerlink" href="#docker-exec" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo docker exec -it f73ab3bbde31 /bin/bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>其他几种进入docker容器的方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><cite>sudo docker attach</cite></p>
+<blockquote>
+<div><p>缺点是当多个窗口同时使用该命令进入该容器时，所有的窗口都会同步显示。</p>
+</div></blockquote>
+</li>
+<li><p class="first">ssh</p>
+<blockquote>
+<div><p>可行但是不建议，原因见 <a class="reference external" href="https://www.oschina.net/translate/why-you-dont-need-to-run-sshd-in-docker?cmp">为什么不需要在Docker容器中运行sshd</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">nsenter</p>
+<blockquote>
+<div><p>参考 <a class="reference external" href="https://github.com/jpetazzo/nsenter">什么是nsenter</a></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="docker-compose">
+<h2>Docker compose<a class="headerlink" href="#docker-compose" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://docs.docker.com/compose/overview/#release-notes">Overview</a></li>
+<li><a class="reference external" href="https://docs.docker.com/compose/compose-file/">Docker-compose file</a></li>
+<li><a class="reference external" href="https://docs.docker.com/compose/reference/">command line reference</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Docker技术</a><ul>
+<li><a class="reference internal" href="#id1">docker常用命令</a></li>
+<li><a class="reference internal" href="#docker-install">Docker install</a></li>
+<li><a class="reference internal" href="#build-docker-image-locally">Build docker image locally</a></li>
+<li><a class="reference internal" href="#push-docker-image-to-dockerhub">Push docker image to dockerhub</a></li>
+<li><a class="reference internal" href="#docker-exec">进入docker容器的方式 - <strong>exec</strong></a></li>
+<li><a class="reference internal" href="#id2">其他几种进入docker容器的方式</a></li>
+<li><a class="reference internal" href="#docker-compose">Docker compose</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="blog.html">技术专题</a><ul>
+      <li>Previous: <a href="toolset_in_linux.html" title="previous chapter">Linux常用工具.命令</a></li>
+      <li>Next: <a href="problem_solve.html" title="next chapter">环境配置及常见问题</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/technic_blog/docker.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, yinwu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/technic_blog/docker.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

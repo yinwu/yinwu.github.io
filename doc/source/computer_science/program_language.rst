@@ -12,6 +12,10 @@
    Django
    python_interview
    python_tips
+   sort
+   tree
+   leetCode
+   struct
 
 
 
