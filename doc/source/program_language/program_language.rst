@@ -8,9 +8,6 @@
 
 .. _c++ prime:
 
-C++ learning path: from coolie to expert
-------------------------------------------
-
 .. toctree::
    :maxdepth: 1
 
@@ -19,15 +16,8 @@ C++ learning path: from coolie to expert
    tempalte_in_c++
    high_level_c++
    c++11
-
-Python - Do right thing with right way
-------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-
    Django
    python_interview
-   python_q_and_a
+   python_tips.rst
 
 

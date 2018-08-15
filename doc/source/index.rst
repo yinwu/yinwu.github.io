@@ -13,7 +13,6 @@ Welcome to Yinkui's documentation!
    program_language/program_language
    blog/blog
    notes/notes
-   book/book
    bigdata_and_ai/bigdata_and_ai
 
 
