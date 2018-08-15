@@ -112,7 +112,7 @@ Git 配置文件路径
 
 * 工程目录下 `.git/config`
 
-* 用户目录下(global configuration) `.gitconfig
+* 用户目录下(global configuration) `.gitconfig`
   
 
 配置GIT alias
@@ -162,7 +162,7 @@ How to diff the commit change and working copy
 #. Git work flow
 --------------------
 
-.. images:: ../_static/git_work_flow.png
+.. image:: ../_static/git_work_flow.png
 
 #. Git 保存工作区
 --------------------

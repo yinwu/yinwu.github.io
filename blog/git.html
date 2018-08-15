@@ -41,14 +41,24 @@
             
   <div class="section" id="git-just-do-it">
 <h1>Git - Just do IT<a class="headerlink" href="#git-just-do-it" title="Permalink to this headline">¶</a></h1>
-<p>关于Git，一直记得一件事情。某年参加公司一个活动，讨论的主题好像是集中一堆编程水平高的工程师，做一个项目。会上一哥们，提起公司一直使用svn，特别不齿。并宣称不会用GIT的人不能叫程序员。直接喷倒一大片同事。虽然我不排斥新技术，新工具，但是不认同这句话。工具要选择适合的，公司的很多项目其实不太适合用GIT，但是真正的程序员还是要掌握GIT的，这个毋庸置疑。这些年断断续续使用github，只会一些简单的操作。随着公司使用GIT的项目越来越多，急需掌握一些复杂的GIT操作。这个日志用来记录自己GIT学习路径。</p>
+<p>关于Git，一直记得一件事情。某年参加公司一个活动，讨论的主题好像是集中一堆编程水平高的工程师，做一个项目。会上一哥们，提起公司一直使用svn，特别不齿。
+并宣称不会用GIT的人不能叫程序员。直接喷倒一大片同事。虽然我不排斥新技术，新工具，但是不认同这句话。
+工具要选择适合的，公司的很多项目其实不太适合用GIT，但是真正的程序员还是要掌握GIT的，这个毋庸置疑。这些年断断续续使用github，只会一些简单的操作。
+随着公司使用GIT的项目越来越多，急需掌握一些复杂的GIT操作。这个日志用来记录自己GIT学习路径。</p>
+<div class="section" id="git">
+<h2>写在学习完廖雪峰的Git教程后心得<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Git的强项不在于分布式，所谓的分布式是个伪命题。产品开发中，所有的提交最终还是要集中起来，保存到远端。 所谓分布式保存，没有意义。</li>
+<li>GIt的本地分支管理确实强大，这个比SVN要强非常多。一个working copy管理所有分支。</li>
+</ul>
+</div>
 <div class="section" id="git-tourist">
-<h2>1 Git tourist<a class="headerlink" href="#git-tourist" title="Permalink to this headline">¶</a></h2>
+<h2>#. Git tourist<a class="headerlink" href="#git-tourist" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><a class="reference external" href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5">Git Book</a></div></blockquote>
 </div>
-<div class="section" id="how-to-pull-and-switch-remote-branch">
-<h2>2 How to pull and switch remote branch?<a class="headerlink" href="#how-to-pull-and-switch-remote-branch" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="branch-management-in-git">
+<h2>#. branch management in GIT<a class="headerlink" href="#branch-management-in-git" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="add-remote-branch">
 <h3>Add remote branch<a class="headerlink" href="#add-remote-branch" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git remote add origin git@server-name:path/repo-name.git</span>
@@ -89,20 +99,53 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="dev">
+<h3>在本地创建远程的DEV分支<a class="headerlink" href="#dev" title="Permalink to this headline">¶</a></h3>
+<p>导出 git checkout -b dev origin/dev</p>
+<p>提交 git push origin dev</p>
 </div>
-<div class="section" id="git-configuration-when-you-first-use-it">
-<h2>3 Git configuration when you first use it<a class="headerlink" href="#git-configuration-when-you-first-use-it" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="how-to-set-git-editor-first-time">
-<h3>How to set git editor first time<a class="headerlink" href="#how-to-set-git-editor-first-time" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="git-branch-operation">
+<h3>Git branch operation 总结<a class="headerlink" href="#git-branch-operation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>查看分支：git branch</p>
+<p>创建分支：git branch &lt;name&gt;</p>
+<p>切换分支：git checkout &lt;name&gt;</p>
+<p>创建+切换分支：git checkout -b &lt;name&gt;</p>
+<p>合并某分支到当前分支：git merge &lt;name&gt;</p>
+<p>删除分支：git branch -d &lt;name&gt;</p>
+<p>强行删除没有合并的分支 git branch -D feature-vulcan</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="git-configuration">
+<h2>#. Git configuration<a class="headerlink" href="#git-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="set-git-editor">
+<h3>set git editor<a class="headerlink" href="#set-git-editor" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git config --global core.editor vim
 
 <span class="go">参考 `起步 - 初次运行 Git 前的配置 &lt;https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE&gt;`_</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="id1">
+<h3>Git 配置文件路径<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>工程目录下 <cite>.git/config</cite></li>
+<li>用户目录下(global configuration) <cite>.gitconfig</cite></li>
+</ul>
+</div>
+<div class="section" id="git-alias">
+<h3>配置GIT alias<a class="headerlink" href="#git-alias" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git config --global alias.co checkout
+<span class="gp">$</span> git config --global alias.ci commit
+<span class="gp">$</span> git config --global alias.br branch
+<span class="gp">$</span> git config --global alias.lg <span class="s2">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="git-diff">
-<h2>4 Git diff<a class="headerlink" href="#git-diff" title="Permalink to this headline">¶</a></h2>
+<h2>#. Git diff<a class="headerlink" href="#git-diff" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-diff-the-commit-change-and-working-copy">
 <h3>How to diff the commit change and working copy<a class="headerlink" href="#how-to-diff-the-commit-change-and-working-copy" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git diff HEAD -- readme.txt</span>
@@ -111,39 +154,39 @@
 </div>
 </div>
 <div class="section" id="git-revert">
-<h2>5 Git revert<a class="headerlink" href="#git-revert" title="Permalink to this headline">¶</a></h2>
-<p>回撤工作区的修改 git checkout &#8211; your_file</p>
-<p>回撤暂存区的修改 get reset HEAD your_file/ get checkout your_file</p>
-<p>回撤提交区的修改 get reset &#8211;hard HEAD^/HEAD^^/HEAD^^^</p>
-</div>
-<div class="section" id="git-branch-operation">
-<h2>6 Git branch operation<a class="headerlink" href="#git-branch-operation" title="Permalink to this headline">¶</a></h2>
-<p>查看分支：git branch</p>
-<p>创建分支：git branch &lt;name&gt;</p>
-<p>切换分支：git checkout &lt;name&gt;</p>
-<p>创建+切换分支：git checkout -b &lt;name&gt;</p>
-<p>合并某分支到当前分支：git merge &lt;name&gt;</p>
-<p>删除分支：git branch -d &lt;name&gt;</p>
-<p>强行删除没有合并的分支 git branch -D feature-vulcan</p>
+<h2>#. Git revert<a class="headerlink" href="#git-revert" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">回撤工作区的修改</p>
+<blockquote>
+<div><p>git checkout &#8211; your_file</p>
+</div></blockquote>
+</li>
+<li><p class="first">回撤暂存区的修改</p>
+<blockquote>
+<div><p>get reset HEAD your_file/ get checkout your_file</p>
+</div></blockquote>
+</li>
+<li><p class="first">回撤提交区的修改</p>
+<blockquote>
+<div><p>get reset &#8211;hard HEAD^/HEAD^^/HEAD^^^</p>
+</div></blockquote>
+</li>
+</ul>
 </div>
 <div class="section" id="git-fix-confict">
-<h2>7 Git fix confict<a class="headerlink" href="#git-fix-confict" title="Permalink to this headline">¶</a></h2>
+<h2>#. Git fix confict<a class="headerlink" href="#git-fix-confict" title="Permalink to this headline">¶</a></h2>
 <p>查看分支合并图 git log &#8211;graph &#8211;pretty=oneline &#8211;abbrev-commit</p>
 </div>
 <div class="section" id="git-work-flow">
-<h2>8 Git work flow<a class="headerlink" href="#git-work-flow" title="Permalink to this headline">¶</a></h2>
+<h2>#. Git work flow<a class="headerlink" href="#git-work-flow" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/git_work_flow.png" src="../_images/git_work_flow.png" />
 </div>
-<div class="section" id="git">
-<h2>9 Git 保存工作区<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>#. Git 保存工作区<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>git stash可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。</p>
 <p>git stash list 查看工作现场</p>
 <p>git stash apply <a class="reference external" href="mailto:stash&#37;&#52;&#48;{0}/git">stash<span>&#64;</span>{0}/git</a> stash drop</p>
 <p>git stash pop 恢复现场的同时删除stash</p>
-</div>
-<div class="section" id="dev">
-<h2>10 在本地创建远程的DEV分支<a class="headerlink" href="#dev" title="Permalink to this headline">¶</a></h2>
-<p>导出 git checkout -b dev origin/dev</p>
-<p>提交 git push origin dev</p>
 <div class="section" id="set-up-stream-to-a-local-branch">
 <h3>set up-stream to a local branch<a class="headerlink" href="#set-up-stream-to-a-local-branch" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)</span>
@@ -153,8 +196,32 @@
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>多人协作模式总结<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-tag">
+<h2>#. Git TAG<a class="headerlink" href="#git-tag" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">git tag &lt;tagname&gt; 用于新建一个标签，默认为HEAD，也可以指定一个commit id；</p>
+</li>
+<li><p class="first">git tag -a &lt;tagname&gt; -m &#8220;blablabla...&#8221; 可以指定标签信息；</p>
+</li>
+<li><p class="first">git tag 可以查看所有标签。</p>
+</li>
+<li><p class="first">git push origin &lt;tagname&gt; 可以推送一个本地标签；</p>
+</li>
+<li><p class="first">git push origin &#8211;tags 可以推送全部未推送过的本地标签；</p>
+</li>
+<li><p class="first">git tag -d &lt;tagname&gt; 可以删除一个本地标签；</p>
+<blockquote>
+<div><ul class="simple">
+<li>git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签。</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>#. 多人协作模式总结<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>首先，可以试图用git push origin &lt;branch-name&gt;推送自己的修改；</p>
 <p>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</p>
@@ -164,31 +231,6 @@
 <div>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
 用命令git branch &#8211;set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;。</div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="git-tag">
-<h2>Git tag<a class="headerlink" href="#git-tag" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>命令git tag &lt;tagname&gt;用于新建一个标签，默认为HEAD，也可以指定一个commit id；</p>
-<p>命令git tag -a &lt;tagname&gt; -m &#8220;blablabla...&#8221;可以指定标签信息；</p>
-<p>命令git tag可以查看所有标签。</p>
-<p>命令git push origin &lt;tagname&gt;可以推送一个本地标签；</p>
-<p>命令git push origin &#8211;tags可以推送全部未推送过的本地标签；</p>
-<p>命令git tag -d &lt;tagname&gt;可以删除一个本地标签；</p>
-<p>命令git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签。</p>
-</div></blockquote>
-</div>
-<div class="section" id="git-alias">
-<h2>Git alias<a class="headerlink" href="#git-alias" title="Permalink to this headline">¶</a></h2>
-<p>$ git config &#8211;global alias.co checkout
-$ git config &#8211;global alias.ci commit
-$ git config &#8211;global alias.br branch</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>Git 配置文件路径<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>.git/config or .gitconfig(global configuration)</p>
 </div>
 </div>
 
@@ -201,36 +243,37 @@ $ git config &#8211;global alias.br branch</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Git - Just do IT</a><ul>
-<li><a class="reference internal" href="#git-tourist">1 Git tourist</a></li>
-<li><a class="reference internal" href="#how-to-pull-and-switch-remote-branch">2 How to pull and switch remote branch?</a><ul>
+<li><a class="reference internal" href="#git">写在学习完廖雪峰的Git教程后心得</a></li>
+<li><a class="reference internal" href="#git-tourist">#. Git tourist</a></li>
+<li><a class="reference internal" href="#branch-management-in-git">#. branch management in GIT</a><ul>
 <li><a class="reference internal" href="#add-remote-branch">Add remote branch</a></li>
 <li><a class="reference internal" href="#push-local-branch-to-remote">push local branch to remote</a></li>
 <li><a class="reference internal" href="#show-all-remote-branch">show all remote branch</a></li>
 <li><a class="reference internal" href="#how-to-switch-branch">How to switch branch</a></li>
 <li><a class="reference internal" href="#how-to-rename-a-branch">How to rename a branch</a></li>
+<li><a class="reference internal" href="#dev">在本地创建远程的DEV分支</a></li>
+<li><a class="reference internal" href="#git-branch-operation">Git branch operation 总结</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#git-configuration-when-you-first-use-it">3 Git configuration when you first use it</a><ul>
-<li><a class="reference internal" href="#how-to-set-git-editor-first-time">How to set git editor first time</a></li>
+<li><a class="reference internal" href="#git-configuration">#. Git configuration</a><ul>
+<li><a class="reference internal" href="#set-git-editor">set git editor</a></li>
+<li><a class="reference internal" href="#id1">Git 配置文件路径</a></li>
+<li><a class="reference internal" href="#git-alias">配置GIT alias</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#git-diff">4 Git diff</a><ul>
+<li><a class="reference internal" href="#git-diff">#. Git diff</a><ul>
 <li><a class="reference internal" href="#how-to-diff-the-commit-change-and-working-copy">How to diff the commit change and working copy</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#git-revert">5 Git revert</a></li>
-<li><a class="reference internal" href="#git-branch-operation">6 Git branch operation</a></li>
-<li><a class="reference internal" href="#git-fix-confict">7 Git fix confict</a></li>
-<li><a class="reference internal" href="#git-work-flow">8 Git work flow</a></li>
-<li><a class="reference internal" href="#git">9 Git 保存工作区</a></li>
-<li><a class="reference internal" href="#dev">10 在本地创建远程的DEV分支</a><ul>
+<li><a class="reference internal" href="#git-revert">#. Git revert</a></li>
+<li><a class="reference internal" href="#git-fix-confict">#. Git fix confict</a></li>
+<li><a class="reference internal" href="#git-work-flow">#. Git work flow</a></li>
+<li><a class="reference internal" href="#id2">#. Git 保存工作区</a><ul>
 <li><a class="reference internal" href="#set-up-stream-to-a-local-branch">set up-stream to a local branch</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id1">多人协作模式总结</a></li>
-<li><a class="reference internal" href="#git-tag">Git tag</a></li>
-<li><a class="reference internal" href="#git-alias">Git alias</a></li>
-<li><a class="reference internal" href="#id2">Git 配置文件路径</a></li>
+<li><a class="reference internal" href="#git-tag">#. Git TAG</a></li>
+<li><a class="reference internal" href="#id3">#. 多人协作模式总结</a></li>
 </ul>
 </li>
 </ul>
