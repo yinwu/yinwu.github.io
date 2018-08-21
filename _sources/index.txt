@@ -3,18 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Yinkui's documentation!
+闲言碎语
 ==================================
 
 .. toctree::
    :maxdepth: 2
 
-   computer_science/program_language
-   technic_blog/blog
-   social_media/notes
-   bigdata_and_ai/bigdata_and_ai
-
-
+   computer_science/index
+   technic_blog/index
+   social_media/index
+   bigdata_and_ai/index
+   
 
 Indices and tables
 ==================

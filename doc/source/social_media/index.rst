@@ -9,6 +9,7 @@
    daily_news
    stock
    intresting_picture
+   about_book
    finance
 
 
