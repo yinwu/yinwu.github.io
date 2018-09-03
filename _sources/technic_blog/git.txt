@@ -219,4 +219,7 @@ set up-stream to a local branch
 	如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
 	用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
 
+#. Git 操作
+----------------------
+
 

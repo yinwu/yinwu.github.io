@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Blog  documentation" href="../index.html" />
-    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="up" title="技术专题" href="index.html" />
     <link rel="next" title="Docker技术" href="docker.html" />
     <link rel="prev" title="Linux/Unix系统知识" href="linux_unix_program.html" />
    
@@ -42,7 +42,133 @@
   <div class="section" id="linux">
 <h1>Linux常用工具.命令<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>linux查看硬件配置信息<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>linux 文件目录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">/bin usr/bin /sbin/ /user/sbin</p>
+<blockquote>
+<div><p>用户或者管理员可执行执行文件目录。</p>
+</div></blockquote>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/etc</span></kbd></td>
+<td><p class="first last">系统管理配置文件。</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/lib</span></kbd></td>
+<td><p class="first last">linux系统中用户的动态链接库。</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/opt</span></kbd></td>
+<td><p class="first last">主机额外安装软件的目录。</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/proc</span></kbd></td>
+<td><p class="first last">虚拟目录，系统内存的影射。可以直接访问这个目录来获取系统信息。这个系统的内容不再硬盘上，而在内存里面。</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/boot</span></kbd></td>
+<td><p class="first last">系统启动时需要的一些核心文件。</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/dev</span></kbd></td>
+<td><p class="first last">系统外部设备</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/mnt</span></kbd></td>
+<td><p class="first last">系统挂在目录</p>
+</td></tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+<div class="section" id="windowsputty">
+<h2>windows下面putty 免密登录<a class="headerlink" href="#windowsputty" title="Permalink to this headline">¶</a></h2>
+<p>putty免密登录搞定，步骤如下</p>
+<ol class="arabic simple">
+<li>生成public key及 private key。</li>
+<li>将public key拷贝到server上面。</li>
+<li>在putty中，制定private的路径，然后保存。</li>
+<li>搞定。</li>
+</ol>
+</div>
+<div class="section" id="linuxssh">
+<h2>linux下ssh免密登录<a class="headerlink" href="#linuxssh" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>生成public key和private key证书</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh-keygen -t rsa</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>传输public key到远程机器，并且追加写入authorized_keys文件中。</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh-copy-id -i ~/.ssh/id_rsa.pub tester@10.159.2xx.2xx</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>搞定。</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>Linux下SSH登录别名配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>修改~/.ssh/config文件，在文件中追加以下信息</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Host    别名</span>
+<span class="go">    HostName        主机名</span>
+<span class="go">    Port            端口</span>
+<span class="go">    User            用户名</span>
+<span class="go">    IdentityFile    密钥文件的路径</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>linux查看硬件配置信息<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>CPU信息</li>
 </ol>
@@ -84,16 +210,16 @@
 <div class="section" id="linux-cut">
 <h2>linux 文本处理利器之cut<a class="headerlink" href="#linux-cut" title="Permalink to this headline">¶</a></h2>
 <p>cut命令是一个选取命令，其功能是将文件中的每一行“字节” “字符” “字符” 进行剪切，选取我们需要的，并将这些选取好的数据输出至标准输出</p>
-<div class="section" id="id2">
-<h3>格式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>格式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><cite>cut -[n]b file</cite></p>
 <p><cite>cut -c file</cite></p>
 <p><cite>cut -d[分隔符] -f[域] file</cite></p>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h3>参数解释<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>参数解释<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><strong>-b(bytes)</strong></p>
 <blockquote>
 <div>以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div></blockquote>
@@ -110,8 +236,8 @@
 <blockquote>
 <div>取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</div></blockquote>
 </div>
-<div class="section" id="id4">
-<h3>举例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>举例<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>原始文本</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
 <span class="go">557adfhg</span>
@@ -266,12 +392,16 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Linux常用工具.命令</a><ul>
-<li><a class="reference internal" href="#id1">linux查看硬件配置信息</a></li>
+<li><a class="reference internal" href="#id1">linux 文件目录</a></li>
+<li><a class="reference internal" href="#windowsputty">windows下面putty 免密登录</a></li>
+<li><a class="reference internal" href="#linuxssh">linux下ssh免密登录</a></li>
+<li><a class="reference internal" href="#id2">Linux下SSH登录别名配置</a></li>
+<li><a class="reference internal" href="#id3">linux查看硬件配置信息</a></li>
 <li><a class="reference internal" href="#linux-sed">linux 文本处理利器之sed</a></li>
 <li><a class="reference internal" href="#linux-cut">linux 文本处理利器之cut</a><ul>
-<li><a class="reference internal" href="#id2">格式</a></li>
-<li><a class="reference internal" href="#id3">参数解释</a></li>
-<li><a class="reference internal" href="#id4">举例</a></li>
+<li><a class="reference internal" href="#id4">格式</a></li>
+<li><a class="reference internal" href="#id5">参数解释</a></li>
+<li><a class="reference internal" href="#id6">举例</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#linuxawk">linux文本处理终极大招之awk</a></li>
@@ -282,7 +412,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="blog.html">技术专题</a><ul>
+  <li><a href="index.html">技术专题</a><ul>
       <li>Previous: <a href="linux_unix_program.html" title="previous chapter">Linux/Unix系统知识</a></li>
       <li>Next: <a href="docker.html" title="next chapter">Docker技术</a></li>
   </ul></li>

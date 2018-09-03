@@ -1,6 +1,85 @@
 Linux常用工具.命令
 =============================
 
+linux 文件目录
+--------------
+
+#. /bin usr/bin /sbin/ /user/sbin 
+
+    用户或者管理员可执行执行文件目录。
+
+#. /etc
+
+    系统管理配置文件。
+    
+#. /lib
+   
+    linux系统中用户的动态链接库。
+
+#. /opt 
+
+    主机额外安装软件的目录。
+
+#. /proc
+
+    虚拟目录，系统内存的影射。可以直接访问这个目录来获取系统信息。这个系统的内容不再硬盘上，而在内存里面。
+
+#. /boot
+
+    系统启动时需要的一些核心文件。
+
+#. /dev
+   
+    系统外部设备
+
+#. /mnt
+
+    系统挂在目录
+
+windows下面putty 免密登录
+-------------------------
+
+putty免密登录搞定，步骤如下
+
+1. 生成public key及 private key。
+
+2. 将public key拷贝到server上面。
+
+3. 在putty中，制定private的路径，然后保存。
+   
+4. 搞定。
+
+linux下ssh免密登录
+------------------
+
+1. 生成public key和private key证书
+
+.. code-block:: console
+    
+    ssh-keygen -t rsa
+
+2. 传输public key到远程机器，并且追加写入authorized_keys文件中。
+
+.. code-block:: console
+
+    ssh-copy-id -i ~/.ssh/id_rsa.pub tester@10.159.2xx.2xx
+
+3. 搞定。
+   
+
+Linux下SSH登录别名配置
+----------------------
+
+修改~/.ssh/config文件，在文件中追加以下信息
+
+.. code-block:: console
+
+    Host    别名
+        HostName        主机名
+        Port            端口
+        User            用户名
+        IdentityFile    密钥文件的路径
+
 
 linux查看硬件配置信息
 ----------------------------
