@@ -1,6 +1,10 @@
 Linux常用工具.命令
 =============================
 
+`linux命令大全 <http://www.runoob.com/linux/linux-command-manual.html>`_
+------------------------------------------------------------------------
+
+
 linux 文件目录
 --------------
 
@@ -80,6 +84,174 @@ Linux下SSH登录别名配置
         User            用户名
         IdentityFile    密钥文件的路径
 
+
+Linux 文件权限
+--------------
+
+**用户分组**
+
+#. 1,2,3 表示属主权限
+
+#. 4,5,6 表示用户组权限
+
+# 7,8,9 表示其他用户权限
+
+**读写分组**
+
+#. 1,4,7 表示文件读权限
+
+#. 2,5,8 表示文件写权限
+
+#. 3,6,9 表示文件可执行权限
+
+**权限代号**
+
+#. r:4
+
+#. w:2
+
+#. x:1
+
+
+linux 硬连接和软连接
+--------------------
+
+**硬连接**
+
+硬连接指通过索引节点来进行连接。 
+
+.. code-block:: console
+
+    test@test:~/learning/linux_link$ touch file1
+    test@test:~/learning/linux_link$ ln file1 file2
+
+**软连接**
+
+软连接称为符号连接，软连接类似建立快捷方式。
+
+.. code-block:: console
+
+    test@test:~/learning/linux_link$ ln file1 file3 -s
+    test@test:~/learning/linux_link$ ls -ali
+
+**ls 区别**
+
+硬连接文件具有相同的节点索引。删除其中一个不会影响另外一个。
+两个文件具有不同的节点索引，其中一个指向另外一个。 
+删除链接目标文件会导致符号连接失效。
+
+.. code-block:: console
+
+    test@test:~/learning/linux_link$ ls -ali
+    total 8
+    9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:32 .
+    9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..
+    9183533 -rw-rw-r-- 2 test test    0 9鏈?  4 18:31 file1
+    9183533 -rw-rw-r-- 2 test test    0 9鏈?  4 18:31 file2
+    9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -> file1  
+
+**cp区别**
+
+拷贝硬连接属性，而不是文件本身。 file6和file2具有相同的node index。
+
+.. code-block:: console
+
+    test@test:~/learning/linux_link$ cp file2 file6 -l
+    test@test:~/learning/linux_link$ ls -ali
+    total 28
+    9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:38 .
+    9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file1
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file2
+    9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -> file1
+    9183535 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file4
+    9183536 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file5
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file6
+
+拷贝软连接属性，而不是文件本身。file7是file1的软连接。
+
+.. code-block:: console
+
+    test@test:~/learning/linux_link$ cp file1 file7 -s
+    test@test:~/learning/linux_link$ 
+    test@test:~/learning/linux_link$ 
+    test@test:~/learning/linux_link$ ls -ali
+    total 28
+    9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:41 .
+    9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file1
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file2
+    9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -> file1
+    9183535 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file4
+    9183536 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file5
+    9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file6
+    9183537 lrwxrwxrwx 1 test test    5 9鏈?  4 18:41 file7 -> file1
+
+
+linux 用户管理
+--------------
+
+用户的记录在/etc/passwd目录中。
+
+
+linux磁盘管理命令
+-----------------
+
+**df** 检查文件系统的磁盘空间占用情况
+
+#. -a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；
+
+#. -k ：以 KBytes 的容量显示各文件系统；
+
+#. -m ：以 MBytes 的容量显示各文件系统；
+
+#. -h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；
+
+#. -H ：以 M=1000K 取代 M=1024K 的进位方式；
+
+#. -T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；
+
+#. -i ：不用硬盘容量，而以 inode 的数量来显示
+
+
+常用的命令
+
+.. code-block:: console
+
+    test@test:~$ df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    udev            1.9G     0  1.9G   0% /dev
+    tmpfs           388M   13M  376M   4% /run
+    /dev/sda1       290G   22G  254G   8% /
+    tmpfs           1.9G  1.1M  1.9G   1% /dev/shm
+    tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+    tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+    tmpfs           388M   12K  388M   1% /run/user/1000
+
+
+
+**du** 对文件和目录磁盘使用的空间的查看
+
+#. -a ：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已。
+ 
+#. -h ：以人们较易读的容量格式 (G/M) 显示；
+ 
+#. -s ：列出总量而已，而不列出每个各别的目录占用容量；
+
+#. -S ：不包括子目录下的总计，与 -s 有点差别。
+ 
+#. -k ：以 KBytes 列出容量显示；
+ 
+#. -m ：以 MBytes 列出容量显示；
+
+常用的命令
+
+.. code-block:: console
+
+    test@test:~$ du -sk ./*
+
+
+**fdisk** 磁盘分区工具
 
 linux查看硬件配置信息
 ----------------------------

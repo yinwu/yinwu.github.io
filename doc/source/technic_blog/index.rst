@@ -25,6 +25,7 @@
    how_to_read_a_book
    the_crowd
    pyramid_princible
+   shell_basic
 
     
 

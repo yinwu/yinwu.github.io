@@ -41,8 +41,11 @@
             
   <div class="section" id="linux">
 <h1>Linux常用工具.命令<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>linux 文件目录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="reference external" href="http://www.runoob.com/linux/linux-command-manual.html">linux命令大全</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>linux 文件目录<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">/bin usr/bin /sbin/ /user/sbin</p>
 <blockquote>
@@ -156,8 +159,8 @@
 <li>搞定。</li>
 </ol>
 </div>
-<div class="section" id="id2">
-<h2>Linux下SSH登录别名配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Linux下SSH登录别名配置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>修改~/.ssh/config文件，在文件中追加以下信息</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Host    别名</span>
 <span class="go">    HostName        主机名</span>
@@ -167,8 +170,132 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>linux查看硬件配置信息<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Linux 文件权限<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p><strong>用户分组</strong></p>
+<ol class="arabic simple">
+<li>1,2,3 表示属主权限</li>
+<li>4,5,6 表示用户组权限</li>
+</ol>
+<p># 7,8,9 表示其他用户权限</p>
+<p><strong>读写分组</strong></p>
+<ol class="arabic simple">
+<li>1,4,7 表示文件读权限</li>
+<li>2,5,8 表示文件写权限</li>
+<li>3,6,9 表示文件可执行权限</li>
+</ol>
+<p><strong>权限代号</strong></p>
+<ol class="arabic simple">
+<li>r:4</li>
+<li>w:2</li>
+<li>x:1</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>linux 硬连接和软连接<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><strong>硬连接</strong></p>
+<p>硬连接指通过索引节点来进行连接。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> touch file1
+<span class="gp">test@test:~/learning/linux_link$</span> ln file1 file2
+</pre></div>
+</div>
+<p><strong>软连接</strong></p>
+<p>软连接称为符号连接，软连接类似建立快捷方式。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> ln file1 file3 -s
+<span class="gp">test@test:~/learning/linux_link$</span> ls -ali
+</pre></div>
+</div>
+<p><strong>ls 区别</strong></p>
+<p>硬连接文件具有相同的节点索引。删除其中一个不会影响另外一个。
+两个文件具有不同的节点索引，其中一个指向另外一个。
+删除链接目标文件会导致符号连接失效。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> ls -ali
+<span class="go">total 8</span>
+<span class="go">9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:32 .</span>
+<span class="go">9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..</span>
+<span class="go">9183533 -rw-rw-r-- 2 test test    0 9鏈?  4 18:31 file1</span>
+<span class="go">9183533 -rw-rw-r-- 2 test test    0 9鏈?  4 18:31 file2</span>
+<span class="go">9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -&gt; file1</span>
+</pre></div>
+</div>
+<p><strong>cp区别</strong></p>
+<p>拷贝硬连接属性，而不是文件本身。 file6和file2具有相同的node index。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> cp file2 file6 -l
+<span class="gp">test@test:~/learning/linux_link$</span> ls -ali
+<span class="go">total 28</span>
+<span class="go">9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:38 .</span>
+<span class="go">9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file1</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file2</span>
+<span class="go">9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -&gt; file1</span>
+<span class="go">9183535 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file4</span>
+<span class="go">9183536 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file5</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file6</span>
+</pre></div>
+</div>
+<p>拷贝软连接属性，而不是文件本身。file7是file1的软连接。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> cp file1 file7 -s
+<span class="gp">test@test:~/learning/linux_link$</span>
+<span class="gp">test@test:~/learning/linux_link$</span>
+<span class="gp">test@test:~/learning/linux_link$</span> ls -ali
+<span class="go">total 28</span>
+<span class="go">9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:41 .</span>
+<span class="go">9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file1</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file2</span>
+<span class="go">9183534 lrwxrwxrwx 1 test test    5 9鏈?  4 18:32 file3 -&gt; file1</span>
+<span class="go">9183535 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file4</span>
+<span class="go">9183536 -rw-rw-r-- 1 test test    5 9鏈?  4 18:37 file5</span>
+<span class="go">9183533 -rw-rw-r-- 3 test test    5 9鏈?  4 18:32 file6</span>
+<span class="go">9183537 lrwxrwxrwx 1 test test    5 9鏈?  4 18:41 file7 -&gt; file1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>linux 用户管理<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>用户的记录在/etc/passwd目录中。</p>
+</div>
+<div class="section" id="id8">
+<h2>linux磁盘管理命令<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><strong>df</strong> 检查文件系统的磁盘空间占用情况</p>
+<ol class="arabic simple">
+<li>-a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；</li>
+<li>-k ：以 KBytes 的容量显示各文件系统；</li>
+<li>-m ：以 MBytes 的容量显示各文件系统；</li>
+<li>-h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；</li>
+<li>-H ：以 M=1000K 取代 M=1024K 的进位方式；</li>
+<li>-T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；</li>
+<li>-i ：不用硬盘容量，而以 inode 的数量来显示</li>
+</ol>
+<p>常用的命令</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~$</span> df -h
+<span class="go">Filesystem      Size  Used Avail Use% Mounted on</span>
+<span class="go">udev            1.9G     0  1.9G   0% /dev</span>
+<span class="go">tmpfs           388M   13M  376M   4% /run</span>
+<span class="go">/dev/sda1       290G   22G  254G   8% /</span>
+<span class="go">tmpfs           1.9G  1.1M  1.9G   1% /dev/shm</span>
+<span class="go">tmpfs           5.0M  4.0K  5.0M   1% /run/lock</span>
+<span class="go">tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup</span>
+<span class="go">tmpfs           388M   12K  388M   1% /run/user/1000</span>
+</pre></div>
+</div>
+<p><strong>du</strong> 对文件和目录磁盘使用的空间的查看</p>
+<ol class="arabic simple">
+<li>-a ：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已。</li>
+<li>-h ：以人们较易读的容量格式 (G/M) 显示；</li>
+<li>-s ：列出总量而已，而不列出每个各别的目录占用容量；</li>
+<li>-S ：不包括子目录下的总计，与 -s 有点差别。</li>
+<li>-k ：以 KBytes 列出容量显示；</li>
+<li>-m ：以 MBytes 列出容量显示；</li>
+</ol>
+<p>常用的命令</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~$</span> du -sk ./*
+</pre></div>
+</div>
+<p><strong>fdisk</strong> 磁盘分区工具</p>
+</div>
+<div class="section" id="id9">
+<h2>linux查看硬件配置信息<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>CPU信息</li>
 </ol>
@@ -210,16 +337,16 @@
 <div class="section" id="linux-cut">
 <h2>linux 文本处理利器之cut<a class="headerlink" href="#linux-cut" title="Permalink to this headline">¶</a></h2>
 <p>cut命令是一个选取命令，其功能是将文件中的每一行“字节” “字符” “字符” 进行剪切，选取我们需要的，并将这些选取好的数据输出至标准输出</p>
-<div class="section" id="id4">
-<h3>格式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>格式<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><cite>cut -[n]b file</cite></p>
 <p><cite>cut -c file</cite></p>
 <p><cite>cut -d[分隔符] -f[域] file</cite></p>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h3>参数解释<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>参数解释<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p><strong>-b(bytes)</strong></p>
 <blockquote>
 <div>以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div></blockquote>
@@ -236,8 +363,8 @@
 <blockquote>
 <div>取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</div></blockquote>
 </div>
-<div class="section" id="id6">
-<h3>举例<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>举例<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>原始文本</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
 <span class="go">557adfhg</span>
@@ -392,16 +519,21 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Linux常用工具.命令</a><ul>
-<li><a class="reference internal" href="#id1">linux 文件目录</a></li>
+<li><a class="reference internal" href="#id2">linux命令大全</a></li>
+<li><a class="reference internal" href="#id3">linux 文件目录</a></li>
 <li><a class="reference internal" href="#windowsputty">windows下面putty 免密登录</a></li>
 <li><a class="reference internal" href="#linuxssh">linux下ssh免密登录</a></li>
-<li><a class="reference internal" href="#id2">Linux下SSH登录别名配置</a></li>
-<li><a class="reference internal" href="#id3">linux查看硬件配置信息</a></li>
+<li><a class="reference internal" href="#id4">Linux下SSH登录别名配置</a></li>
+<li><a class="reference internal" href="#id5">Linux 文件权限</a></li>
+<li><a class="reference internal" href="#id6">linux 硬连接和软连接</a></li>
+<li><a class="reference internal" href="#id7">linux 用户管理</a></li>
+<li><a class="reference internal" href="#id8">linux磁盘管理命令</a></li>
+<li><a class="reference internal" href="#id9">linux查看硬件配置信息</a></li>
 <li><a class="reference internal" href="#linux-sed">linux 文本处理利器之sed</a></li>
 <li><a class="reference internal" href="#linux-cut">linux 文本处理利器之cut</a><ul>
-<li><a class="reference internal" href="#id4">格式</a></li>
-<li><a class="reference internal" href="#id5">参数解释</a></li>
-<li><a class="reference internal" href="#id6">举例</a></li>
+<li><a class="reference internal" href="#id10">格式</a></li>
+<li><a class="reference internal" href="#id11">参数解释</a></li>
+<li><a class="reference internal" href="#id12">举例</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#linuxawk">linux文本处理终极大招之awk</a></li>
