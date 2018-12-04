@@ -45,7 +45,30 @@
 <h2><a class="reference external" href="http://www.runoob.com/linux/linux-command-manual.html">linux命令大全</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id3">
-<h2>linux 文件目录<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>Linux 增加用户<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>ubuntu建用户最好用**adduser**，虽然adduser和useradd是一样的在别的linux糸统下，但是我在ubuntu下用useradd时，并没有创建同名的用户主目录。</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/python$</span> sudo adduser tonli
+<span class="go">Adding user `tonli&#39; ...</span>
+<span class="go">Adding new group `tonli&#39; (1015) ...</span>
+<span class="go">Adding new user `tonli&#39; (1015) with group `tonli&#39; ...</span>
+<span class="go">Creating home directory `/home/tonli&#39; ...</span>
+<span class="go">Copying files from `/etc/skel&#39; ...</span>
+<span class="go">Enter new UNIX password:</span>
+<span class="go">Retype new UNIX password:</span>
+<span class="go">passwd: password updated successfully</span>
+<span class="go">Changing the user information for tonli</span>
+<span class="go">Enter the new value, or press ENTER for the default</span>
+<span class="go">    Full Name []:</span>
+<span class="go">    Room Number []:</span>
+<span class="go">    Work Phone []:</span>
+<span class="go">    Home Phone []:</span>
+<span class="go">    Other []:</span>
+<span class="go">Is the information correct? [Y/n] y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>linux 文件目录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">/bin usr/bin /sbin/ /user/sbin</p>
 <blockquote>
@@ -159,8 +182,8 @@
 <li>搞定。</li>
 </ol>
 </div>
-<div class="section" id="id4">
-<h2>Linux下SSH登录别名配置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Linux下SSH登录别名配置<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>修改~/.ssh/config文件，在文件中追加以下信息</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Host    别名</span>
 <span class="go">    HostName        主机名</span>
@@ -170,8 +193,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>Linux 文件权限<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Linux 文件权限<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p><strong>用户分组</strong></p>
 <ol class="arabic simple">
 <li>1,2,3 表示属主权限</li>
@@ -191,8 +214,8 @@
 <li>x:1</li>
 </ol>
 </div>
-<div class="section" id="id6">
-<h2>linux 硬连接和软连接<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>linux 硬连接和软连接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p><strong>硬连接</strong></p>
 <p>硬连接指通过索引节点来进行连接。</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> touch file1
@@ -251,12 +274,12 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>linux 用户管理<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>linux 用户管理<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>用户的记录在/etc/passwd目录中。</p>
 </div>
-<div class="section" id="id8">
-<h2>linux磁盘管理命令<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>linux磁盘管理命令<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p><strong>df</strong> 检查文件系统的磁盘空间占用情况</p>
 <ol class="arabic simple">
 <li>-a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；</li>
@@ -294,8 +317,8 @@
 </div>
 <p><strong>fdisk</strong> 磁盘分区工具</p>
 </div>
-<div class="section" id="id9">
-<h2>linux查看硬件配置信息<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>linux查看硬件配置信息<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>CPU信息</li>
 </ol>
@@ -337,16 +360,16 @@
 <div class="section" id="linux-cut">
 <h2>linux 文本处理利器之cut<a class="headerlink" href="#linux-cut" title="Permalink to this headline">¶</a></h2>
 <p>cut命令是一个选取命令，其功能是将文件中的每一行“字节” “字符” “字符” 进行剪切，选取我们需要的，并将这些选取好的数据输出至标准输出</p>
-<div class="section" id="id10">
-<h3>格式<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>格式<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><cite>cut -[n]b file</cite></p>
 <p><cite>cut -c file</cite></p>
 <p><cite>cut -d[分隔符] -f[域] file</cite></p>
 </div></blockquote>
 </div>
-<div class="section" id="id11">
-<h3>参数解释<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>参数解释<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p><strong>-b(bytes)</strong></p>
 <blockquote>
 <div>以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div></blockquote>
@@ -363,8 +386,8 @@
 <blockquote>
 <div>取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</div></blockquote>
 </div>
-<div class="section" id="id12">
-<h3>举例<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>举例<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>原始文本</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
 <span class="go">557adfhg</span>
@@ -520,20 +543,21 @@
   <ul>
 <li><a class="reference internal" href="#">Linux常用工具.命令</a><ul>
 <li><a class="reference internal" href="#id2">linux命令大全</a></li>
-<li><a class="reference internal" href="#id3">linux 文件目录</a></li>
+<li><a class="reference internal" href="#id3">Linux 增加用户</a></li>
+<li><a class="reference internal" href="#id4">linux 文件目录</a></li>
 <li><a class="reference internal" href="#windowsputty">windows下面putty 免密登录</a></li>
 <li><a class="reference internal" href="#linuxssh">linux下ssh免密登录</a></li>
-<li><a class="reference internal" href="#id4">Linux下SSH登录别名配置</a></li>
-<li><a class="reference internal" href="#id5">Linux 文件权限</a></li>
-<li><a class="reference internal" href="#id6">linux 硬连接和软连接</a></li>
-<li><a class="reference internal" href="#id7">linux 用户管理</a></li>
-<li><a class="reference internal" href="#id8">linux磁盘管理命令</a></li>
-<li><a class="reference internal" href="#id9">linux查看硬件配置信息</a></li>
+<li><a class="reference internal" href="#id5">Linux下SSH登录别名配置</a></li>
+<li><a class="reference internal" href="#id6">Linux 文件权限</a></li>
+<li><a class="reference internal" href="#id7">linux 硬连接和软连接</a></li>
+<li><a class="reference internal" href="#id8">linux 用户管理</a></li>
+<li><a class="reference internal" href="#id9">linux磁盘管理命令</a></li>
+<li><a class="reference internal" href="#id10">linux查看硬件配置信息</a></li>
 <li><a class="reference internal" href="#linux-sed">linux 文本处理利器之sed</a></li>
 <li><a class="reference internal" href="#linux-cut">linux 文本处理利器之cut</a><ul>
-<li><a class="reference internal" href="#id10">格式</a></li>
-<li><a class="reference internal" href="#id11">参数解释</a></li>
-<li><a class="reference internal" href="#id12">举例</a></li>
+<li><a class="reference internal" href="#id11">格式</a></li>
+<li><a class="reference internal" href="#id12">参数解释</a></li>
+<li><a class="reference internal" href="#id13">举例</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#linuxawk">linux文本处理终极大招之awk</a></li>

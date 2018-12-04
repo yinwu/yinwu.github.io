@@ -222,4 +222,13 @@ set up-stream to a local branch
 #. Git 操作
 ----------------------
 
+git清楚本地缓存的命令
+^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: console
+
+	git rm -r --cached .
+	git add .
+	git commit -m 'update .gitignore'
+
+通过清楚缓存，可以解决.gitignore文件不生效的问题。

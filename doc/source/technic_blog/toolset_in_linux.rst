@@ -5,6 +5,33 @@ Linux常用工具.命令
 ------------------------------------------------------------------------
 
 
+Linux 增加用户
+--------------
+
+ubuntu建用户最好用**adduser**，虽然adduser和useradd是一样的在别的linux糸统下，但是我在ubuntu下用useradd时，并没有创建同名的用户主目录。
+
+.. code-block:: console
+
+    test@test:~/learning/python$ sudo adduser tonli
+    Adding user `tonli' ...
+    Adding new group `tonli' (1015) ...
+    Adding new user `tonli' (1015) with group `tonli' ...
+    Creating home directory `/home/tonli' ...
+    Copying files from `/etc/skel' ...
+    Enter new UNIX password: 
+    Retype new UNIX password: 
+    passwd: password updated successfully
+    Changing the user information for tonli
+    Enter the new value, or press ENTER for the default
+        Full Name []: 
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+    Is the information correct? [Y/n] y
+
+
+
 linux 文件目录
 --------------
 
@@ -523,3 +550,5 @@ cut命令是一个选取命令，其功能是将文件中的每一行“字节�
 
 linux文本处理终极大招之awk
 -----------------------------
+
+
