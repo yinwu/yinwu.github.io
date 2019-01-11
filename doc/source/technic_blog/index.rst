@@ -26,8 +26,10 @@
    the_crowd
    pyramid_princible
    shell_basic
+   make_cmake_tutorial
+   asynchronous_mechanisms
 
-    
+
 
 
 
