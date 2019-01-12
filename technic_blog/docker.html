@@ -1,42 +1,36 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Docker技术 &mdash; Blog  documentation</title>
-    
+    <title>Docker技术 &#8212; Blog  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Blog  documentation" href="../index.html" />
-    <link rel="up" title="技术专题" href="blog.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="环境配置及常见问题" href="problem_solve.html" />
     <link rel="prev" title="Linux常用工具.命令" href="toolset_in_linux.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body role="document">  
+  </head><body>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="docker">
@@ -99,21 +93,21 @@
 <ol class="arabic simple">
 <li>安装命令</li>
 </ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo snap install docker
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo snap install docker
 <span class="go">docker 17.06.2-ce from &#39;docker-inc&#39; installed</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>查看版本</li>
 </ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker -v
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker -v
 <span class="go">Docker version 17.06.2-ce, build a04f55b</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>Hello world</li>
 </ol>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo docker run ubuntu:15.10 /bin/echo <span class="s2">&quot;Hello world&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> sudo docker run ubuntu:15.10 /bin/echo <span class="s2">&quot;Hello world&quot;</span>
 <span class="go">Unable to find image &#39;ubuntu:15.10&#39; locally</span>
 <span class="go">15.10: Pulling from library/ubuntu</span>
 <span class="go">7dcf5a444392: Pull complete</span>
@@ -129,7 +123,7 @@
 <li>reference document</li>
 </ol>
 <p>安装命令的提示来自shell中输入docker.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~$</span> docker
 
 <span class="go">Command &#39;docker&#39; not found, but can be installed with:</span>
 
@@ -150,7 +144,7 @@
 </div>
 <div class="section" id="docker-exec">
 <h2>进入docker容器的方式 - <strong>exec</strong><a class="headerlink" href="#docker-exec" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo docker exec -it f73ab3bbde31 /bin/bash</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo docker exec -it f73ab3bbde31 /bin/bash</span>
 </pre></div>
 </div>
 </div>
@@ -186,6 +180,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -207,7 +202,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="blog.html">技术专题</a><ul>
+  <li><a href="index.html">技术专题</a><ul>
       <li>Previous: <a href="toolset_in_linux.html" title="previous chapter">Linux常用工具.命令</a></li>
       <li>Next: <a href="problem_solve.html" title="next chapter">环境配置及常见问题</a></li>
   </ul></li>
@@ -217,21 +212,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/docker.txt"
+      <li><a href="../_sources/technic_blog/docker.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -242,11 +236,11 @@
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
-      <a href="../_sources/technic_blog/docker.txt"
+      <a href="../_sources/technic_blog/docker.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
