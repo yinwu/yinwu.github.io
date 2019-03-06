@@ -1,36 +1,42 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Git - Just do IT &#8212; Blog  documentation</title>
+    
+    <title>Git - Just do IT &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="index.html" />
     <link rel="next" title="Interview" href="interview.html" />
     <link rel="prev" title="Sphinx + Gitlub搭建自己的博客" href="sphinx_github_blog_setup.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="git-just-do-it">
@@ -55,19 +61,19 @@
 <h2>#. branch management in GIT<a class="headerlink" href="#branch-management-in-git" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="add-remote-branch">
 <h3>Add remote branch<a class="headerlink" href="#add-remote-branch" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git remote add origin git@server-name:path/repo-name.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git remote add origin git@server-name:path/repo-name.git</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="push-local-branch-to-remote">
 <h3>push local branch to remote<a class="headerlink" href="#push-local-branch-to-remote" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git push -u origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git push -u origin master</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="show-all-remote-branch">
 <h3>show all remote branch<a class="headerlink" href="#show-all-remote-branch" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[yinwu@~]$</span> git branch -a
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[yinwu@~]$</span> git branch -a
 <span class="go">  JIRA-Support</span>
 <span class="go">* master</span>
 <span class="go">  remotes/origin/20180227html</span>
@@ -82,14 +88,14 @@
 </div>
 <div class="section" id="how-to-switch-branch">
 <h3>How to switch branch<a class="headerlink" href="#how-to-switch-branch" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[yinwu@qgp_dev qgp]$</span> git checkout -b remotes/origin/JIRA-Support
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[yinwu@qgp_dev qgp]$</span> git checkout -b remotes/origin/JIRA-Support
 <span class="go">Switched to a new branch &#39;remotes/origin/JIRA-Support&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-rename-a-branch">
 <h3>How to rename a branch<a class="headerlink" href="#how-to-rename-a-branch" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git branch -m remotes/origin/JIRA-Support Jira-support
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git branch -m remotes/origin/JIRA-Support Jira-support
 </pre></div>
 </div>
 </div>
@@ -115,7 +121,7 @@
 <h2>#. Git configuration<a class="headerlink" href="#git-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="set-git-editor">
 <h3>set git editor<a class="headerlink" href="#set-git-editor" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git config --global core.editor vim
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git config --global core.editor vim
 
 <span class="go">参考 `起步 - 初次运行 Git 前的配置 &lt;https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE&gt;`_</span>
 </pre></div>
@@ -130,7 +136,7 @@
 </div>
 <div class="section" id="git-alias">
 <h3>配置GIT alias<a class="headerlink" href="#git-alias" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git config --global alias.co checkout
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git config --global alias.co checkout
 <span class="gp">$</span> git config --global alias.ci commit
 <span class="gp">$</span> git config --global alias.br branch
 <span class="gp">$</span> git config --global alias.lg <span class="s2">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
@@ -142,7 +148,7 @@
 <h2>#. Git diff<a class="headerlink" href="#git-diff" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-diff-the-commit-change-and-working-copy">
 <h3>How to diff the commit change and working copy<a class="headerlink" href="#how-to-diff-the-commit-change-and-working-copy" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git diff HEAD -- readme.txt</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git diff HEAD -- readme.txt</span>
 </pre></div>
 </div>
 </div>
@@ -152,7 +158,7 @@
 <ul>
 <li><p class="first">回撤工作区的修改</p>
 <blockquote>
-<div><p>git checkout – your_file</p>
+<div><p>git checkout &#8211; your_file</p>
 </div></blockquote>
 </li>
 <li><p class="first">回撤暂存区的修改</p>
@@ -162,14 +168,14 @@
 </li>
 <li><p class="first">回撤提交区的修改</p>
 <blockquote>
-<div><p>get reset –hard HEAD^/HEAD^^/HEAD^^^</p>
+<div><p>get reset &#8211;hard HEAD^/HEAD^^/HEAD^^^</p>
 </div></blockquote>
 </li>
 </ul>
 </div>
 <div class="section" id="git-fix-confict">
 <h2>#. Git fix confict<a class="headerlink" href="#git-fix-confict" title="Permalink to this headline">¶</a></h2>
-<p>查看分支合并图 git log –graph –pretty=oneline –abbrev-commit</p>
+<p>查看分支合并图 git log &#8211;graph &#8211;pretty=oneline &#8211;abbrev-commit</p>
 </div>
 <div class="section" id="git-work-flow">
 <h2>#. Git work flow<a class="headerlink" href="#git-work-flow" title="Permalink to this headline">¶</a></h2>
@@ -183,7 +189,7 @@
 <p>git stash pop 恢复现场的同时删除stash</p>
 <div class="section" id="set-up-stream-to-a-local-branch">
 <h3>set up-stream to a local branch<a class="headerlink" href="#set-up-stream-to-a-local-branch" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">yinwu@~ MINGW64 /d/QGP/JiraSupport/qgp (Jira-support)</span>
 <span class="gp">$</span> git branch --set-upstream-to<span class="o">=</span>remotes/origin/JIRA-Support Jira-support
 <span class="go">Branch Jira-support set up to track remote branch JIRA-Support from origin.</span>
 </pre></div>
@@ -196,13 +202,13 @@
 <div><ul>
 <li><p class="first">git tag &lt;tagname&gt; 用于新建一个标签，默认为HEAD，也可以指定一个commit id；</p>
 </li>
-<li><p class="first">git tag -a &lt;tagname&gt; -m “blablabla…” 可以指定标签信息；</p>
+<li><p class="first">git tag -a &lt;tagname&gt; -m &#8220;blablabla...&#8221; 可以指定标签信息；</p>
 </li>
 <li><p class="first">git tag 可以查看所有标签。</p>
 </li>
 <li><p class="first">git push origin &lt;tagname&gt; 可以推送一个本地标签；</p>
 </li>
-<li><p class="first">git push origin –tags 可以推送全部未推送过的本地标签；</p>
+<li><p class="first">git push origin &#8211;tags 可以推送全部未推送过的本地标签；</p>
 </li>
 <li><p class="first">git tag -d &lt;tagname&gt; 可以删除一个本地标签；</p>
 <blockquote>
@@ -223,26 +229,42 @@
 <p>没有冲突或者解决掉冲突后，再用git push origin &lt;branch-name&gt;推送就能成功！</p>
 <blockquote>
 <div>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
-用命令git branch –set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;。</div></blockquote>
+用命令git branch &#8211;set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;。</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
 <h2>#. Git 操作<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
 <h3>git清楚本地缓存的命令<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git rm -r --cached .</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git rm -r --cached .</span>
 <span class="go">git add .</span>
 <span class="go">git commit -m &#39;update .gitignore&#39;</span>
 </pre></div>
 </div>
 <p>通过清楚缓存，可以解决.gitignore文件不生效的问题。</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>本地创建远端分支</dt>
+<dd><p class="first last">今天想把本地的一点改动push到远端的服务器上，无意间发件竟然创建了一个新的分支，并且把新分支push上去了。
+之前同事告诉我，只能在远端通过网页创建分支，然后本地修改。不能把本地branch push上去。看来并不正确。
+记录一下今天的操作命令：</p>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">350  git checkout -b remote/feature/adaptation_to_k3_7.9_image</span>
+<span class="go">353  git add .</span>
+<span class="go">357  git commit ./ -m &quot;adaptation to 7.9 image&quot;</span>
+<span class="go">360   git push --set-upstream origin remote/feature/adaptation_to_k3_7.9_image</span>
+<span class="go">361   git push --set-upstream origin remote/feature/adaptation_to_k3_7.9_image</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -302,20 +324,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/git.rst.txt"
+      <li><a href="../_sources/technic_blog/git.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -326,11 +349,11 @@
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/technic_blog/git.rst.txt"
+      <a href="../_sources/technic_blog/git.txt"
           rel="nofollow">Page source</a>
     </div>
 

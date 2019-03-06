@@ -1,36 +1,42 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Fluent Python(流畅的python) &#8212; Blog  documentation</title>
+    
+    <title>Fluent Python(流畅的python) &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="blog.html" />
     <link rel="next" title="编程珠玑" href="program_pearl.html" />
-    <link rel="prev" title="REDIS KEY-VALUE数据库" href="redis.html" />
+    <link rel="prev" title="C++ prime" href="c++_prime.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="fluent-python-python">
@@ -119,14 +125,14 @@
 <li><p class="first">列表推导</p>
 <blockquote>
 <div><p>列表推导是创建新列表的快捷方式。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">codecs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">codecs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">笛卡尔积</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">]</span>
 <span class="n">t_shirt</span> <span class="o">=</span> <span class="p">[(</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">]</span>
 </pre></div>
@@ -137,7 +143,7 @@
 <blockquote>
 <div><p>相比列表推导，生成器表达式是生成列表更好的选择，因为生成器表达式遵守了迭代器协议，可以逐个产出元素</p>
 <p>生成器表达式语法跟列表推导差不多，只不过把方括号换成圆括号</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">t_shirt</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">)</span>
@@ -148,7 +154,7 @@
 </li>
 <li><p class="first">元组的拆包</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span>x , y = (1, 2)
+<div><div class="highlight-python"><div class="highlight"><pre>x , y = (1, 2)
 
 passport_code = (&quot;USA&quot;, &quot;123456&quot;)
 print(&quot;%s %s&quot; % passport_code)
@@ -176,7 +182,7 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 </li>
 <li><p class="first">具名元组</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtruple</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtruple</span>
 <span class="n">City</span> <span class="o">=</span> <span class="n">nametruple</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="s1">&#39;name country population coordinate&#39;</span><span class="p">)</span>
 <span class="n">tokyo</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="s2">&quot;Tokyp&quot;</span><span class="p">,</span> <span class="s2">&quot;japan&quot;</span><span class="p">,</span> <span class="mi">320000</span><span class="p">,</span> <span class="p">(</span><span class="mf">35.6124</span><span class="p">,</span> <span class="mf">42.5678</span><span class="p">))</span>
 
@@ -195,7 +201,7 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 </li>
 <li><p class="first">元组的方法和属性</p>
 <blockquote>
-<div><p>…</p>
+<div><p>...</p>
 </div></blockquote>
 </li>
 <li><p class="first">切片</p>
@@ -237,13 +243,13 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 <p>使用iter内置函数可以获取迭代器的对象。如果对象实现了能返回迭代器的__iter__方法，那么对象就是可迭代的。
 序列都是可迭代的原因，因为实现了__getitem__方法。</p>
 <p>可迭代的对象和迭代器之间的关系： python从可迭代的对象获取迭代器</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
 <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>字符串”abc”是可迭代的对象，背后是有迭代器，只不过我们看不到</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
+<p>字符串&#8221;abc&#8221;是可迭代的对象，背后是有迭代器，只不过我们看不到</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
 <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1">#使用可迭代的对象构造迭代器</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
@@ -264,11 +270,11 @@ name, addr, code, (lattitude, longtitude) = (&quot;test&quot;, &quot;beijing&quo
 <p>迭代器是这样的对象，实现了无参数的__next__方法，返回序列的下一个元素，没有元素则抛出StopIteration异常
 python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代。</p>
 <p><cite>可迭代的对象一定不能是自身的迭代器，也就是说，可迭代的对象必须实现__iter__方法，但是不能实现__next__方法， 另一方面，迭代器应该一直可以迭代，迭代器的__iter__方法应该返回自身</cite></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
     <span class="o">...</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">SentenceIterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">)</span>
 
     <span class="o">...</span>
@@ -284,18 +290,18 @@ python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">word</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id11">
 <h3>生成器函数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
     <span class="o">...</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">word</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">word</span>
 
@@ -313,7 +319,7 @@ python中的迭代器还实现了__iter__方法，因此迭代器也可以迭代
 <li>对迭代器调用next函数会获取yield生成的下一个元素</li>
 <li>生成器函数的定义执行完毕后，生成器对象会抛出StopIteration异常。</li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>def gen():
+<div class="highlight-python"><div class="highlight"><pre>def gen():
     yield 1
     yield 2
     yield 3
@@ -331,12 +337,12 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 </div>
 <div class="section" id="id13">
 <h3>生成器的惰性实现<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span>
 </pre></div>
@@ -346,7 +352,7 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 </div>
 <div class="section" id="id14">
 <h3>生成器表达式<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_ab</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_ab</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
     <span class="k">yield</span> <span class="s2">&quot;A&quot;</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
@@ -357,10 +363,10 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <ul class="simple">
 <li>列表推导</li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>&gt;&gt; start
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span>&gt;&gt; start
 <span class="gp">&gt;</span>&gt;&gt; <span class="k">continue</span>
 <span class="gp">&gt;</span>&gt;&gt; end
 
@@ -374,10 +380,10 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <ul class="simple">
 <li>生成器表达式</li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen_ab</span><span class="p">()]</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">for i in res1:</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">for i in res1:</span>
 <span class="go">    print i</span>
 
 <span class="gp">&gt;</span>&gt;&gt; start
@@ -390,9 +396,9 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 </div>
 <div class="section" id="sentence">
 <h3>使用生成器表达式实现Sentence类<a class="headerlink" href="#sentence" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Sentence</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">RE_WORD</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -426,7 +432,7 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <dt>try:</dt>
 <dd>dangerous_call()</dd>
 <dt>except OSError:</dt>
-<dd>log(“…”)</dd>
+<dd>log(&#8221;...&#8221;)</dd>
 <dt>else:</dt>
 <dd>after_all()</dd>
 </dl>
@@ -458,7 +464,6 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -507,8 +512,8 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">技术专题</a><ul>
-      <li>Previous: <a href="redis.html" title="previous chapter">REDIS KEY-VALUE数据库</a></li>
+  <li><a href="blog.html">技术专题</a><ul>
+      <li>Previous: <a href="c++_prime.html" title="previous chapter">C++ prime</a></li>
       <li>Next: <a href="program_pearl.html" title="next chapter">编程珠玑</a></li>
   </ul></li>
   </ul></li>
@@ -517,20 +522,21 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/fluent_python.rst.txt"
+      <li><a href="../_sources/technic_blog/fluent_python.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -541,11 +547,11 @@ __iter__方法是生成器函数，调用时会构建一个一个实现了迭代
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/technic_blog/fluent_python.rst.txt"
+      <a href="../_sources/technic_blog/fluent_python.txt"
           rel="nofollow">Page source</a>
     </div>
 

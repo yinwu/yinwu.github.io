@@ -1,36 +1,42 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Linux常用工具.命令 &#8212; Blog  documentation</title>
+    
+    <title>Linux常用工具.命令 &mdash; Blog  documentation</title>
+    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Blog  documentation" href="../index.html" />
+    <link rel="up" title="技术专题" href="index.html" />
     <link rel="next" title="Docker技术" href="docker.html" />
     <link rel="prev" title="Linux/Unix系统知识" href="linux_unix_program.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
+  </head>
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="linux">
@@ -41,7 +47,7 @@
 <div class="section" id="id3">
 <h2>Linux 增加用户<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>ubuntu建用户最好用**adduser**，虽然adduser和useradd是一样的在别的linux糸统下，但是我在ubuntu下用useradd时，并没有创建同名的用户主目录。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/python$</span> sudo adduser tonli
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/python$</span> sudo adduser tonli
 <span class="go">Adding user `tonli&#39; ...</span>
 <span class="go">Adding new group `tonli&#39; (1015) ...</span>
 <span class="go">Adding new user `tonli&#39; (1015) with group `tonli&#39; ...</span>
@@ -163,13 +169,13 @@
 <ol class="arabic simple">
 <li>生成public key和private key证书</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh-keygen -t rsa</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh-keygen -t rsa</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>传输public key到远程机器，并且追加写入authorized_keys文件中。</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh-copy-id -i ~/.ssh/id_rsa.pub tester@10.159.2xx.2xx</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh-copy-id -i ~/.ssh/id_rsa.pub tester@10.159.2xx.2xx</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -179,7 +185,7 @@
 <div class="section" id="id5">
 <h2>Linux下SSH登录别名配置<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>修改~/.ssh/config文件，在文件中追加以下信息</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Host    别名</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Host    别名</span>
 <span class="go">    HostName        主机名</span>
 <span class="go">    Port            端口</span>
 <span class="go">    User            用户名</span>
@@ -212,13 +218,13 @@
 <h2>linux 硬连接和软连接<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p><strong>硬连接</strong></p>
 <p>硬连接指通过索引节点来进行连接。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/linux_link$</span> touch file1
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> touch file1
 <span class="gp">test@test:~/learning/linux_link$</span> ln file1 file2
 </pre></div>
 </div>
 <p><strong>软连接</strong></p>
 <p>软连接称为符号连接，软连接类似建立快捷方式。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/linux_link$</span> ln file1 file3 -s
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> ln file1 file3 -s
 <span class="gp">test@test:~/learning/linux_link$</span> ls -ali
 </pre></div>
 </div>
@@ -226,7 +232,7 @@
 <p>硬连接文件具有相同的节点索引。删除其中一个不会影响另外一个。
 两个文件具有不同的节点索引，其中一个指向另外一个。
 删除链接目标文件会导致符号连接失效。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/linux_link$</span> ls -ali
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> ls -ali
 <span class="go">total 8</span>
 <span class="go">9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:32 .</span>
 <span class="go">9053962 drwxrwxr-x 6 test test 4096 9鏈?  4 18:31 ..</span>
@@ -237,7 +243,7 @@
 </div>
 <p><strong>cp区别</strong></p>
 <p>拷贝硬连接属性，而不是文件本身。 file6和file2具有相同的node index。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/linux_link$</span> cp file2 file6 -l
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> cp file2 file6 -l
 <span class="gp">test@test:~/learning/linux_link$</span> ls -ali
 <span class="go">total 28</span>
 <span class="go">9183523 drwxrwxr-x 2 test test 4096 9鏈?  4 18:38 .</span>
@@ -251,7 +257,7 @@
 </pre></div>
 </div>
 <p>拷贝软连接属性，而不是文件本身。file7是file1的软连接。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~/learning/linux_link$</span> cp file1 file7 -s
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~/learning/linux_link$</span> cp file1 file7 -s
 <span class="gp">test@test:~/learning/linux_link$</span>
 <span class="gp">test@test:~/learning/linux_link$</span>
 <span class="gp">test@test:~/learning/linux_link$</span> ls -ali
@@ -285,7 +291,7 @@
 <li>-i ：不用硬盘容量，而以 inode 的数量来显示</li>
 </ol>
 <p>常用的命令</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~$</span> df -h
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~$</span> df -h
 <span class="go">Filesystem      Size  Used Avail Use% Mounted on</span>
 <span class="go">udev            1.9G     0  1.9G   0% /dev</span>
 <span class="go">tmpfs           388M   13M  376M   4% /run</span>
@@ -306,7 +312,7 @@
 <li>-m ：以 MBytes 列出容量显示；</li>
 </ol>
 <p>常用的命令</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">test@test:~$</span> du -sk ./*
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">test@test:~$</span> du -sk ./*
 </pre></div>
 </div>
 <p><strong>fdisk</strong> 磁盘分区工具</p>
@@ -316,7 +322,7 @@
 <ol class="arabic simple">
 <li>CPU信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lscpu</span>
 </span><span class="go">Architecture:          x86_64</span>
 <span class="go">CPU op-mode(s):        32-bit, 64-bit</span>
 <span class="go">Byte Order:            Little Endian</span>
@@ -326,7 +332,7 @@
 <ol class="arabic simple">
 <li>内存信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ cat /proc/meminfo</span>
 </span><span class="go">MemTotal:        3970012 kB</span>
 <span class="go">MemFree:          140060 kB</span>
 <span class="go">MemAvailable:     777144 kB</span>
@@ -338,7 +344,7 @@
 <ol class="arabic simple">
 <li>硬盘信息</li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="hll"><span class="go">~@~:~/doc$ lsblk</span>
 </span><span class="go">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span>
 <span class="go">sr0     11:0    1  1024M  0 rom</span>
 <span class="go">sda      8:0    0 298.1G  0 disk</span>
@@ -383,7 +389,7 @@
 <div class="section" id="id13">
 <h3>举例<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>原始文本</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cat text1.txt
 <span class="go">557adfhg</span>
 <span class="go">bcd5464b</span>
 <span class="go">135465453456</span>
@@ -402,7 +408,7 @@
 </pre></div>
 </div>
 <p>剪切单个字节</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">1</span> text1.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">1</span> text1.txt
 <span class="go">5</span>
 <span class="go">b</span>
 <span class="go">1</span>
@@ -411,7 +417,7 @@
 </pre></div>
 </div>
 <p>剪切多个字节</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">1</span>,3,5 text1.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 1,3,5 text1.txt
 <span class="go">57d</span>
 <span class="go">bd4</span>
 <span class="go">156</span>
@@ -419,7 +425,7 @@
 <span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
 
 
-<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">1</span>-5 text1.txt
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 1-5 text1.txt
 <span class="go">557ad</span>
 <span class="go">bcd54</span>
 <span class="go">13546</span>
@@ -434,7 +440,7 @@
 <span class="go">23354</span>
 <span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span>
 
-<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">3</span>- text1.txt
+<span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b 3- text1.txt
 <span class="go">7adfhg</span>
 <span class="go">d5464b</span>
 <span class="go">5465453456</span>
@@ -443,7 +449,7 @@
 </div>
 <p>剪切字符</p>
 <p>首先按照上面的例子对test2.txt进行操作，看有什么现象</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">2</span> text2.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">yinwu@yinwu-ThinkPad-E475:~/test$</span> cut -b <span class="m">2</span> text2.txt
 <span class="go">�</span>
 <span class="go">�</span>
 <span class="go">�</span>
@@ -454,7 +460,7 @@
 </pre></div>
 </div>
 <p>出现了乱码的现象，因为-b 只是针对字节进行裁剪，对一个汉字进行字节裁剪，得到的结果必然是乱码，若想使用 -b 命令对字节进行裁剪，那么则需要使用 -n 选项，此选项的作用是取消分割多字节字符</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span> test2.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span> test2.txt
 
 <span class="go">星</span>
 <span class="go">星</span>
@@ -462,7 +468,7 @@
 <span class="go">星</span>
 <span class="go">星</span>
 <span class="go">星</span>
-<span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span>,6  test2.txt
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6  test2.txt
 <span class="go">星</span>
 <span class="go">星期</span>
 <span class="go">星期</span>
@@ -470,7 +476,7 @@
 <span class="go">星期</span>
 <span class="go">星期</span>
 <span class="go">星期</span>
-<span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span>,6,9  test2.txt
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6,9  test2.txt
 <span class="go">星期</span>
 <span class="go">星期二</span>
 <span class="go">星期三</span>
@@ -478,7 +484,7 @@
 <span class="go">星期五</span>
 <span class="go">星期六</span>
 <span class="go">星期日</span>
-<span class="gp">[root@localhost shell]#</span> cut -nb <span class="m">3</span>,6,9,12  test2.txt
+<span class="gp">[root@localhost shell]#</span> cut -nb 3,6,9,12  test2.txt
 <span class="go">星期一</span>
 <span class="go">星期二</span>
 <span class="go">星期三</span>
@@ -490,7 +496,7 @@
 </pre></div>
 </div>
 <p>使用-c的来剪切字符，和上面的 -nb 有些类似</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@localhost shell]#</span> cut -c <span class="m">1</span> test2.txt
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">[root@localhost shell]#</span> cut -c <span class="m">1</span> test2.txt
 
 <span class="go">星</span>
 <span class="go">星</span>
@@ -506,7 +512,7 @@
 <span class="go">期</span>
 <span class="go">期</span>
 <span class="go">期</span>
-<span class="gp">[root@localhost shell]#</span> cut -c <span class="m">1</span>-3 test2.txt
+<span class="gp">[root@localhost shell]#</span> cut -c 1-3 test2.txt
 <span class="go">星期</span>
 <span class="go">星期二</span>
 <span class="go">星期三</span>
@@ -529,7 +535,6 @@
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -573,20 +578,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/toolset_in_linux.rst.txt"
+      <li><a href="../_sources/technic_blog/toolset_in_linux.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -597,11 +603,11 @@
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
-      <a href="../_sources/technic_blog/toolset_in_linux.rst.txt"
+      <a href="../_sources/technic_blog/toolset_in_linux.txt"
           rel="nofollow">Page source</a>
     </div>
 

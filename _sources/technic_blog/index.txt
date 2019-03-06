@@ -17,7 +17,6 @@
    mstp
    regular_expression
    redis
-   c++_prime
    fluent_python
    program_pearl
    the_intelligent_investor
@@ -26,8 +25,16 @@
    the_crowd
    pyramid_princible
    shell_basic
+   make_cmake_tutorial
+   asynchronous_mechanisms
+   http_basic
+   lience_software
+   netconf
+   ssh
+   sublime_user_manual
+   yang
 
-    
+
 
 
 
