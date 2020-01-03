@@ -20,6 +20,7 @@ shell基本知识
 * 单引号的所有字符会原样输出，字符串中的变量是无效的。
 * 单引号中不能再出现单引号，也不能出现转义符。
 
+
 .. code-block:: console
 	:linenos:                                                   
     :emphasize-lines: 7
@@ -32,6 +33,7 @@ shell基本知识
 	yinwu@yinwu-ThinkPad-E475:~/learning/shell$ ./variable.sh 
 	hello ${name}
 	yinwu@yinwu-ThinkPad-E475:~/learning/shell$
+
 
 **双引号**a
 

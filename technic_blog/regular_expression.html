@@ -1,42 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Regular Expression &mdash; Blog  documentation</title>
-    
+    <meta charset="utf-8" />
+    <title>Regular Expression &#8212; Blog  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Blog  documentation" href="../index.html" />
-    <link rel="up" title="技术专题" href="blog.html" />
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="REDIS KEY-VALUE数据库" href="redis.html" />
     <link rel="prev" title="多生成树协议" href="mstp.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body role="document">  
+  </head><body>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="regular-expression">
@@ -79,25 +72,25 @@
 <blockquote>
 <div><p>正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。</p>
 <p>这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</p>
-<p>例如，&#8221;Windows(?=95|98|NT|2000)&#8221;能匹配&#8221;Windows2000&#8221;中的&#8221;Windows&#8221;，但不能匹配&#8221;Windows3.1&#8221;中的&#8221;Windows&#8221;。</p>
+<p>例如，”Windows(?=95|98|NT|2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。</p>
 <p>预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</p>
 </div></blockquote>
 <p><strong>(?!pattern)</strong></p>
 <blockquote>
 <div><p>正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。</p>
 <p>这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</p>
-<p>例如&#8221;Windows(?!95|98|NT|2000)&#8221;能匹配&#8221;Windows3.1&#8221;中的&#8221;Windows&#8221;，但不能匹配&#8221;Windows2000&#8221;中的&#8221;Windows&#8221;。</p>
+<p>例如”Windows(?!95|98|NT|2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。</p>
 <p>预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</p>
 </div></blockquote>
 <p><strong>(?&lt;=pattern)</strong></p>
 <blockquote>
 <div><p>反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。</p>
-<p>例如，&#8221;(?&lt;=95|98|NT|2000)Windows&#8221;能匹配&#8221;2000Windows&#8221;中的&#8221;Windows&#8221;，但不能匹配&#8221;3.1Windows&#8221;中的&#8221;Windows&#8221;。</p>
+<p>例如，”(?&lt;=95|98|NT|2000)Windows”能匹配”2000Windows”中的”Windows”，但不能匹配”3.1Windows”中的”Windows”。</p>
 </div></blockquote>
 <p><strong>(?&lt;!pattern)</strong></p>
 <blockquote>
 <div><p>反向否定预查，与正向否定预查类似，只是方向相反。</p>
-<p>例如&#8221;(?&lt;!95|98|NT|2000)Windows&#8221;能匹配&#8221;3.1Windows&#8221;中的&#8221;Windows&#8221;，但不能匹配&#8221;2000Windows&#8221;中的&#8221;Windows&#8221;。</p>
+<p>例如”(?&lt;!95|98|NT|2000)Windows”能匹配”3.1Windows”中的”Windows”，但不能匹配”2000Windows”中的”Windows”。</p>
 </div></blockquote>
 <p><strong>x|y</strong> 匹配x或y。</p>
 <p><strong>[xyz]</strong> 字符集合。匹配所包含的任意一个字符。</p>
@@ -106,8 +99,8 @@
 <p><strong>[^a-z]</strong> 负值字符范围。匹配任何不在指定范围内的任意字符。</p>
 <p><strong>\d</strong> 匹配一个数字字符。等价于 [0-9]。</p>
 <p><strong>\D</strong> 匹配一个非数字字符。等价于 [^0-9]。</p>
-<p><strong>\w</strong> 匹配字母、数字、下划线。等价于 &#8220;[<a href="#id11"><span class="problematic" id="id12">A-Za-z0-9_</span></a>]&#8221;。</p>
-<p><strong>\W</strong> 匹配非字母、数字、下划线。等价于 &#8220;[^A-<a href="#id13"><span class="problematic" id="id14">Za-z0-9_</span></a>]&#8221;。</p>
+<p><strong>\w</strong> 匹配字母、数字、下划线。等价于 “[<a href="#id11"><span class="problematic" id="id12">A-Za-z0-9_</span></a>]”。</p>
+<p><strong>\W</strong> 匹配非字母、数字、下划线。等价于 “[^A-<a href="#id13"><span class="problematic" id="id14">Za-z0-9_</span></a>]”。</p>
 </div>
 <div class="section" id="id5">
 <h2>限定符<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -123,17 +116,17 @@
 </div>
 <div class="section" id="id6">
 <h2>贪婪匹配和非贪婪匹配<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>限定符默认都是贪婪的，通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从&#8221;贪心&#8221;表达式转换为&#8221;非贪心&#8221;表达式或者最小匹配。</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">H1</span><span class="p">&gt;</span>Chapter 1 - 介绍正则表达式<span class="p">&lt;/</span><span class="nt">H1</span><span class="p">&gt;</span>
+<p>限定符默认都是贪婪的，通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从”贪心”表达式转换为”非贪心”表达式或者最小匹配。</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">H1</span><span class="p">&gt;</span>Chapter 1 - 介绍正则表达式<span class="p">&lt;/</span><span class="nt">H1</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p><strong>贪婪</strong></p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">/&lt;.*&gt;/</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/&lt;.*&gt;/</span>
 </pre></div>
 </div>
 <p>尽可能多的匹配,匹配的结果是“&lt;H1&gt;Chapter 1 - 介绍正则表达式&lt;/H1&gt;”</p>
 <p><strong>非贪婪</strong></p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">/&lt;.*?&gt;/</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/&lt;.*?&gt;/</span>
 </pre></div>
 </div>
 <p>只要匹配完成，就结束匹配过程。匹配的结果时&lt;H1&gt;</p>
@@ -147,31 +140,33 @@
 <blockquote>
 <div><p>字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。
 如果它位于字符串的结尾，它在单词的结尾处查找匹配项。</p>
-<p><strong>&#8220;/\bCha/&#8221;</strong> 匹配Chapter前三个字母。<strong>&#8220;/ter\b/&#8221;</strong> 匹配Chapter后三个字母。</p>
+<p><strong>“/\bCha/”</strong> 匹配Chapter前三个字母。<strong>”/ter\b/”</strong> 匹配Chapter后三个字母。</p>
 </div></blockquote>
 <p><strong>B</strong> 非字边界匹配。</p>
 <blockquote>
-<div><strong>&#8221;/\Bapt/&#8221;</strong> 匹配Chapter中的apt三个字符，并不匹配aptitude中的apt三个字符，也不匹配adapt中的后三个字母。</div></blockquote>
+<div><p><strong>“/\Bapt/”</strong> 匹配Chapter中的apt三个字符，并不匹配aptitude中的apt三个字符，也不匹配adapt中的后三个字母。</p>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="id8">
 <h2>选择<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。
-但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</div></blockquote>
+<div><p>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。
+但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</p>
+</div></blockquote>
 </div>
 <div class="section" id="id9">
 <h2>反向引用<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。</p>
 <p>可以使用非捕获元字符 ?:、?= 或 ?! 来重写捕获，忽略对相关匹配的保存。</p>
-<div class="highlight-html"><div class="highlight"><pre>var str = &quot;Is is the cost of of gasoline going up up&quot;;
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var str = &quot;Is is the cost of of gasoline going up up&quot;;
 var patt1 = /\b([a-z]+) \1\b/ig;
 document.write(str.match(patt1));
 </pre></div>
 </div>
 <p>捕获的表达式，正如 [a-z]+ 指定的，包括一个或多个字母。</p>
 <p>正则表达式的第二部分是对以前捕获的子匹配项的引用，即，单词的第二个匹配项正好由括号表达式匹配。1 指定第一个子匹配项。</p>
-<p>字边界元字符确保只检测整个单词。否则，诸如 &#8220;is issued&#8221; 或 &#8220;this is&#8221; 之类的词组将不能正确地被此表达式识别。</p>
+<p>字边界元字符确保只检测整个单词。否则，诸如 “is issued” 或 “this is” 之类的词组将不能正确地被此表达式识别。</p>
 <p>正则表达式后面的全局标记 g 指定将该表达式应用到输入字符串中能够查找到的尽可能多的匹配。</p>
 <p>表达式的结尾处的不区分大小写 i 标记指定不区分大小写。</p>
 <p>多行标记指定换行符的两边可能出现潜在的匹配。</p>
@@ -179,68 +174,97 @@ document.write(str.match(patt1));
 <div class="section" id="id10">
 <h2>运算符优先级<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>转移符</li>
-<li>圆括号和方括号 (), (?:), (?=), []</li>
-<li>限定符 *, +, ?, {n}, {n,}, {n,m}</li>
-<li>定位点和序列（即：位置和顺序）: ^, $, 任何元字符、任何字符</li>
-<li>替换，&#8221;或&#8221;操作 |</li>
+<li><p>转移符</p></li>
+<li><p>圆括号和方括号 (), (?:), (?=), []</p></li>
+<li><p>限定符 *, +, ?, {n}, {n,}, {n,m}</p></li>
+<li><p>定位点和序列（即：位置和顺序）: ^, $, 任何元字符、任何字符</p></li>
+<li><p>替换，”或”操作 |</p></li>
 </ol>
 </div>
 </div>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Regular Expression</a><ul>
-<li><a class="reference internal" href="#id1">普通字符</a></li>
-<li><a class="reference internal" href="#id2">非打印字符</a></li>
-<li><a class="reference internal" href="#id3">特殊字符</a></li>
-<li><a class="reference internal" href="#id4">元字符</a></li>
-<li><a class="reference internal" href="#id5">限定符</a></li>
-<li><a class="reference internal" href="#id6">贪婪匹配和非贪婪匹配</a></li>
-<li><a class="reference internal" href="#id7">定位符</a></li>
-<li><a class="reference internal" href="#id8">选择</a></li>
-<li><a class="reference internal" href="#id9">反向引用</a></li>
-<li><a class="reference internal" href="#id10">运算符优先级</a></li>
+<h1 class="logo"><a href="../index.html">Blog</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../computer_science/index.html">编程语言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">技术专题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx_github_blog_setup.html">Sphinx + Gitlub搭建自己的博客</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Git - Just do IT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interview.html">Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.html">Sphinx 常用语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_unix_program.html">Linux/Unix系统知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset_in_linux.html">Linux常用工具.命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem_solve.html">环境配置及常见问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mstp.html">多生成树协议</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Regular Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">REDIS KEY-VALUE数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluent_python.html">Fluent Python(流畅的python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_pearl.html">编程珠玑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_intelligent_investor.html">聪明的投资者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_most_important_thing_in_illuminated.html">投资最重要的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_read_a_book.html">如何阅读一本书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_crowd.html">乌合之众</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyramid_princible.html">金字塔原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_basic.html">shell基本知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_cmake_tutorial.html">MAKE/CMAKE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asynchronous_mechanisms.html">多线程.多进程.异步通信</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_basic.html">HTTP 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lience_software.html">Software Liense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netconf.html">Netconf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_user_manual.html">Sublime 快捷键总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yang.html">Yang Model</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../social_media/index.html">社会生活</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bigdata_and_ai/index.html">Big data and ML topics</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="blog.html">技术专题</a><ul>
+  <li><a href="index.html">技术专题</a><ul>
       <li>Previous: <a href="mstp.html" title="previous chapter">多生成树协议</a></li>
       <li>Next: <a href="redis.html" title="next chapter">REDIS KEY-VALUE数据库</a></li>
   </ul></li>
   </ul></li>
 </ul>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/regular_expression.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -249,11 +273,11 @@ document.write(str.match(patt1));
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/technic_blog/regular_expression.txt"
+      <a href="../_sources/technic_blog/regular_expression.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

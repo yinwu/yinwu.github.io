@@ -33,6 +33,7 @@
    ssh
    sublime_user_manual
    yang
+   cross_build
 
 
 

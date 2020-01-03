@@ -1,42 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>shell基本知识 &mdash; Blog  documentation</title>
-    
+    <meta charset="utf-8" />
+    <title>shell基本知识 &#8212; Blog  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Blog  documentation" href="../index.html" />
-    <link rel="up" title="技术专题" href="index.html" />
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MAKE/CMAKE" href="make_cmake_tutorial.html" />
     <link rel="prev" title="金字塔原理" href="pyramid_princible.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body role="document">  
+  </head><body>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="shell">
@@ -44,7 +37,7 @@
 <div class="section" id="id1">
 <h2>变量<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>定义时不加$符号，等号左右不能有空格。 使用时需要加$。unset 可以清空变量。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">name</span><span class="o">=</span><span class="nb">test</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">name</span><span class="o">=</span><span class="nb">test</span>
 <span class="nb">echo</span> <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
 <span class="nb">unset</span> name
 </pre></div>
@@ -54,38 +47,38 @@
 <h2>字符串<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><strong>单引号</strong></p>
 <ul class="simple">
-<li>单引号的所有字符会原样输出，字符串中的变量是无效的。</li>
-<li>单引号中不能再出现单引号，也不能出现转义符。</li>
+<li><p>单引号的所有字符会原样输出，字符串中的变量是无效的。</p></li>
+<li><p>单引号中不能再出现单引号，也不能出现转义符。</p></li>
 </ul>
 <p><a href="#id3"><span class="problematic" id="id4">**</span></a>双引号**a</p>
 <ul class="simple">
-<li>双引号中可以出现变量</li>
-<li>双引号中可以出现转义符</li>
+<li><p>双引号中可以出现变量</p></li>
+<li><p>双引号中可以出现转义符</p></li>
 </ul>
 <p><strong>拼接字符串</strong></p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">your_name</span><span class="o">=</span><span class="s2">&quot;runoob&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">your_name</span><span class="o">=</span><span class="s2">&quot;runoob&quot;</span>
 
-<span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;hello, &quot;</span>$your_name<span class="s2">&quot; !&quot;</span>
+<span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;hello, &quot;</span><span class="nv">$your_name</span><span class="s2">&quot; !&quot;</span>
 <span class="nv">greeting_1</span><span class="o">=</span><span class="s2">&quot;hello, </span><span class="si">${</span><span class="nv">your_name</span><span class="si">}</span><span class="s2"> !&quot;</span>
-<span class="nb">echo</span> $greeting  $greeting_1
+<span class="nb">echo</span> <span class="nv">$greeting</span>  <span class="nv">$greeting_1</span>
 
-<span class="nv">greeting_2</span><span class="o">=</span><span class="s1">&#39;hello, &#39;</span>$your_name<span class="s1">&#39; !&#39;</span>
+<span class="nv">greeting_2</span><span class="o">=</span><span class="s1">&#39;hello, &#39;</span><span class="nv">$your_name</span><span class="s1">&#39; !&#39;</span>
 <span class="nv">greeting_3</span><span class="o">=</span><span class="s1">&#39;hello, ${your_name} !&#39;</span>
-<span class="nb">echo</span> $greeting_2  $greeting_3
+<span class="nb">echo</span> <span class="nv">$greeting_2</span>  <span class="nv">$greeting_3</span>
 </pre></div>
 </div>
 <p><strong>获取字符串长度</strong></p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;abcd&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;abcd&quot;</span>
 <span class="nb">echo</span> <span class="si">${#</span><span class="nv">string</span><span class="si">}</span>
 </pre></div>
 </div>
 <p><strong>提取字符串</strong></p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;this is a test&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;this is a test&quot;</span>
 <span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">:</span><span class="nv">1</span><span class="p">:</span><span class="nv">4</span><span class="si">}</span>
 </pre></div>
 </div>
 <p><strong>查找字符串</strong></p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;this is find test&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">string</span><span class="o">=</span><span class="s2">&quot;this is find test&quot;</span>
 <span class="nb">echo</span> <span class="sb">`</span>expr index <span class="s2">&quot;</span><span class="si">${</span><span class="nv">string</span><span class="si">}</span><span class="s2"> io&quot;</span><span class="sb">`</span>
 </pre></div>
 </div>
@@ -93,16 +86,16 @@
 <div class="section" id="id5">
 <h2>shell 数组<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><strong>定义数组</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>array_name=(value0 value1 value2 value3)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array_name</span><span class="o">=</span><span class="p">(</span><span class="n">value0</span> <span class="n">value1</span> <span class="n">value2</span> <span class="n">value3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>访问数组</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>${array_name[n]} # 获取单个元素
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${array_name[n]} # 获取单个元素
 ${array_name[@]} # 获取数组所有元素
 </pre></div>
 </div>
 <p><strong>获取数据的长度</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>length=${#array_name[@]}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>length=${#array_name[@]}
 length=${#array_name[*]}
 </pre></div>
 </div>
@@ -110,43 +103,43 @@ length=${#array_name[*]}
 <div class="section" id="id6">
 <h2>注释<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p><strong>单行注释</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># 这是一个注释</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 这是一个注释</span>
 </pre></div>
 </div>
 <p><strong>多上注释</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>:&lt;&lt;EOF
-注释内容...
-注释内容...
-注释内容...
-EOF
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">EOF</span>
+<span class="n">注释内容</span><span class="o">...</span>
+<span class="n">注释内容</span><span class="o">...</span>
+<span class="n">注释内容</span><span class="o">...</span>
+<span class="n">EOF</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id7">
 <h2>shell 传递的参数<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>$n : 表示第n个参数，n=0表示文件文字。</li>
-<li>$* : 表示所有参数，以一个整体来现实。</li>
-<li>$&#64; : 表示所有参数，但是每个参数都是用引号括起来的。</li>
-<li>$# : 获取参数的个数</li>
-<li>$! : 最后运行的进程的ID号</li>
-<li>$$ : 脚本运行的当前进程ID号</li>
-<li>$? : 最后命令的退出状态，0 表示没有错误。</li>
+<li><p>$n : 表示第n个参数，n=0表示文件文字。</p></li>
+<li><p>$* : 表示所有参数，以一个整体来现实。</p></li>
+<li><p>$&#64; : 表示所有参数，但是每个参数都是用引号括起来的。</p></li>
+<li><p>$# : 获取参数的个数</p></li>
+<li><p>$! : 最后运行的进程的ID号</p></li>
+<li><p>$$ : 脚本运行的当前进程ID号</p></li>
+<li><p>$? : 最后命令的退出状态，0 表示没有错误。</p></li>
 </ul>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;-- \$* 演示 ---&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;-- \$* 演示 ---&quot;</span>
 <span class="k">for</span> i in <span class="s2">&quot;</span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> $i
+    <span class="nb">echo</span> <span class="nv">$i</span>
 <span class="k">done</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;-- \$@ 演示 ---&quot;</span>
 <span class="k">for</span> i in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> $i
+    <span class="nb">echo</span> <span class="nv">$i</span>
 <span class="k">done</span>
 </pre></div>
 </div>
 <p>输出结果为</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> chmod +x test.sh
-<span class="gp">$</span> ./test.sh <span class="m">1</span> <span class="m">2</span> 3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> chmod +x test.sh
+<span class="gp">$</span> ./test.sh <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
 <span class="go">-- $* 演示 ---</span>
 <span class="go">1 2 3</span>
 <span class="go">-- $@ 演示 ---</span>
@@ -161,16 +154,16 @@ EOF
 <p><strong>算数云算法</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><ul class="first">
-<li><ul class="first">
-<li>/ % = == !=</li>
+<li><ul>
+<li><ul>
+<li><p>/ % = == !=</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <p>bash不支持原生的数学运算，需要其他命令来实现:</p>
-<div class="highlight-python"><div class="highlight"><pre>var=`expr 2 + 2`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var=`expr 2 + 2`
 echo ${var}
 </pre></div>
 </div>
@@ -178,102 +171,102 @@ echo ${var}
 <p><strong>关系云算符</strong></p>
 <p>a=10, b=20</p>
 <ul class="simple">
-<li>-eq equal                     [ $a -eq $b ] is false</li>
-<li>-ne not equal                 [ $a -ne $b ] is true</li>
-<li>-gt great than                [ $a -gt $b ] is false</li>
-<li>-lt less than                 [ $a -lt $b ] is true</li>
-<li>-ge great or equal    [ $a -ge $b ] is false</li>
-<li>-le less or equal     [ $a -le $b ] is true</li>
+<li><p>-eq equal                     [ $a -eq $b ] is false</p></li>
+<li><p>-ne not equal                 [ $a -ne $b ] is true</p></li>
+<li><p>-gt great than                [ $a -gt $b ] is false</p></li>
+<li><p>-lt less than                 [ $a -lt $b ] is true</p></li>
+<li><p>-ge great or equal    [ $a -ge $b ] is false</p></li>
+<li><p>-le less or equal     [ $a -le $b ] is true</p></li>
 </ul>
 <p><strong>布尔运算符</strong></p>
 <ol class="arabic simple">
-<li>! 非运算</li>
-<li>-o 或运算</li>
-<li>-a 与运算</li>
+<li><p>! 非运算</p></li>
+<li><p>-o 或运算</p></li>
+<li><p>-a 与运算</p></li>
 </ol>
 <p><strong>逻辑运算符</strong></p>
 <ol class="arabic simple">
-<li>$$ 逻辑AND</li>
-<li>|| 逻辑OR</li>
+<li><p>$$ 逻辑AND</p></li>
+<li><p>|| 逻辑OR</p></li>
 </ol>
 <p><strong>字符串运算符</strong></p>
 <ol class="arabic simple">
-<li>= 检测字符串是否相等</li>
-<li>！= 检测字符串是否不等</li>
-<li>-z 检测字符串长度是否为0，为0返回true</li>
-<li>-n 检测字符串长度是否为0，为0返回false。 在表达式中，表达式必须加引号。</li>
-<li>[$str] 如果str不为空，则返回true</li>
+<li><p>= 检测字符串是否相等</p></li>
+<li><p>！= 检测字符串是否不等</p></li>
+<li><p>-z 检测字符串长度是否为0，为0返回true</p></li>
+<li><p>-n 检测字符串长度是否为0，为0返回false。 在表达式中，表达式必须加引号。</p></li>
+<li><p>[$str] 如果str不为空，则返回true</p></li>
 </ol>
 <p><strong>文件测试运算符</strong></p>
 <ol class="arabic simple">
-<li>-d 检测文件是否是目录</li>
-<li>-f 检测文件是否为普通文件(非目录和设备文件)</li>
-<li>-r 检测文件是否可读</li>
-<li>-w 检测文件是否可写</li>
-<li>-x 检测文件是否可执行</li>
-<li>-s 检测文件是否为空</li>
-<li>-e 检测文件是否存在</li>
+<li><p>-d 检测文件是否是目录</p></li>
+<li><p>-f 检测文件是否为普通文件(非目录和设备文件)</p></li>
+<li><p>-r 检测文件是否可读</p></li>
+<li><p>-w 检测文件是否可写</p></li>
+<li><p>-x 检测文件是否可执行</p></li>
+<li><p>-s 检测文件是否为空</p></li>
+<li><p>-e 检测文件是否存在</p></li>
 </ol>
 </div>
 <div class="section" id="id9">
 <h2>shell流程控制<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p><strong>if-else</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>if condition
-then
-    command1
-    command2
-    ...
-    commandN
-else
-    command
-fi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span>
+<span class="n">then</span>
+    <span class="n">command1</span>
+    <span class="n">command2</span>
+    <span class="o">...</span>
+    <span class="n">commandN</span>
+<span class="k">else</span>
+    <span class="n">command</span>
+<span class="n">fi</span>
 </pre></div>
 </div>
 <p><strong>if-elseif</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>if condition1
-then
-    command1
-elif condition2
-then
-    command2
-else
-    commandN
-fi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span>
+<span class="n">then</span>
+    <span class="n">command1</span>
+<span class="k">elif</span> <span class="n">condition2</span>
+<span class="n">then</span>
+    <span class="n">command2</span>
+<span class="k">else</span>
+    <span class="n">commandN</span>
+<span class="n">fi</span>
 </pre></div>
 </div>
 <p><strong>for</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>for var in item1 item2 ... itemN
-do
-    command1
-    command2
-    ...
-    commandN
-done
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">item1</span> <span class="n">item2</span> <span class="o">...</span> <span class="n">itemN</span>
+<span class="n">do</span>
+    <span class="n">command1</span>
+    <span class="n">command2</span>
+    <span class="o">...</span>
+    <span class="n">commandN</span>
+<span class="n">done</span>
 </pre></div>
 </div>
 <p>或者:</p>
-<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
-for((i=1;i&lt;=5;i++));do
-    echo &quot;这是第 $i 次调用&quot;;
-done;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="k">for</span><span class="p">((</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">));</span><span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;这是第 $i 次调用&quot;</span><span class="p">;</span>
+<span class="n">done</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>while</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>while condition
-do
-    command
-done
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span>
+<span class="n">do</span>
+    <span class="n">command</span>
+<span class="n">done</span>
 </pre></div>
 </div>
 <p><strong>until</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>until condition
-do
-    command
-done
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">until</span> <span class="n">condition</span>
+<span class="n">do</span>
+    <span class="n">command</span>
+<span class="n">done</span>
 </pre></div>
 </div>
 <p><strong>case</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>case 值 in
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case 值 in
 模式1)
     command1
     command2
@@ -295,11 +288,11 @@ esac
 <div class="section" id="id10">
 <h2>shell函数<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p><strong>函数定义</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>[ function ] funname [()]
-{
-    action;
-    [return int;]
-}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">function</span> <span class="p">]</span> <span class="n">funname</span> <span class="p">[()]</span>
+<span class="p">{</span>
+    <span class="n">action</span><span class="p">;</span>
+    <span class="p">[</span><span class="k">return</span> <span class="nb">int</span><span class="p">;]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>如果省略掉return语句，将返回最后一条命令的执行结果。</p>
@@ -311,31 +304,31 @@ esac
 <div class="section" id="id11">
 <h2>shell重定向<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>command &gt; file 命令重定向输出到file</li>
-<li>command &lt; file 命令输入重定向到file</li>
-<li>command &gt;&gt; file 命令输出以追加的方式重定向到file</li>
-<li>n &gt; file, 描述符为n的文件重定向到file</li>
-<li>n &gt;&gt; fle   描述符为n的文件以追加的方式重定向到file</li>
-<li>n&amp;&gt;m 输出文件n和m合并</li>
-<li>n&lt;&amp;m 输入文件n和m合并</li>
+<li><p>command &gt; file 命令重定向输出到file</p></li>
+<li><p>command &lt; file 命令输入重定向到file</p></li>
+<li><p>command &gt;&gt; file 命令输出以追加的方式重定向到file</p></li>
+<li><p>n &gt; file, 描述符为n的文件重定向到file</p></li>
+<li><p>n &gt;&gt; fle   描述符为n的文件以追加的方式重定向到file</p></li>
+<li><p>n&amp;&gt;m 输出文件n和m合并</p></li>
+<li><p>n&lt;&amp;m 输入文件n和m合并</p></li>
 </ol>
 <p><strong>标准输出和标准错误合并</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>command &gt; file 2&gt;&amp;1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command</span> <span class="o">&gt;</span> <span class="n">file</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p><strong>屏蔽标准输出和标准错误</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>command &gt; /dev/null 2&gt;&amp;1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id12">
 <h2>shell文件包含<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>引入其他文件的方式:</p>
-<div class="highlight-python"><div class="highlight"><pre>. filename   # 注意点号(.)和文件名中间有一空格
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">filename</span>   <span class="c1"># 注意点号(.)和文件名中间有一空格</span>
 </pre></div>
 </div>
 <p>或者:</p>
-<div class="highlight-python"><div class="highlight"><pre>source filename
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">filename</span>
 </pre></div>
 </div>
 </div>
@@ -343,26 +336,57 @@ esac
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">shell基本知识</a><ul>
-<li><a class="reference internal" href="#id1">变量</a></li>
-<li><a class="reference internal" href="#id2">字符串</a></li>
-<li><a class="reference internal" href="#id5">shell 数组</a></li>
-<li><a class="reference internal" href="#id6">注释</a></li>
-<li><a class="reference internal" href="#id7">shell 传递的参数</a></li>
-<li><a class="reference internal" href="#id8">shell运算符</a></li>
-<li><a class="reference internal" href="#id9">shell流程控制</a></li>
-<li><a class="reference internal" href="#id10">shell函数</a></li>
-<li><a class="reference internal" href="#id11">shell重定向</a></li>
-<li><a class="reference internal" href="#id12">shell文件包含</a></li>
+<h1 class="logo"><a href="../index.html">Blog</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../computer_science/index.html">编程语言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">技术专题</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx_github_blog_setup.html">Sphinx + Gitlub搭建自己的博客</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Git - Just do IT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interview.html">Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.html">Sphinx 常用语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_unix_program.html">Linux/Unix系统知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset_in_linux.html">Linux常用工具.命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem_solve.html">环境配置及常见问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mstp.html">多生成树协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regular_expression.html">Regular Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">REDIS KEY-VALUE数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluent_python.html">Fluent Python(流畅的python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_pearl.html">编程珠玑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_intelligent_investor.html">聪明的投资者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_most_important_thing_in_illuminated.html">投资最重要的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_read_a_book.html">如何阅读一本书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_crowd.html">乌合之众</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyramid_princible.html">金字塔原理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">shell基本知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_cmake_tutorial.html">MAKE/CMAKE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asynchronous_mechanisms.html">多线程.多进程.异步通信</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_basic.html">HTTP 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lience_software.html">Software Liense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netconf.html">Netconf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_user_manual.html">Sublime 快捷键总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yang.html">Yang Model</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../social_media/index.html">社会生活</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bigdata_and_ai/index.html">Big data and ML topics</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -374,26 +398,24 @@ esac
   </ul></li>
 </ul>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/technic_blog/shell_basic.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -402,11 +424,11 @@ esac
       &copy;2018, yinwu.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/technic_blog/shell_basic.txt"
+      <a href="../_sources/technic_blog/shell_basic.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

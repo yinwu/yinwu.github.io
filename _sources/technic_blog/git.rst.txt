@@ -232,3 +232,17 @@ git清楚本地缓存的命令
 	git commit -m 'update .gitignore'
 
 通过清楚缓存，可以解决.gitignore文件不生效的问题。
+
+#. 本地创建远端分支
+    今天想把本地的一点改动push到远端的服务器上，无意间发件竟然创建了一个新的分支，并且把新分支push上去了。
+    之前同事告诉我，只能在远端通过网页创建分支，然后本地修改。不能把本地branch push上去。看来并不正确。
+    记录一下今天的操作命令：
+
+.. code-block:: console
+
+  350  git checkout -b remote/feature/adaptation_to_k3_7.9_image
+  353  git add .
+  357  git commit ./ -m "adaptation to 7.9 image"
+  360   git push --set-upstream origin remote/feature/adaptation_to_k3_7.9_image
+  361   git push --set-upstream origin remote/feature/adaptation_to_k3_7.9_image
+

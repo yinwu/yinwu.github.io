@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Netconf &#8212; Blog  documentation</title>
+    <title>交叉编译 &#8212; Blog  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SSH" href="ssh.html" />
-    <link rel="prev" title="Software Liense" href="lience_software.html" />
+    <link rel="next" title="社会生活" href="../social_media/index.html" />
+    <link rel="prev" title="Yang Model" href="yang.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -32,19 +32,59 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="netconf">
-<h1>Netconf<a class="headerlink" href="#netconf" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="hello">
-<h2>Hello<a class="headerlink" href="#hello" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="id1">
+<h1>交叉编译<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>背景<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>１０年一个轮回，最近换工作，加入了新单位，又做起嵌入式项目来了。
+现在手头的活是给一个嵌入式项目写单元测试用例，目标板的是32位ARM结构的板子。
+如果你接触过嵌入式项目，你就知道嵌入式代码跟目标板紧密耦合，代码中大量奇奇怪怪的写法，在目标板上跑起来没有任何问题。
+但是换个平台，分分钟钟崩溃的节奏。
+虽然我们做项目一直在强调要考虑可移植性，但是实际状态就是，板子能跑起来，功能正常已经万事大吉了。再提别的要求不现实，重构什么的更谈不上。
+ｃ语言本身就不是灵活有余，抽象不足，给ｃ代码写单元测试用例，更是比较别扭。
+Java、python都有比较成熟的测试框架，c++也有gtest,但是我本人没听过ｃ有比较流行的单元测试框架，也可能是我比较孤陋寡闻。有一些商业的框架，都是收费贼贵，不差钱的大公司可以考虑。</p>
 </div>
-<div class="section" id="rpc">
-<h2>RPC<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>问题<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>跑单元测试用例，代码崩了。访问了非法指针，用printf打印，指针没有问题，申请时和使用时，指针的值都是一样。</p>
 </div>
-<div class="section" id="rpc-reply">
-<h2>RPC-REPLY<a class="headerlink" href="#rpc-reply" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>原因<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>被printf(“%x”)给欺骗了。跑case的机器是64位，指针的值是48位的，代码中用int型变量保存这个指针，这种写法值得商榷，但是３２位系统中运行没有问题，导致指针值的高16位被截掉了。但是printf打印时，只打印低３２
+位，所以出现指针的值没有问题的假象。实际上低３２位确实一样，但是高位已经不一样了。</p>
 </div>
-<div class="section" id="notification">
-<h2>notification<a class="headerlink" href="#notification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>解决办法<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>虽然这种情况应该修改产品代码，但是…你懂的，我选择修改程序运行环境，把测试用例也编译成３２位可执行程序，在６４位机器上运行。</p>
+</div>
+<div class="section" id="id6">
+<h2>关键步骤<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>修改编译选项<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>在编译时，加上-m32的宏，告诉我们要编译３２位的可执行程序。</p>
+<p>链接时，也需要加上链接的flag</p>
+</div>
+<div class="section" id="id8">
+<h3>修改库文件<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>测试框架是ｃｍｏｃｋａ，下载源码后自己编译的，当然是６４位可执行程序。无法跟３２位的测试用例链接到一起。在链接的时候报错。
+需要重新编译ｃｍｏｃｋａ，想按照编译测试用例的方法一样修改ｃｍｏｃｋａ的ｃｍａｋｅ文件，但是失败了，原因不清楚。
+后来发现ｃｍｏｋａ根目录下面有个文件叫*Toolchain-cross-m32.cmake*。原来ｃｍｏｃｋａ的早就考虑到各种平台的编译问题了，提供了一个
+交叉编译文件，这样问题就变的非常简单了，在编译时指定交叉编译文件就搞定了ｃｍｏｋａ－３２程序。</p>
+<p>Toolchain-cross-m32.cmake这个文件有参考意义，赋值到这里供以后参考</p>
+</div>
+<div class="section" id="id9">
+<h3>安装一些编译32位程序需要的库文件<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>这里主要是问度娘，参考文章还是很多的。这里吐槽一下，中文博客重复的太多了。有些人写博客就是把其他人的复制一份，连错误都不修改就放上去。</p>
+<p>需要安装的库大概有下面几个：</p>
+<p>网上很多人说要安装ia32-libs,实际上这个早已不用了，被lib32ncurses5 lib32z1替换掉了。</p>
+</div>
+<div class="section" id="id10">
+<h3>你以为结束了吗？<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>本以为到这里就结束了，结果还是没有编译成功，报的错误是</p>
+<p>在网上搜啊搜，没找到解决办法，我知道是库搜索路径不正确导致的，但是正确路径在哪里，怎么搜索一直都没有搞明白。实在没办法，想想还是
+参考ｃｍｏｋａ的写法，在ｃｍａｋｅ中增加了下面的两段，成功解决问题。</p>
+<p>至此成功解决６４位机器下面编译运行３２位程序的问题。</p>
+</div>
 </div>
 </div>
 
@@ -91,10 +131,11 @@
 <li class="toctree-l2"><a class="reference internal" href="asynchronous_mechanisms.html">多线程.多进程.异步通信</a></li>
 <li class="toctree-l2"><a class="reference internal" href="http_basic.html">HTTP 基础知识</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lience_software.html">Software Liense</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Netconf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netconf.html">Netconf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sublime_user_manual.html">Sublime 快捷键总结</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yang.html">Yang Model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">交叉编译</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../social_media/index.html">社会生活</a></li>
@@ -106,8 +147,8 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">技术专题</a><ul>
-      <li>Previous: <a href="lience_software.html" title="previous chapter">Software Liense</a></li>
-      <li>Next: <a href="ssh.html" title="next chapter">SSH</a></li>
+      <li>Previous: <a href="yang.html" title="previous chapter">Yang Model</a></li>
+      <li>Next: <a href="../social_media/index.html" title="next chapter">社会生活</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -142,7 +183,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/technic_blog/netconf.rst.txt"
+      <a href="../_sources/technic_blog/cross_build.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -27,7 +27,7 @@
 
 .. _这里: http://www.talkwithtrend.com/Question/225451-1370171
 
-.. _长时间不操作SSH无响应问题解决: https://blog.csdn.net/u013511989/article/details/79972435 
+.. _长时间不操作SSH无响应问题解决: https://blog.csdn.net/u013511989/article/details/79972435
 
 
 Windows10 & ubuntu双系统搭建
@@ -45,7 +45,7 @@ Windows10 & ubuntu双系统搭建
 How to install sublime in unbuntu
 ---------------------------------------------
 
-	The installed package for linux can't be opened from toplap. Please reference to 
+	The installed package for linux can't be opened from toplap. Please reference to
 	`linux下sublime text 3安装到配置 <https://www.cnblogs.com/shenckicc/p/6032998.html>`_
 
 
@@ -53,9 +53,27 @@ How to remove software in ububtu
 -----------------------------------
 
 .. code-block:: console
-	
+
 	sudo apt-get remove software_name
-	
+
+
+Adding sublime到鼠标右键
+------------------------
+
+.. code-block:: console
+
+	Windows Registry Editor Version 5.00
+	[HKEY_CLASSES_ROOT\*\shell\SublimeText3]
+	@="Open with SublimeText3 "
+	"Icon"="C:\\Program Files\\Sublime Text 3\\sublime_text.exe,0"
+	[HKEY_CLASSES_ROOT\*\shell\SublimeText3\command]
+	@="C:\\Program Files\\Sublime Text 3\\sublime_text.exe %1"
+	[HKEY_CLASSES_ROOT\Directory\shell\SublimeText3]
+	@="Open with SublimeText3 "
+	"Icon"="C:\\Program Files\\Sublime Text 3\\sublime_text.exe,0"
+	[HKEY_CLASSES_ROOT\Directory\shell\SublimeText3\command]
+
+	@="C:\\Program Files\\Sublime Text 3\\sublime_text.exe %1"
 
 
 
